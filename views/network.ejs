@@ -1,0 +1,70 @@
+<%- include('partials/header') -%>
+
+<main class="container">
+    <!-- <div class="row justify-content-around mt-5">
+        <form action="/createNetwork/:id" method="post">
+            <label for="name">test</label> <input type="text" name="name">
+        </form>
+    </div> -->
+    <form action="/network/createNetwork" enctype="multipart/form-data" method="POST">
+        <div class="mb-3">
+            <label for="networkName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="networkName" name="networkName">
+          </div>
+        <!-- <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div> -->
+        <div class="mb-3">
+          <label for="slogan" class="form-label">Slogan</label>
+          <input type="text" class="form-control" id="slogan" name="slogan">
+        </div>
+        <!-- <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="text" class="form-control" id="confirmPassword" name="confirmPassword">
+          </div> -->
+
+          <div class="mb-3">
+            <label for="imgUpload" class="form-label">Logo (optional)</label>
+            <input type="file" class="form-control" id="imageUpload" name="file">
+          </div>
+
+          <div class="mb-3">
+            <label for="kind">What kind of network are you creating?
+            <input type="radio" id="informal" value="Informal" name="kind">Informal social network</input>
+            <input type="radio" id="formal" value="Professional network" name="kind">Professional network</input>
+            </label>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="type">Whould you like your network to be private or public?
+                    <p class="typeExplanation">In private networks, only people you authorize to join will have access to the network. Public networks are open for all.</p>
+                    <input type="radio" value="Private" name="type">Private</input>
+                    <input type="radio" value="Public" name="type">Public</input>
+                    </label>
+            </div>
+            
+            <div class="mb-3">
+            <label for="how">How did you find out about Isteraha?
+                <input type="radio" value="Friends and colleagues" name="how">Friends and colleagues</input>
+                <input type="radio" value="Other social media" name="how">Other social media</input>
+                <input type="radio" value="Advertisements" name="how">Advertisements</input>
+                <input type="radio" value="Another business" name="how">Another business</input>
+                <input type="radio" value="Other" name="how">Other</input>
+            </label>
+          </div>
+
+          <div class="mb-3">
+          <label for="custom">Are there custom features you'd like added?
+            <input type="text" name="custom">
+            </label>
+            </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</main>
+    
+
+<%- include('partials/footer') -%>

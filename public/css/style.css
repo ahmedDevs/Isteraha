@@ -1,0 +1,12 @@
+.btn-primary {
+    color: black;
+}
+.h-96 {
+    display: flex;
+}
+/* .container.box {
+    border: 2px solid black;
+} */
+.dashboardList {
+    border-bottom: 1px solid black;
+}
