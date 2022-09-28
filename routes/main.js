@@ -16,14 +16,13 @@ router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
 
-
-
+// test
 
 router.get("/:id/dashboard", ensureAuth, authController.getDashboard);
 
 router.get("/:id/dashboard/inviteUser", ensureAuth, authController.getInvitePage);
 
-router.post("/:id/dashboard/inviteUser/:id", ensureAuth, authController.postInviteUser);
+// router.post("/:id/dashboard/inviteUser/:id", ensureAuth, authController.postInviteUser);
 
 
 
