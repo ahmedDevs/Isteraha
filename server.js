@@ -11,12 +11,23 @@ const connectDB = require("./config/database")
 const mainRoutes = require("./routes/main")
 const postRoutes = require("./routes/posts")
 const networkRoutes = require('./routes/networks')
+const commentRoutes = require("./routes/comments")
+// const notificationRoutes = require("./routes/notifications")
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" })
 
 // Passport config
 require("./config/passport")(passport)
+
+
+
+// const initializePassport = require("./config/passport")
+// initializePassport(passport)
+// const modelPassport = require("./config/test")
+// const stylistPassport = require("./config/stylist-passport")
+// modelPassport(passport)
+// stylistPassport(stylistPass)
 
 //Connect To Database
 connectDB()
@@ -58,6 +69,8 @@ app.use(flash())
 app.use("/", mainRoutes)
 app.use("/post", postRoutes)
 app.use('/network', networkRoutes)
+app.use("/comment", commentRoutes);
+// app.use("/notifications", notificationRoutes);
 // app.use('/:id', networkRoutes)
 
 

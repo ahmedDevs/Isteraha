@@ -1,7 +1,22 @@
 <%- include('partials/header') -%>
-  <div class="container">
+<%- include('partials/menu') -%>
+<!-- <main class="main mainFeed"></main> -->
+<div id="menu">
+  <div class="imgDiv"><img class="image placeholder" src="http://placekitten.com/200/200" alt="profile picture"></div>
+  <ul>
+      <li id="profile"><span><a href="/profile">Profile</a></span></li>
+      <li id="followers"><span><a href="#">Followers</a></span></li>
+      <li id="following"><span><a href="#">Following</a></span></li>
+      <li id="posts"><span><a href="#">Posts</a></span></li>
+      <li id="likes" ><span><a href="#">Likes</a></span></li>
+      <li><button id="clickEventNewPost">New Post</button></li>
+  </ul>
+
+</div>
+
+  <div class="container" id="feedContainer">
     <div class="row justify-content-center mt-5">
-      <ul class="row list-unstyled">
+      <ul class="row list-unstyled" id="posts">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
             <a href="/post/<%= posts[i]._id%>">
@@ -12,4 +27,21 @@
         </ul>
     </div>
   </div>  
+
+  <div class="suggestionBox">
+    <ul>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+        <li class="suggestion">Lorem ipsum dolor sit amet.</li>
+    </ul>
+</div>
+
+
 <%- include('partials/footer') -%>

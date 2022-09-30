@@ -10,3 +10,78 @@
 .dashboardList {
     border-bottom: 1px solid black;
 }
+/* #feedContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    border: 2px solid red;
+}
+#feedContainer > .mt-5 {
+    flex-basis: 100%;
+    border: 2px solid violet;
+} */
+
+.mainFeed {
+    display: flex !important;
+    flex-basis: 100%;
+    width: 100%;
+}
+#posts {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    flex-basis: 40%;
+    height: 40%;
+    border: 2px solid salmon;
+}
+#posts li {
+    /* display: flex;
+    flex-basis: 70%; */
+    width: 70%;
+    border: 2px solid lightskyblue;
+}
+
+#menu {
+    /* border: 2px solid red; */
+    width: 10%;
+    position: fixed;
+    height: 100%;
+    text-align: center;
+    left: 0;
+    top: 15%;
+}
+
+#menu * {
+    text-decoration: none;
+    /* color: rgb(61, 122, 187); */
+    color: brown;
+    list-style: none;
+}
+#menu li {
+    margin-top: 10%;
+    height: 10%;
+}
+.suggestionBox {
+    width: 25%;
+    /* clear: both;
+    float: right; */
+    height: 100%;
+    border: 2px solid blue;
+    /* position: absolute; */
+    position: fixed;
+    right: 0;
+    top: 10%;
+}
+.suggestionBox > ul{
+    height: 70%;
+    list-style: none;
+}
+.suggestion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    color: brown;
+    margin: 2%;
+    border: 2px solid rgb(37, 92, 37);
+    border-radius: 10%;
+}

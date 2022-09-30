@@ -46,6 +46,10 @@ const NetworkSchema = new mongoose.Schema ({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
+      admins: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
       moderators: {
         type: Object,
       },

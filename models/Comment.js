@@ -8,13 +8,29 @@ const CommentSchema = new mongoose.Schema ({
     likes: {
         type: Number,
         required: true,
+        default: 0,
     },
+    post: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+      },
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
     likedBy: {
         type: Array,
     },
     replies: {
         type: Array,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+      },
 })
 
 module.exports = mongoose.model("Comment", CommentSchema, 'comments')
+
+
+

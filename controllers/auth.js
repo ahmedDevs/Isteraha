@@ -2,7 +2,7 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 const Network = require("../models/Network");
-const { findOne } = require("../models/User");
+// const { findOne } = require("../models/User");
 
 exports.getLogin = async (req, res) => {
   if (req.user) {
@@ -104,9 +104,10 @@ exports.getDashboard = async (req,res) => {
   }
  }
 
- exports.getNotificationsPage = async (req,res) => {
+ exports.getNotifications = async (req,res) => {
   try {
     const user = await User.findOne({ userName: req.params.id }).lean()
+  
     const userId = user._id
     const networks = user.networks
 
@@ -127,16 +128,16 @@ exports.getDashboard = async (req,res) => {
   }
  }
 
- exports.postInviteUser = async (req,res) => {
-  try {
+//  exports.postInviteUser = async (req,res) => {
+//   try {
   
-      const invitedUserEmail = await req.body.email
-      const invitedUser = await findOne({ email: invitedUserEmail })
-      await User.findOneAndUpdate({ email: invitedUserEmail, invitedUser.networks.push('testing') })
-  }  catch(err) {
-    console.error(err)
-  }
- }
+//       const invitedUserEmail = await req.body.email
+//       const invitedUser = await findOne({ email: invitedUserEmail })
+//       await User.findOneAndUpdate({ email: invitedUserEmail, invitedUser.networks.push('testing') })
+//   }  catch(err) {
+//     console.error(err)
+//   }
+//  }
 
 exports.postSignup = (req, res, next) => {
   const validationErrors = [];

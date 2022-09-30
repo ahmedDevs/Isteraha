@@ -26,7 +26,7 @@ router.get("/:id/dashboard/inviteUser", ensureAuth, authController.getInvitePage
 
 
 
-router.get("/:id/notifications", ensureAuth, authController.getNotificationsPage);
+router.get("/:id/notifications", ensureAuth, authController.getNotifications);
 
 // router.get("/:id/profile", ensureAuth, authController.getUserProfile);
 
@@ -39,3 +39,15 @@ router.get("/:id/notifications", ensureAuth, authController.getNotificationsPage
 
 
 module.exports = router;
+
+
+// function ensureAuthModel(req, res, next) {
+//     if (isModel(req.user)) { return next(); }
+//     res.redirect('/profile')
+//   }
+
+//   function ensureAuthStylist(req, res, next) {
+//     if (isStylist(req.user)) { return next(); }
+//     res.redirect('/profile')
+//   }
+
