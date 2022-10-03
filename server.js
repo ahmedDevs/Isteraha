@@ -7,6 +7,7 @@ const MongoStore = require("connect-mongo")(session)
 const methodOverride = require("method-override")
 const flash = require("express-flash")
 const logger = require("morgan")
+const nodemailer = require("nodemailer")
 const connectDB = require("./config/database")
 const mainRoutes = require("./routes/main")
 const postRoutes = require("./routes/posts")
@@ -64,6 +65,32 @@ app.use(passport.session())
 
 //Use flash messages for errors, info, ect...
 app.use(flash())
+
+
+
+// setting up nodemailer for sending email to users
+// let mailTransporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//       user: process.env.MAIL_ADDRESS,
+//       pass: process.env.MAIL_KEY,
+//   }
+// });
+
+// let mailDetails = {
+//   from: 'xyz@gmail.com',
+//   to: 'abc@gmail.com',
+//   subject: 'Test mail',
+//   text: 'Node.js testing mail for GeeksforGeeks'
+// };
+
+// mailTransporter.sendMail(mailDetails, function(err, data) {
+//   if(err) {
+//       console.log('Error Occurs');
+//   } else {
+//       console.log('Email sent successfully');
+//   }
+// });
 
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes)

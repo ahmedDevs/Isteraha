@@ -32,11 +32,17 @@
                 <ul>
                     <li class="dashboardList"><%= user.userName %></li>
                     <li class="dashboardList"><%=user.email%></li>
-                    <li class="dashboardList">My networks
-                        <ul>
-                            <% for(let i = 0; i < user.networks.length; i++) { %>
-                         <li class="dashboardList">
-                           <%= user.networks[i] %>
+                    <li class="dashboardList networks">My networks
+                       <ul class="networkBoxUl">
+                        <% for(let i = 0; i < networks.length; i++) { %>
+                         <li class="dashboardList networkBoxLi col-6 justify-content-between mt-5">
+                         
+                            <div class="networkBox">
+                              <h2><%= networks[i].name %></h2>
+                              <h2><%= networks[i].slogan %></h2>
+                              <img class="image-fluid" src="<%= networks[i].image %>" alt="logo">
+                            </div>
+                          
                         </li>
                     <% } %>
                     </ul>

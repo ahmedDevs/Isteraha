@@ -4,6 +4,10 @@ const User = require("../models/User");
 const Network = require("../models/Network");
 // const { findOne } = require("../models/User");
 
+// const nodemailer = require('nodemailer');
+// const sendEmail = require("../config/mail")()
+
+
 exports.getLogin = async (req, res) => {
   if (req.user) {
     // return res.redirect("/profile");
@@ -73,8 +77,10 @@ exports.getSignup = (req, res) => {
 exports.getDashboard = async (req,res) => {
   try {
       const user = await User.findOne({ userName: req.params.id }).lean()
+      const networks = await Network.find({ createdBy: user._id }).lean()
+    console.log(networks)
       console.log(user)
-      res.render('dashboard.ejs', { user }) 
+      res.render('dashboard.ejs', { user, networks }) 
       console.log(user)
   } catch(err) {
       console.error(err)
@@ -98,7 +104,31 @@ exports.getDashboard = async (req,res) => {
     const network = await Network.findOne({ createdBy: userId }).lean()
     console.log(network)
     if(!network) return
-    res.render('network-invitation.ejs', { network })
+    res.render('network-invitation.ejs', { network, user })
+  }  catch(err) {
+    console.error(err)
+  }
+ }
+ exports.postInvitePage = async (req,res) => {
+  try {
+    const user = await User.findOne({ userName: req.params.id })
+    const userId = user._id
+    const createdNetwork = await Network.findOne({ createdBy: userId }).lean()
+    const adminNetwork = await Network.findOne({ admins: userId }).lean()
+    const invitee = await req.body.email
+    console.log(createdNetwork)
+    console.log(adminNetwork)
+    if(!adminNetwork) return
+    if(!invitee) {
+      const invitee = await User.findOne({ userName: req.params.id })
+      const filter = invitee.invitations
+      const update = filter.push(req.params.id)
+      await User.findOneAndUpdate({ filter, update })
+    }
+    // sendEmail()
+
+
+    res.render('network-invitation.ejs', { createdNetwork, adminNetwork })
   }  catch(err) {
     console.error(err)
   }
