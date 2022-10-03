@@ -46,6 +46,14 @@ const NetworkSchema = new mongoose.Schema ({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
+      dateCreated: {
+        type: Date, 
+        default: Date.now,
+      },
+      numberOfMembers: {
+        type: Number,
+        default: 0,
+      },
       admins: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
