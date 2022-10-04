@@ -10,6 +10,9 @@ const NetworkSchema = new mongoose.Schema ({
         type: String,
         // require: true,
       },
+      about: {
+        type: String,
+      },
       cloudinaryId: {
         type: String,
         // require: true,

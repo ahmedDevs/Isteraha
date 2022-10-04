@@ -25,6 +25,7 @@ const UserSchema = new mongoose.Schema({
   numberOfFollowers: {type: Number, default: 0 },
   numberOfPeopleFollowed: {type: Number, default: 0 },
   numberOfPosts: { type: Number, default: 0},
+  notifications: { type: Boolean, default: false},
 
 });
 

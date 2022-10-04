@@ -395,7 +395,7 @@ hr .new1 {
 
 
 /* dashboards stylings  */
-*{
+/* *{
     margin: 0;padding: 0;
 }
 .card1{height: 100vh;
@@ -423,9 +423,9 @@ hr .new1 {
 .cardchild .percentage3{position: absolute;bottom: 10px;right: 15px;color: #48ddd8;font-weight: 500};
 .cardchild .logo4{position: absolute;top: 15px;right: 20px};
 .cardchild .percentage4{position: absolute;bottom: 10px;right: 15px;color: #bb7484;font-weight: 500};
-.cardchildchild{width: 335px;position: relative;border: none;border-radius: 15px;cursor: pointer};
+.cardchildchild{width: 335px;position: relative;border: none;border-radius: 15px;cursor: pointer}; */
 /* .cardchildchild b */
-.cardchildchild .profile1{position: absolute;border-radius: 50%;top: -45px;display: flex;align-items: center;justify-content: center;right: 120px};
+/* .cardchildchild .profile1{position: absolute;border-radius: 50%;top: -45px;display: flex;align-items: center;justify-content: center;right: 120px};
 .name{font-size: 18px;font-weight: 500};
 .braceletid{font-size: 13px;color: #bab9ba;font-family: 'Source Sans Pro', sans-serif};
 .btn1{height: 35px;width: 160px;border: none;background-color: #f8c01a;cursor: pointer;color: #fff;font-weight: 500;font-size: 16px;border-radius: 20px};
@@ -433,7 +433,7 @@ hr .new1 {
 .icons{font-size: 20px;font-weight: 500};
 .dummytext{font-size: 14px;font-weight: normal;color: #b0aeb1};
 .btn2{height: 35px;width: 160px;border: none;background-color: #c72b2b;cursor: pointer;color: #fff;font-weight: 500;font-size: 16px;border-radius: 20px};
-.btn2:hover{background-color: #f8c01a};
+.btn2:hover{background-color: #f8c01a}; */
 
 
 
