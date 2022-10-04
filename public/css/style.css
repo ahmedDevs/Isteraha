@@ -458,6 +458,19 @@ hr .new1 {
 
 
 
+/* forms  */
+/* .mb-3 {
+    display: flex;
+    flex-flow: column nowrap;
+} */
+
+#mainNetworkForm {
+    height: 70vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
 
 
 .btn-primary {

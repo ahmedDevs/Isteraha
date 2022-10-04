@@ -38,7 +38,7 @@
                         <div class="d-flex flex-column ml-2"><span><%= networks[i].name %></span><span class="text-black-50"><%= networks[i].slogan %></span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
                     </div>
                     <h6><%= networks[i].about %></h6>
-                    <div class="d-flex justify-content-between install mt-3"><span>Installed 172 times</span>
+                    <div class="d-flex justify-content-between install mt-3"><span><%= networks[i].numberOfMembers %> members</span>
                       <% if(networks[i].createdBy == user.id) { %>
                          <span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> 
                         <% } %>

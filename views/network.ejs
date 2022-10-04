@@ -2,10 +2,10 @@
 <%- include('partials/menu') -%>
 
 
-<div>
+<!-- <div>
   <div class="relative px-4 pt-6 sm:px-6 lg:px-8">
-    <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
-      <div class="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
+    <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global"> -->
+      <!-- <div class="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
         <div class="flex w-full items-center justify-between md:w-auto">
           <a href="#">
             <span class="sr-only">Your Company</span>
@@ -15,14 +15,14 @@
             <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
               <!-- Heroicon name: outline/bars-3 -->
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <!-- <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
             </button>
           </div>
         </div>
-      </div>
-      <div class="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
+      </div>  -->
+      <!-- <div class="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
         <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Product</a>
 
         <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Features</a>
@@ -32,13 +32,13 @@
         <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Company</a>
 
         <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a>
-      </div>
-    </nav>
-  </div>
+      </div> -->
+    <!-- </nav>
+  </div> -->
 
 
 
-<main class="container">
+<main class="container" id="mainNetworkForm">
     <!-- <div class="row justify-content-around mt-5">
         <form action="/createNetwork/:id" method="post">
             <label for="name">test</label> <input type="text" name="name">
@@ -47,7 +47,7 @@
     <form action="/network/createNetwork" enctype="multipart/form-data" method="POST">
         <div class="mb-3">
             <label for="networkName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="networkName" name="networkName">
+            <input type="text" class="form-control" id="networkName" name="networkName" required>
           </div>
         <!-- <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email Address</label>
@@ -56,8 +56,15 @@
         </div> -->
         <div class="mb-3">
           <label for="slogan" class="form-label">Slogan</label>
-          <input type="text" class="form-control" id="slogan" name="slogan">
+          <input type="text" class="form-control" id="slogan" name="slogan" required>
         </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" class="form-control" id="description" name="description" required>
+        </div>
+
+
         <!-- <div class="mb-3">
             <label for="confirmPassword" class="form-label">Confirm Password</label>
             <input type="text" class="form-control" id="confirmPassword" name="confirmPassword">
@@ -68,37 +75,37 @@
             <input type="file" class="form-control" id="imageUpload" name="file">
           </div>
 
-          <div class="mb-3">
-            <label for="kind">What kind of network are you creating?
+          <!-- <div class="mb-3">
+            <label for="kind">What kind of network are you creating?</label>
             <input type="radio" id="informal" value="Informal" name="kind">Informal social network</input>
             <input type="radio" id="formal" value="Professional network" name="kind">Professional network</input>
-            </label>
+            
             </div>
 
 
             <div class="mb-3">
-                <label for="type">Whould you like your network to be private or public?
+                <label for="type">Whould you like your network to be private or public? </label>
                     <p class="typeExplanation">In private networks, only people you authorize to join will have access to the network. Public networks are open for all.</p>
                     <input type="radio" value="Private" name="type">Private</input>
                     <input type="radio" value="Public" name="type">Public</input>
-                    </label>
+                    
             </div>
             
             <div class="mb-3">
-            <label for="how">How did you find out about Isteraha?
+            <label for="how">How did you find out about Isteraha?  </label>
                 <input type="radio" value="Friends and colleagues" name="how">Friends and colleagues</input>
                 <input type="radio" value="Other social media" name="how">Other social media</input>
                 <input type="radio" value="Advertisements" name="how">Advertisements</input>
                 <input type="radio" value="Another business" name="how">Another business</input>
                 <input type="radio" value="Other" name="how">Other</input>
-            </label>
+          
           </div>
 
           <div class="mb-3">
-          <label for="custom">Are there custom features you'd like added?
+          <label for="custom">Are there custom features you'd like added? </label>
             <input type="text" name="custom">
-            </label>
-            </div>
+           
+            </div> -->
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

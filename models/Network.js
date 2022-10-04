@@ -12,6 +12,7 @@ const NetworkSchema = new mongoose.Schema ({
       },
       about: {
         type: String,
+        required: true,
       },
       cloudinaryId: {
         type: String,
@@ -19,11 +20,16 @@ const NetworkSchema = new mongoose.Schema ({
       },
       slogan: {
         type: String,
+        required: true,
         // required: true,
       },
       members: {
         type: Array,
 
+      },
+      numberOfMembers: {
+        type: Number,
+        default: 0,
       },
       invitationCode: {
         type: String,
@@ -35,11 +41,11 @@ const NetworkSchema = new mongoose.Schema ({
       // },
       type: {
         type: String,
-        required: true,
+        // required: true,
       },
       foundHow: {
         type: String,
-        required: true,
+        // required: true,
       },
       customFeatures: {
         type: String,

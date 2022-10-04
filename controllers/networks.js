@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Network = require("../models/Network")
+const User = require("../models/User")
 
 module.exports = {
    createNetwork: async (req,res) => {
@@ -14,10 +15,11 @@ module.exports = {
             logo: result.secure_url,
             cloudinaryId: result.public_id,
             slogan: req.body.slogan,
-            private: req.body.kind,
-            type: req.body.type,
-            foundHow: req.body.how,
-            customFeatures: req.body.custom,
+            about: req.body.description,
+            // private: req.body.kind,
+            // type: req.body.type,
+            // foundHow: req.body.how,
+            // customFeatures: req.body.custom,
             createdBy: req.user.id,
           })
           const param = await req.body.networkName
@@ -28,8 +30,9 @@ module.exports = {
         console.error(err)
     }
    },
-   getNetworkPage: (req,res) => {
-    res.render('network.ejs')
+   getNetworkPage: async (req,res) => {
+    const user = await User.findOne({ userName: req.user.userName }).lean()
+    res.render('network.ejs', { user })
    },
 //    getDashboard: async (req,res) => {
 //     try {
