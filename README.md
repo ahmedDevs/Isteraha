@@ -20,7 +20,7 @@
 7. [Acknowledgements](#ack)
 
 ## PURPOSE
-### Overview  <a name="overview"></a>: This is a fullstack social networking app that allows communities to create their own unique, exclusive networks and rank up incomparison to other networks. 
+### Overview  <a name="overview"></a>: This is a fullstack social networking app that allows communities to create their own unique, exclusive networks and rank up in comparison to other networks. 
 
 Please refer to the demo for sample output. 
 The live site/demo is here: https:// [insert link to live site]
