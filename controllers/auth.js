@@ -9,10 +9,11 @@ const Network = require("../models/Network");
 
 
 exports.getLogin = async (req, res) => {
+  console.log(req.user)
   if (req.user) {
     // return res.redirect("/profile");
     const userName = req.user.userName
-    console.log(userName)
+    // console.log(userName)
     return res.redirect(`${userName}/dashboard`);
   }
   res.render("login", {
@@ -78,10 +79,10 @@ exports.getDashboard = async (req,res) => {
   try {
       const user = await User.findOne({ userName: req.params.id }).lean()
       const networks = await Network.find({ createdBy: user._id }).lean()
-    console.log(networks)
-      console.log(user)
+    // console.log(networks)
+    //   console.log(user)
       res.render('dashboard.ejs', { user, networks }) 
-      console.log(user)
+      // console.log(user)
   } catch(err) {
       console.error(err)
   }
@@ -100,9 +101,9 @@ exports.getDashboard = async (req,res) => {
   try {
     const user = await User.findOne({ userName: req.params.id })
     const userId = user._id
-    console.log(userId)
+    // console.log(userId)
     const network = await Network.findOne({ createdBy: userId }).lean()
-    console.log(network)
+    // console.log(network)
     if(!network) return
     res.render('network-invitation.ejs', { network, user })
   }  catch(err) {
@@ -111,24 +112,30 @@ exports.getDashboard = async (req,res) => {
  }
  exports.postInvitePage = async (req,res) => {
   try {
-    const user = await User.findOne({ userName: req.params.id })
-    const userId = user._id
-    const createdNetwork = await Network.findOne({ createdBy: userId }).lean()
-    const adminNetwork = await Network.findOne({ admins: userId }).lean()
+    // const user = await User.findOne({ userName: req.params.id })
+    // const userId = user._id
+    const user = req.user._id
+    console.log(user)
+    
+    const createdNetwork = await Network.findOne({ createdBy: user }).lean()
+    const adminNetwork = await Network.findOne({ admins: user }).lean()
     const invitee = await req.body.email
-    console.log(createdNetwork)
-    console.log(adminNetwork)
-    if(!adminNetwork) return
+    // console.log(createdNetwork)
+    // console.log(adminNetwork)
+    // if(!adminNetwork) return
     if(!invitee) {
-      const invitee = await User.findOne({ userName: req.params.id })
-      const filter = invitee.invitations
-      const update = filter.push(req.params.id)
-      await User.findOneAndUpdate({ filter, update })
+      const invitee = await User.findOne({ userName: req.body.userName })
+      invitee.invitations.push(createdNetwork._id)
+      invitee.save()
+      console.log('Mission Accomplished!')
+      // const filter = invitee.invitations
+      // const update = filter.push(req.params.id)
+      // await User.findOneAndUpdate({ filter, update })
     }
     // sendEmail()
 
-
-    res.render('network-invitation.ejs', { createdNetwork, adminNetwork })
+    res.redirect(':id/dashboard/inviteUser')
+    // res.render('network-invitation.ejs', { createdNetwork, adminNetwork })
   }  catch(err) {
     console.error(err)
   }
@@ -292,3 +299,65 @@ exports.postSignup = (req, res, next) => {
 //     User.findById(id, (err, user) => done(err, user));
 //   });
 // };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// mks solution
+// exports.getLogin = async (req, res) => {
+// if(req.user) {  
+//   const user = req.user.userName
+//   const model = await ModelSchema.findOne({ userName: user }).lean()
+//   const stylist = await StylistSchema.findOne({ userName: user }).lean()
+//     if (model) {
+//       res.redirect("/model/profile")
+//     }  else if (stylist) {
+//       res.redirect("/stylist/profile")
+//     } else {
+//       console.error(err)
+//     }
+//     res.render("login", {
+//       title: "Login",
+//     });
+// }
+// }
+
+
+// exports.getLogin = (req, res) => {
+//   if (req.user) {
+//     return res.redirect("/profile");
+//   }
+//   res.render("login", {
+//     title: "Login",
+//   });
+// };
+
+
+
+// exports.getLogin = async (req, res) => {
+//   if(req.user) {  
+//     const user = req.user.userName
+//     const model = await ModelSchema.findOne({ userName: user }).lean()
+//     const stylist = await StylistSchema.findOne({ userName: user }).lean()
+//       if (model) {
+//         res.redirect("/model/profile")
+//       }  else if (stylist) {
+//         res.redirect("/stylist/profile")
+//       } 
+//   }
+//   res.render("login", {
+//     title: "Login",
+//   });
+//   }

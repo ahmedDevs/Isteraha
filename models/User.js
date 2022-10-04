@@ -7,12 +7,26 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   password: String,
   name: { type: String, unique: true },
+  bio: { type: String },
+  image: {
+    type: String,
+    // require: true,
+  },
+  cloudinaryId: {
+    type: String,
+    // require: true,
+  },
   networks: { type: Array },
   invitations: { type: Array },
   comments: {type: Array },
   following: { type: Array },
   followers: { type: Array },
-  
+  joined: { type: Date, default: Date.now },
+  numberOfFollowers: {type: Number, default: 0 },
+  numberOfPeopleFollowed: {type: Number, default: 0 },
+  numberOfPosts: { type: Number, default: 0},
+  notifications: { type: Boolean, default: false},
+
 });
 
 // Password hash middleware.

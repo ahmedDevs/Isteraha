@@ -10,6 +10,9 @@ const NetworkSchema = new mongoose.Schema ({
         type: String,
         // require: true,
       },
+      about: {
+        type: String,
+      },
       cloudinaryId: {
         type: String,
         // require: true,
@@ -45,6 +48,14 @@ const NetworkSchema = new mongoose.Schema ({
       createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+      },
+      dateCreated: {
+        type: Date, 
+        default: Date.now,
+      },
+      numberOfMembers: {
+        type: Number,
+        default: 0,
       },
       admins: {
         type: mongoose.Schema.Types.ObjectId,
