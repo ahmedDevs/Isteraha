@@ -99,7 +99,7 @@ exports.getDashboard = async (req,res) => {
 
  exports.getInvitePage = async (req,res) => {
   try {
-    const user = await User.findOne({ userName: req.params.id })
+    const user = await User.findOne({ userName: req.user.userName })
     const userId = user._id
     // console.log(userId)
     const network = await Network.findOne({ createdBy: userId }).lean()
@@ -114,18 +114,24 @@ exports.getDashboard = async (req,res) => {
   try {
     // const user = await User.findOne({ userName: req.params.id })
     // const userId = user._id
-    const user = req.user._id
+    const user = req.user.id
     console.log(user)
     
-    const createdNetwork = await Network.findOne({ createdBy: user }).lean()
-    const adminNetwork = await Network.findOne({ admins: user }).lean()
+    const invitationTo = await Network.findOne({ name: req.params.id }).lean()
+    // const adminNetwork = await Network.findOne({ admins: user }).lean()
     const invitee = await req.body.email
-    // console.log(createdNetwork)
+    console.log(invitationTo)
     // console.log(adminNetwork)
     // if(!adminNetwork) return
     if(!invitee) {
       const invitee = await User.findOne({ userName: req.body.userName })
-      invitee.invitations.push(createdNetwork._id)
+      invitee.invitations.push(invitationTo._id)
+      
+      // invitee.update({ 
+      //   $set: {
+      //     notifications: true
+      //   }
+      //  })
       invitee.save()
       console.log('Mission Accomplished!')
       // const filter = invitee.invitations
@@ -134,8 +140,8 @@ exports.getDashboard = async (req,res) => {
     }
     // sendEmail()
 
-    res.redirect(':id/dashboard/inviteUser')
-    // res.render('network-invitation.ejs', { createdNetwork, adminNetwork })
+    res.redirect('/inviteUser')
+    // res.render('network-invitation.ejs', { invitationTo, adminNetwork })
   }  catch(err) {
     console.error(err)
   }
@@ -146,20 +152,26 @@ exports.getDashboard = async (req,res) => {
     const user = await User.findOne({ userName: req.params.id }).lean()
   
     const userId = user._id
-    const networks = user.networks
-
-    const networksInfo = 0
-    for(let i = 0; i < networks.length; i++) {
-      networksInfo.push( await Network.findOne({ _id: networks[i] }))
-    
-    }
-    console.log(networksInfo)
-    console.log(userId)
-    console.log(user)
+    const networks = user.invitations
     console.log(networks)
+  
+     const network = await Network.find({ _id: { "$in" : networks } }).lean()
+    // const network = await Network.find({ _id: { "$in" : [invitations]} }).lean()
+    console.log(network)
+    // const networksInfo = []
+    // for(let i = 0; i < networks.length; i++) {
+    //   networksInfo.push( await Network.findOne({ _id: networks[i] }))
+    
+    // }
+    // console.log(networksInfo)
+    // console.log(userId)
+    // console.log(user)
+    // console.log(networks)
     // const network = await Network.findOne({ createdBy: userId }).lean()
     // console.log(network)
-    res.render('notifications.ejs', { user, networks })
+
+
+    res.render('notifications.ejs', { user, network })
   }  catch(err) {
     console.error(err)
   }

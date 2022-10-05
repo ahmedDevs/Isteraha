@@ -24,6 +24,8 @@ router.get("/:id/dashboard/inviteUser", ensureAuth, authController.getInvitePage
 router.post("/:id/dashboard/inviteUser", ensureAuth, authController.postInvitePage);
 // router.post("/:id/dashboard/inviteUser/:id", ensureAuth, authController.postInviteUser);
 
+router.get("/:id/inviteUser", ensureAuth, authController.getInvitePage);
+router.post("/:id/inviteUser", ensureAuth, authController.postInvitePage);
 
 
 router.get("/:id/notifications", ensureAuth, authController.getNotifications);

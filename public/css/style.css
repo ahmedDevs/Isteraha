@@ -492,8 +492,7 @@ hr .new1 {
 } */
 .networkContainer {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    flex-flow: column wrap;
 }
 
 /* #feedContainer {

@@ -9,7 +9,7 @@
   <body class="h-full">
   ```
 -->
-<div class="min-h-full">
+<!-- <div class="min-h-full"> -->
 
   <%- include('partials/menu') -%>
 
@@ -26,13 +26,17 @@
 
 
 
-    <main id="mainDashboard">
+    <!-- <main id="mainDashboard"> -->
 
 
       
       <div class="container mt-5">
         <!-- <div class="row"> -->
             <div class="col-md-4 networkContainer">
+              <% if (!networks) { %>
+                <p>You don't have any notifications.</p>
+              <% } %>
+              <h2>My Networks</h2>
               <% for(let i = 0; i < networks.length; i++) { %>
                 <div class="card p-3">
                 
@@ -41,12 +45,11 @@
                     </div>
                     <h6><%= networks[i].about %></h6>
                     <div class="d-flex justify-content-between install mt-3"><span><%= networks[i].numberOfMembers %> members</span>
-                      <% if(networks[i].createdBy == user.id) { %>
-                         <span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> 
-                        <% } %>
-                      <% if (networks[i].createdBy != user.id) { %>
-                        <span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span>
-                        <% } %>
+ 
+                         <a href="/<%=networks[i].name%>/inviteUser"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
+   
+                        <!-- <span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span> -->
+                     
                     </div>
                 </div>
                 <% } %>
@@ -59,13 +62,13 @@
 
 
 
-      <div> <div class="d-flex flex-row"> 
+      <!-- <div> <div class="d-flex flex-row">  -->
         <!-- <div class="col-md-3"> <div class="card card1 p-3">  -->
         <!-- <div class=" image d-flex flex-row align-items-center mt-3"> <img src="https://i.imgur.com/R4afbIg.png" height="50" width="50" /> <span>Clover</span> </div>  -->
         <!-- <hr class="hline"> <div class="d-flex flex-column align-items-center"> <button class="btn mt-3"><i class="fa fa-users"></i><span>Users</span></button> <button class="btn mt-3"><i class="fa fa-inbox"></i><span>Inbox</span></button> <span class="other mt-4">Other Information</span>   -->
           <!-- <button class="btn mt-3"><i class="fa fa-question-circle"></i><span>Dashboard</span></button> -->
          <!-- </div> </div> </div>  -->
-      <div class="col-md-9"> 
+      <!-- <div class="col-md-9"> 
         <div class="card card2 p-3"> 
           <div class="hello d-flex justify-content-end align-items-center mt-3"> <span>Hi,Frank Jack</span> </div> <div class="d-flex flex-row gap-3"> 
             
@@ -79,20 +82,20 @@
             </div> 
           </div> 
         </div> 
-        <% } %>
+        <% } %> -->
 
 
 
             <!-- <div class="card cardchild mt-3 p-2 px-3 py-3"> <div class="d-flex p-2 mt-2 justify-content-between rounded"> <div class="d-flex flex-column"><span class="type">Mild</span><span class="number">120</span></div> <div class="d-flex flex-column"><img src="https://i.imgur.com/7SEdq7z.png" class="logo2" height="40" width="40" /><span class="percentage2">25%</span></div> </div> </div> <div class="card cardchild mt-3 p-2 px-3 py-3"> <div class="d-flex p-2 mt-2 justify-content-between rounded"> <div class="d-flex flex-column"><span class="type">Moderate</span><span class="number">25</span></div> <div class="d-flex flex-column"><img src="https://i.imgur.com/xvUzRjK.png" class="logo3" height="40" width="40" /><span class="percentage3">17%</span></div> </div> </div> <div class="card cardchild mt-3 p-2 px-3 py-3"> <div class="d-flex p-2 mt-2 justify-content-between rounded"> <div class="d-flex flex-column"><span class="type">Severe</span><span class="number">5</span></div> <div class="d-flex flex-column"><img src=" https://i.imgur.com/iLU5F9A.png" class="logo4" height="40" width="40" /><span class="percentage4">13%</span></div> </div> </div> </div> 
               <div class="d-flex justify-content-center mt-5 gap-2 p-3"> <div class="col-md-6"> <div class="card cardchildchild p-2"> <div class="profile1"> <img src="https://i.imgur.com/NI5b1NX.jpg" height="90" width="90" class="rounded-circle" /> </div> <div class="d-flex flex-column justify-content-center align-items-center mt-5"> <span class="name">Bess Wills</span> <span class="mt-1 braceletid">Bracelet ID:SFG 38393</span> <span class="dummytext mt-3 p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Text elit more smtit.Kimto lee. </span> </div> <div class="d-flex justify-content-center align-items-center mt-3"> <button class="btn1">Next Appoinment</button> </div> <div class=" icons d-flex flex-row justify-content-center gap-3 mt-4"> <span><i class="fa fa-google"></i></span> <span><i class="fa fa-facebook"></i></span> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-instagram"></i></span> </div> </div> </div> <div class="col-md-6"> <div class="card cardchildchild p-2"> <div class="profile1"> <img src="https://i.imgur.com/YyoCGsa.jpg" height="90" width="90" class="rounded-circle" /> </div> <div class="d-flex flex-column justify-content-center align-items-center mt-5"> <span class="name">Bess Wills</span> <span class="mt-1 braceletid">Bracelet ID:SFG 38393</span> <span class="dummytext mt-3 p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Text elit more smtit.Kimto lee. </span> </div> <div class="d-flex justify-content-center align-items-center mt-3"> <button class="btn2">Next Appoinment</button> </div> <div class=" icons d-flex flex-row justify-content-center gap-3 mt-4"> <span><i class="fa fa-google"></i></span> <span><i class="fa fa-facebook"></i></span> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-instagram"></i></span> </div> </div> </div> </div> </div> </div> </div> -->
-</div>
+<!-- </div> -->
 
 
 
 
 
-      <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <!-- Replace with your content -->
+      <!-- <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+       
         <div class="px-4 py-6 sm:px-0">
             
           <div class="h-96 rounded-lg border-4 border-dashed border-gray-200">
@@ -128,10 +131,10 @@
         
           </div>
         </div>
-        <!-- /End replace -->
-      </div>
+        
+      </div> -->
 
-      <div class=" flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <!-- <div class=" flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="w-full max-w-md space-y-8">
           <div>
             <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
@@ -168,8 +171,8 @@
             <div>
               <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <!-- Heroicon name: mini/lock-closed -->
-                  <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                   Heroicon name: mini/lock-closed -->
+                  <!-- <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
                   </svg>
                 </span>
@@ -178,10 +181,10 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> --> -->
 
-    </main>
-  </div>
+    <!-- </main> -->
+  <!-- </div> -->
 
   
 <%- include('partials/footer') -%>
