@@ -1,8 +1,10 @@
 
 
-![main](https://user-images.githubusercontent.com/102767737/194168278-bb7b3bf2-7b6c-400d-be97-334ab72ed4f7.png)
+<!-- ![main](https://user-images.githubusercontent.com/102767737/194168278-bb7b3bf2-7b6c-400d-be97-334ab72ed4f7.png) -->
 
-![dashboard](https://user-images.githubusercontent.com/102767737/194168302-7ab3af2f-4fcf-4a80-896e-91373afa9713.png)
+<img src="https://user-images.githubusercontent.com/102767737/194168278-bb7b3bf2-7b6c-400d-be97-334ab72ed4f7.png" width="800">
+
+<!-- ![dashboard](https://user-images.githubusercontent.com/102767737/194168302-7ab3af2f-4fcf-4a80-896e-91373afa9713.png) -->
 
 ## Table of contents
 1. [Overview](#overview)
@@ -23,6 +25,8 @@
 
 ## PURPOSE
 ### Overview  <a name="overview"></a>: This is a fullstack social networking app that allows communities to create their own unique, exclusive networks and rank up in comparison to other networks. 
+
+<img src="https://user-images.githubusercontent.com/102767737/194168302-7ab3af2f-4fcf-4a80-896e-91373afa9713.png" width="600">
 
 Please refer to the demo for sample output. 
 The live site/demo is here: https:// [insert link to live site]
