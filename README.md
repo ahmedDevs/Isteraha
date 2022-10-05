@@ -61,7 +61,7 @@ Extra
 
 | Front-End | Back-End | Deploy |
 | --- | --- | --- |
- | Javascript, EJS, CSS | Node, Express, MongoDB | Heroku? |
+ | Javascript, EJS, CSS | Node, Express, MongoDB |
 
 
 

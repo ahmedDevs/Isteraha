@@ -485,6 +485,17 @@ hr .new1 {
 .dashboardList {
     border-bottom: 1px solid black;
 }
+/* .container.mt-5 {
+    display: flex;
+    flex-flow: row wrap;
+
+} */
+.networkContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
 /* #feedContainer {
     display: flex;
     flex-flow: column nowrap;
