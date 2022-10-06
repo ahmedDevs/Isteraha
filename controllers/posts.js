@@ -55,7 +55,10 @@ module.exports = {
         { _id: req.params.id },
         {
           $inc: { likes: 1 },
-        }
+        },
+        {
+          new: true,
+        },
       );
       console.log("Likes +1");
       res.redirect(`/post/${req.params.id}`);

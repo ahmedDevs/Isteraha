@@ -127,11 +127,11 @@ exports.getDashboard = async (req,res) => {
       const invitee = await User.findOne({ userName: req.body.userName })
       invitee.invitations.push(invitationTo._id)
       
-      // invitee.update({ 
-      //   $set: {
-      //     notifications: true
-      //   }
-      //  })
+      invitee.update({ 
+        $set: {
+          notifications: true
+        }
+       })
       invitee.save()
       console.log('Mission Accomplished!')
       // const filter = invitee.invitations
@@ -142,6 +142,24 @@ exports.getDashboard = async (req,res) => {
 
     res.redirect('/inviteUser')
     // res.render('network-invitation.ejs', { invitationTo, adminNetwork })
+  }  catch(err) {
+    console.error(err)
+  }
+ }
+
+ exports.postAcceptInvitation = async (req,res) => {
+  try {
+    const invitation = await Network.findOne({ name: req.params.id }).lean()
+    const user = await User.findOne({ _id: req.user._id }).lean()
+    console.log(user)
+    const invitationId = invitation._id
+    // const network = user({ invitations: { "$in" : invitation } }).lean()
+    user.networks.push(invitationId)
+    user.invitations.splice(user.invitations.indexOf(invitationId), 1)
+    
+
+    console.log('mission accomplished!')
+    res.redirect(`/${req.params.id}/feed`)
   }  catch(err) {
     console.error(err)
   }
