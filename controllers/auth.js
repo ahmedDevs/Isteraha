@@ -79,9 +79,10 @@ exports.getDashboard = async (req,res) => {
   try {
       const user = await User.findOne({ userName: req.params.id }).lean()
       const networks = await Network.find({ createdBy: user._id }).lean()
+      const memberOf = await Network.find({ _id: user.networks}).lean()
     // console.log(networks)
     //   console.log(user)
-      res.render('dashboard.ejs', { user, networks }) 
+      res.render('dashboard.ejs', { user, networks,  memberOf}) 
       // console.log(user)
   } catch(err) {
       console.error(err)
@@ -125,6 +126,7 @@ exports.getDashboard = async (req,res) => {
     // if(!adminNetwork) return
     if(!invitee) {
       const invitee = await User.findOne({ userName: req.body.userName })
+      if(invitee.invitations.includes(invitationTo._id)) return
       invitee.invitations.push(invitationTo._id)
       
       invitee.update({ 
@@ -149,21 +151,46 @@ exports.getDashboard = async (req,res) => {
 
  exports.postAcceptInvitation = async (req,res) => {
   try {
-    const invitation = await Network.findOne({ name: req.params.id }).lean()
-    const user = await User.findOne({ _id: req.user._id }).lean()
-    console.log(user)
+    const invitation = await Network.findOne({ name: req.params.id })
+    const user = await User.findOne({ _id: req.user._id })
     const invitationId = invitation._id
-    // const network = user({ invitations: { "$in" : invitation } }).lean()
+    if(user.networks.includes(invitationId)) return 
+    console.log('Invitation accepted')
     user.networks.push(invitationId)
-    user.invitations.splice(user.invitations.indexOf(invitationId), 1)
     
+    invitation.update(
+      {
+        $inc: { numberOfMembers: 1 },
+      }, 
+      {
+        new: true,
+      },
+      )
 
-    console.log('mission accomplished!')
+    await user.save()
+    await invitation.save()
     res.redirect(`/${req.params.id}/feed`)
   }  catch(err) {
     console.error(err)
   }
  }
+ likePost: async (req, res) => {
+  try {
+    await Post.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $inc: { likes: 1 },
+      },
+      {
+        new: true,
+      },
+    );
+    console.log("Likes +1");
+    res.redirect(`/post/${req.params.id}`);
+  } catch (err) {
+    console.log(err);
+  }
+},
 
  exports.getNotifications = async (req,res) => {
   try {
@@ -171,20 +198,17 @@ exports.getDashboard = async (req,res) => {
   
     const userId = user._id
     const networks = user.invitations
-    console.log(networks)
+    // console.log(networks)
   
      const network = await Network.find({ _id: { "$in" : networks } }).lean()
     // const network = await Network.find({ _id: { "$in" : [invitations]} }).lean()
-    console.log(network)
+    // console.log(network)
     // const networksInfo = []
     // for(let i = 0; i < networks.length; i++) {
     //   networksInfo.push( await Network.findOne({ _id: networks[i] }))
     
     // }
-    // console.log(networksInfo)
-    // console.log(userId)
-    // console.log(user)
-    // console.log(networks)
+
     // const network = await Network.findOne({ createdBy: userId }).lean()
     // console.log(network)
 

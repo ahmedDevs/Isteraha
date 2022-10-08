@@ -24,7 +24,7 @@ module.exports = {
           })
           const param = await req.body.networkName
           console.log("Network created!");
-          res.redirect(`/${param}`);
+          res.redirect(`/${param}/feed`);
     
     } catch (err) {
         console.error(err)

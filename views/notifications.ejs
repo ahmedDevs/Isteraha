@@ -64,7 +64,7 @@
 
     <!-- <% } %>
 </div> -->
-
+<% var userNetworks = user.networks %>
 <div class="container mt-5">
   <!-- <div class="row"> -->
       <div class="col-md-4 networkContainer">
@@ -74,15 +74,26 @@
         <h2>My Invitations</h2>
         <% for(let i = 0; i < network.length; i++) { %>
           <div class="card p-3">
-          
+               
               <div class="d-flex flex-row mb-3"><img src="<%= network[i].logo %>" width="70">
                   <div class="d-flex flex-column ml-2"><span><%= network[i].name %></span><span class="text-black-50"><%= network[i].slogan %></span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
               </div>
               <h6><%= network[i].about %></h6>
               <div class="d-flex justify-content-between install mt-3"><span><%= network[i].numberOfMembers %> members</span>
-                    <form action="/<%=network[i].name%>/acceptInvitation" method="post">
-                        <button><span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span></button>
-                    </form>
+         
+
+                    <!-- <span class="text-primary">Joined&nbsp;<i class="fa fa-angle-right"></i></span>
+                    <span>hiii</span> -->
+                  
+
+                   <form action="/<%=network[i].name%>/acceptInvitation" method="post">
+                    <button><span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span></button>
+                </form>
+
+                <form action="/<%=network[i].name%>/declineInvitation?method_DELETE" method="post">
+                    <button><span class="text-primary">Decline&nbsp;<i class="fa fa-angle-right"></i></span></button>
+                </form>
+       
                    <!-- <a href="/<%=network[i].name%>/acceptInvitation"><span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span> </a> -->
 
                   <!-- <span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span> -->
