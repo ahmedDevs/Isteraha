@@ -10,6 +10,8 @@ module.exports = {
     try {
         // const param = await Network.findOne({ name: req.body.networkName })
         const result = await cloudinary.uploader.upload(req.file.path);
+        
+    
         await Network.create({
             name: req.body.networkName,
             logo: result.secure_url,
@@ -22,6 +24,9 @@ module.exports = {
             // customFeatures: req.body.custom,
             createdBy: req.user.id,
           })
+          const user = await User.findOne({ _id: req.user._id })
+          const network = await Network({ name: req.body.networkName}).lean()
+          user.networks.push(network._id)
           const param = await req.body.networkName
           console.log("Network created!");
           res.redirect(`/${param}/feed`);

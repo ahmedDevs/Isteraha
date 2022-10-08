@@ -2,6 +2,7 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 const Network = require("../models/Network");
+const Post = require("../models/Post");
 // const { findOne } = require("../models/User");
 
 // const nodemailer = require('nodemailer');
@@ -177,6 +178,25 @@ exports.getDashboard = async (req,res) => {
  exports.getNetworkFeed = async (req,res) => {
   try {
     
+   
+    const param = req.params.id
+    const network = await Network.findOne({ name: param }).lean()
+    const networkId = network._id
+    console.log(networkId)
+    const posts = await Post.find({ network: network._id}).sort({ createdAt: "desc" }).lean();
+
+    const user = await User.findOne({ _id: req.user._id }).lean()
+    
+ 
+    const userNetworks = networkId
+    const networkUser = await Network.findOne({ _id: { "$in" : userNetworks } }).lean()
+    console.log(networkUser)
+    if(!networkUser) {
+      res.redirect('/')
+     
+    }
+    res.render("feed.ejs", { posts: posts, user });
+
   }  catch(err) {
     console.error(err)
   }
