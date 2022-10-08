@@ -18,6 +18,10 @@ const CommentSchema = new mongoose.Schema ({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
+      network: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Network",
+      },
     likedBy: {
         type: Array,
     },

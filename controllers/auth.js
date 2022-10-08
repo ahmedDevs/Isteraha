@@ -174,23 +174,13 @@ exports.getDashboard = async (req,res) => {
     console.error(err)
   }
  }
- likePost: async (req, res) => {
+ exports.getNetworkFeed = async (req,res) => {
   try {
-    await Post.findOneAndUpdate(
-      { _id: req.params.id },
-      {
-        $inc: { likes: 1 },
-      },
-      {
-        new: true,
-      },
-    );
-    console.log("Likes +1");
-    res.redirect(`/post/${req.params.id}`);
-  } catch (err) {
-    console.log(err);
+    
+  }  catch(err) {
+    console.error(err)
   }
-},
+ }
 
  exports.getNotifications = async (req,res) => {
   try {

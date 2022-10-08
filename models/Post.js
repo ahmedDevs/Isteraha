@@ -9,6 +9,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     // require: true,
   },
+  network: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Network",
+  },
   cloudinaryId: {
     type: String,
     // require: true,

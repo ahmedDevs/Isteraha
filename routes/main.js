@@ -35,6 +35,7 @@ router.get("/:id/notifications", ensureAuth, authController.getNotifications);
 
 // router.get("/:id/profile", ensureAuth, authController.getUserProfile);
 
+router.get("/:id/feed", ensureAuth, authController.getNetworkFeed);
 
 
 
