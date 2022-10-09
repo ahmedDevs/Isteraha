@@ -186,7 +186,7 @@ exports.getDashboard = async (req,res) => {
     const posts = await Post.find({ network: network._id}).sort({ createdAt: "desc" }).lean();
 
     const user = await User.findOne({ _id: req.user._id }).lean()
-    
+   
  
     const userNetworks = networkId
     const networkUser = await Network.findOne({ _id: { "$in" : userNetworks } }).lean()
@@ -195,7 +195,7 @@ exports.getDashboard = async (req,res) => {
       res.redirect('/')
      
     }
-    res.render("feed.ejs", { posts: posts, user });
+    res.render("feed.ejs", { posts: posts, user, network });
 
   }  catch(err) {
     console.error(err)

@@ -2,6 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 const User = require("../models/User");
+const Network = require("../models/Network");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -32,7 +33,8 @@ module.exports = {
   },
   createPost: async (req, res) => {
     try {
-      // Upload image to cloudinary
+      // Upload image to cloudinary 
+      if(req.file) {
       const result = await cloudinary.uploader.upload(req.file.path);
       await Post.create({
         title: req.body.title,
@@ -40,12 +42,49 @@ module.exports = {
         cloudinaryId: result.public_id,
         caption: req.body.caption,
         likes: 0,
-        user: req.user.id,
+        user: req.user.id,  
       });
-      
+    }   else {
+      await Post.create({
+        title: req.body.title,
+        caption: req.body.caption,
+        likes: 0,
+        user: req.user.id,  
+      });
+    } 
       console.log("Post has been added!");
       res.redirect("/profile");
-    } catch (err) {
+  }  catch (err) {
+    console.log(err);
+  }
+},
+  createNetworkPost: async (req,res) => {
+    try {
+    const params = req.params.id  
+    const network = await Network.findOne({ name: params })
+    if(req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path);
+      await Post.create({
+        title: req.body.title,
+        image: result.secure_url,
+        network: network._id,
+        cloudinaryId: result.public_id,
+        caption: req.body.caption,
+        likes: 0,
+        user: req.user.id,  
+      });
+    }  else {
+      await Post.create({
+        title: req.body.title,
+        network: network._id,
+        caption: req.body.caption,
+        likes: 0,
+        user: req.user.id,  
+      });
+    }
+      console.log(`Post has been added to ${params}`);
+      res.redirect(`/${params}/feed`);
+  }  catch (err) {
       console.log(err);
     }
   },

@@ -388,8 +388,14 @@ hr .new1 {
     flex-basis: 100%;
 }
 
-
-
+    /* for the feed */
+.cardFeed {
+    height: auto;
+}
+.postImage {
+    max-height: 400px;
+    width: auto;
+}
 
 
 
