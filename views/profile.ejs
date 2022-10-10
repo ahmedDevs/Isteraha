@@ -2,95 +2,94 @@
 <%- include('partials/menu') -%>
 
 
-<main id="mainProfile">
+<header class="bg-white shadow">
+  <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">Profile</h1>
+  </div>
+</header>
 
-  <div class="container">
-    <div class="card">
-        <div class="overlay d-none">
-            <small class="fa fa-close"></small>
-            <img src="https://i.imgur.com/WInwkB8.jpg">
-        </div>
-        <!-- <div class="top-div">
-            <i class="fa fa-bars"></i>
-            <i class="fa fa-envelope-o"></i>
-        </div> -->
-        <div class="image">
-            <span><img id="userimage" src="https://imgur.com/WInwkB8.jpg"></span>
-            <h3>GOOGLE STARK</h3>
-            <h4>@stark_industries</h4>
-        </div>
-        <div class="arc">
-            <span></span>
-        </div>
-        <div class="about">
-            <p><u>About</u></p>
-            <p>Since creating that first suit, Iron Man has gone through numerous events significant to his life.</p>
-        </div>
-        <!-- <div class="social">
-            <i class="fa fa-facebook-square"></i>
-            <i class="fa fa-instagram"></i>
-            <i class="fa fa-google-plus"></i>
-            <i class="fa fa-twitter"></i>
-        </div> -->
-         <div class="button">
-     
-            <!-- <button>FOLLOW</button> -->
-            <button>Edit</button>
-            <!-- <button>SHARE</button> -->
-        </div>
-        <div class="profile-info">
-            <h2>99</h2>
-            <span>POSTS</span>
-            <h2>231</h2>
-            <span>FOLLOWING</span>
-            <h2>2.1M</h2>
-            <span>FOLLOWERS</span>
-        </div>
-    </div>
+<div class="container mt-5">
+    
+  <div class="row d-flex justify-content-center">
+      
+      <div class="col-md-7">
+          
+          <div class="card p-3 py-4">
+              
+              <div class="text-center">
+                  <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle">
+              </div>
+              
+              <div class="text-center mt-3">
+                  <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                  <h4 class="mt-2 mb-0"><%= profile.name %></h4>
+                  <h5 class="mt-2 mb-0">username: <%= profile.userName %></h5>
+                  <span>followers <%= profile.numberOfFollowers %></span>
+                  <span>following <%= profile.numberOfPeopleFollowed %></span>
+                  
+                  <div class="px-4 mt-1">
+                      <p class="fonts"><%= profile.bio %></p>
+                  
+                  </div>
+                  
+                   <ul class="social-list">
+                      <li><i class="fa fa-facebook"></i></li>
+                      <li><i class="fa fa-dribbble"></i></li>
+                      <li><i class="fa fa-instagram"></i></li>
+                      <li><i class="fa fa-linkedin"></i></li>
+                      <li><i class="fa fa-google"></i></li>
+                  </ul>
+                  
+                  <div class="buttons">
+                    <% if (user.id == profile._id) { %>
+                      <button class="btn btn-outline-primary px-4">Edit</button>
+
+
+                      <% } else { %>
+                      <form action=""></form>
+                      <button class="btn btn-outline-primary px-4">Message</button>
+
+
+                      <form  class="buttons" action="/<%= profile.userName %>/follow" method="post">
+                      <button class="btn btn-primary px-4 ms-3">Follow</button>
+                    </form>
+                    <% } %>
+                  </div>
+                  
+                  
+              </div>
+              
+             
+              
+              
+          </div>
+          
+      </div>
+      
+  </div>
+  
 </div>
 
 
 
 
-<!-- <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
-  <div class="card p-4"> 
-    <div class=" image d-flex flex-column justify-content-center align-items-center"> 
-      <button class="btn btn-secondary"> 
-        <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
-      </button> 
-      <span class="name mt-3"><%= user.userName %></span> 
-      <span class="idd"><%=user.email%></span><span class="idd1">Only visible to you</span>
-      <span class="idd">@eleanorpena</span> 
-      <div class="d-flex flex-row justify-content-center align-items-center gap-2"> 
-        <span class="idd1">Oxc4c16a645_b21a</span> 
-        <span><i class="fa fa-copy"></i></span> </div> 
-        <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">1069 
-          <span class="follow">Followers</span></span> </div> 
-          <div class=" d-flex mt-2"> 
-            <button class="btn1 btn-dark">Edit Profile</button> 
-          </div> <div class="text mt-3"> 
-            <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> 
-          </div> 
-          <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> 
-            <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> 
-          </div> 
-          <div class=" px-2 rounded mt-4 date "> <span class="join">Joined May,2021</span> 
-          </div> 
-        </div>
-       </div>
-</div> -->
+
+<!-- <main id="mainProfile"> -->
+
+  
 
 
 
-<div class="container">
-  <div class="row mt-5">
-      <div class="col-6">
+
+<!-- <div class="container">
+  <div class="row mt-5"> -->
+      <!-- <div class="col-6">
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
-          
+
           <form action="/post/createPost" enctype="multipart/form-data" method="POST">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -106,8 +105,57 @@
             </div>
             <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
           </form> 
+      </div> -->
+
+
+
+      <div class="container mt-5 mb-5">
+ 
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-6">
+
+      
+                <% for(let i = 0; i < posts.length; i++) { %>
+                <div class="card cardFeed">
+                    <div class="d-flex justify-content-between p-2 px-3">
+                        <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/UXdKE3o.jpg" width="50" class="rounded-circle">
+                            <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"><%= user.userName %></span> <small class="text-primary">Collegues</small> </div>
+                        </div>
+                        <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div>
+                    </div> <img src="<%= posts[i].image %>" class="img-fluid postImage">
+                    <div class="p-2">
+                        <h3><%= posts[i].title %></h3>
+                        <p class="text-justify"><%= posts[i].caption %></p>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-row icons d-flex align-items-center"> <i class="fa fa-heart"></i> <i class="fa fa-smile-o ml-2"></i> </div>
+                            <div class="d-flex flex-row muted-color"> <span>2 comments</span> <span class="ml-2">Share</span> </div>
+                        </div>
+                        <hr>
+                        <div class="comments">
+                            <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/9AZ2QX1.jpg" width="40" class="rounded-image">
+                                <div class="d-flex flex-column ml-2"> <span class="name">Daniel Frozer</span> <small class="comment-text">I like this alot! thanks alot</small>
+                                    <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>18 mins</small> </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/1YrCKa1.jpg" width="40" class="rounded-image">
+                                <div class="d-flex flex-column ml-2"> <span class="name">Elizabeth goodmen</span> <small class="comment-text">Thanks for sharing!</small>
+                                    <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>8 mins</small> </div>
+                                </div>
+                            </div>
+                            <div class="comment-input"> <input type="text" class="form-control">
+                                <div class="fonts"> <i class="fa fa-camera"></i> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
       </div>
-      <div class="col-6">
+
+
+      <!-- <div class="col-6">
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
@@ -122,7 +170,7 @@
         </div>  
       </div>  
     </div>
-  </div>
+  </div> -->
 
 </main>
 <script src="/js/main.js"></script>

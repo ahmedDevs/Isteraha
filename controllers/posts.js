@@ -7,17 +7,25 @@ const Network = require("../models/Network");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      const params = req.params.id
+      const profile = await User.findOne({ userName: params }).lean()
+      const posts = await Post.find({ user: profile._id }).lean()
+      res.render("profile.ejs", { profile, user: req.user, posts: posts});
     } catch (err) {
       console.log(err);
     }
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      const user = await User.findOne({ userName: req.params.id }).lean()
-      res.render("feed.ejs", { posts: posts, user });
+      // const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      let general = false
+      const posts = await Post.find().sort({ likes: "desc" }).lean();
+      const network = await Network.find().sort({ numberOfMemebrs: "desc" }).lean()
+      const user = await User.find({ _id: network.user }).lean()
+      if(!req.params.id) {
+        general = true
+      }
+      res.render("feed.ejs", { posts: posts, user, network, general });
     } catch (err) {
       console.log(err);
     }

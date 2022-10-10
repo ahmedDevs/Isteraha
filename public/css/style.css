@@ -1,83 +1,3 @@
-/* * {
-    margin: 0;
-    padding: 0
-}
-
-.card {
-    width: 350px;
-    background-color: #efefef;
-    border: none;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-.image img {
-    transition: all 0.5s
-}
-
-.card:hover .image img {
-    transform: scale(1.5)
-}
-
-.btn {
- 
-     width: 140px;
-  
-}
-
-.name {
-    font-size: 22px;
-    font-weight: bold
-}
-
-.idd {
-    font-size: 14px;
-    font-weight: 600
-}
-
-.idd1 {
-    font-size: 12px
-}
-
-.number {
-    font-size: 22px;
-    font-weight: bold
-}
-
-.follow {
-    font-size: 12px;
-    font-weight: 500;
-    color: #444444
-}
-
-.btn1 {
-    height: 40px;
-    width: 150px;
-    border: none;
-    background-color: #000;
-    color: #aeaeae;
-    font-size: 15px
-}
-.icons i {
-    font-size: 19px
-}
-
-hr .new1 {
-    border: 1px solid
-}
-
-.join {
-    font-size: 14px;
-    color: #a0a0a0;
-    font-weight: bold
-}
-
-.date {
-    background-color: #ccc
-}
-.card.p-4 {
-    width: 50%;
-} */
 
 
 
@@ -320,7 +240,7 @@ hr .new1 {
 
 
 
-.profile-info{
+/* .profile-info{
     display:flex;
     justify-content:center;
     flex-direction:column;
@@ -373,7 +293,96 @@ hr .new1 {
     font-weight:bold;
     margin-top:6px;
     color:#626262; 
+} */
+
+
+
+.card{
+    border:none;
+
+    position:relative;
+    overflow:hidden;
+    border-radius:8px;
+    cursor:pointer;
 }
+
+.card:before{
+    
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:#E1BEE7;
+    transform:scaleY(1);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:after{
+    
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:#8E24AA;
+    transform:scaleY(0);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:hover::after{
+    transform:scaleY(1);
+}
+
+
+.fonts{
+    font-size:11px;
+}
+
+.social-list{
+    display:flex;
+    list-style:none;
+    justify-content:center;
+    padding:0;
+}
+
+.social-list li{
+    padding:10px;
+    color:#8E24AA;
+    font-size:19px;
+}
+
+
+.buttons button:nth-child(1){
+       border:1px solid #8E24AA !important;
+       color:#8E24AA;
+       height:40px;
+}
+
+.buttons button:nth-child(1):hover{
+       border:1px solid #8E24AA !important;
+       color:#fff;
+       height:40px;
+       background-color:#8E24AA;
+}
+
+.buttons button:nth-child(2){
+       border:1px solid #8E24AA !important;
+       background-color:#8E24AA;
+       color:#fff;
+        height:40px;
+}
+
+
+
+
+
+
+
 
 
 
@@ -396,68 +405,29 @@ hr .new1 {
     max-height: 400px;
     width: auto;
 }
-
-
-
-
-/* dashboards stylings  */
-/* *{
-    margin: 0;padding: 0;
-}
-.card1{height: 100vh;
+.networkDashInfoFeed {
+    position: relative;
+    left: 10%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
     width: 100%;
-    background-color:#a2a5d8;
-    border: none};
-.card2{height: 100vh;width: 100%;background-color: #f6f5fa;border: none};
-.image span{color: #fff;font-size: 28px};
-.hline{color: #a2a5d8};
-.btn{height: 40px;width: 100%;border: none;position: relative;border-radius: 5px};
-.btn i{position: absolute;left: 10px;color: #fff;font-weight: 500;font-size: 18px;top: 10px};
-.btn span{position: absolute;right: 8px;color: #fff;font-weight: 400;font-size: 16px;top: 10px};
-.btn:hover{background-color: #3ddcd1};
-.other{color: #575c93};
-.hello span{font-size: 25px;font-weight: bold;color: #3c3f61;right: 40px};
-.shape{background-color: #fff};
-.cardchild{height: 100px;width: 200px;border: none;position: relative;border-radius: 10px};
-.type{font-weight: 500};
-.number{font-size: 25px;color: #4f5366};
-.cardchild .logo1{position: absolute;top: 15px;right: 20px};
-.cardchild .percentage{position: absolute;bottom: 10px;right: 15px;color: #48ddd8;font-weight: 500};
-.cardchild .logo2{position: absolute;top: 15px;right: 20px};
-.cardchild .percentage2{position: absolute;bottom: 10px;right: 15px;color: #bb7484;font-weight: 500};
-.cardchild .logo3{position: absolute;top: 15px;color: #bb7484;right: 20px};
-.cardchild .percentage3{position: absolute;bottom: 10px;right: 15px;color: #48ddd8;font-weight: 500};
-.cardchild .logo4{position: absolute;top: 15px;right: 20px};
-.cardchild .percentage4{position: absolute;bottom: 10px;right: 15px;color: #bb7484;font-weight: 500};
-.cardchildchild{width: 335px;position: relative;border: none;border-radius: 15px;cursor: pointer}; */
-/* .cardchildchild b */
-/* .cardchildchild .profile1{position: absolute;border-radius: 50%;top: -45px;display: flex;align-items: center;justify-content: center;right: 120px};
-.name{font-size: 18px;font-weight: 500};
-.braceletid{font-size: 13px;color: #bab9ba;font-family: 'Source Sans Pro', sans-serif};
-.btn1{height: 35px;width: 160px;border: none;background-color: #f8c01a;cursor: pointer;color: #fff;font-weight: 500;font-size: 16px;border-radius: 20px};
-.btn1:hover{background-color: #c72b2b};
-.icons{font-size: 20px;font-weight: 500};
-.dummytext{font-size: 14px;font-weight: normal;color: #b0aeb1};
-.btn2{height: 35px;width: 160px;border: none;background-color: #c72b2b;cursor: pointer;color: #fff;font-weight: 500;font-size: 16px;border-radius: 20px};
-.btn2:hover{background-color: #f8c01a}; */
+}
+.networkDashInfoFeed img {
+    width: 100px;
+}
+.networkDashInfoFeed h1 {
+    position: relative;
+    left: 20%;
+ 
+}
+.notifications-h1 {
+    text-align: center;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* .networkDashInfoFeed span {
+    align-content: flex-end;
+} */
 
 
 
@@ -628,3 +598,181 @@ hr .new1 {
 }
 
 
+
+/* create network form  */
+
+.radioInput{
+    display: flex;
+    flex-flow: row wrap;
+}
+.label {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap'); */
+
+#mainNetworkForm {
+    width: 70vw;
+}
+
+.wrapper {
+    width: 70vw;
+    background: none;
+    border-radius: 10px;
+    /* box-shadow: 3px 3px 36px rgba(0,0,0,0.2); */
+}
+.wrapper .title{
+    width: 70vw;
+      color: #fff;
+    line-height: 65px;
+    text-align: center;
+    background: burlywood;
+    font-size: 25px;
+    font-weight: 500;
+    border-radius: 4px 4px 0 0;
+}
+.wrapper .box{
+  padding: 20px 30px;
+  background: none;
+  border-radius: 10px;
+}
+.wrapper .box label{
+      display: flex;
+    height: 53px;
+    width: 100%;
+    align-items: center;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding-left: 11px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#value-1:checked ~ .value-1,
+#value-2:checked ~ .value-2,
+#value-3:checked ~ .value-3,
+#value-4:checked ~ .value-4,
+#value-4:checked ~ .value-4,
+#value-5:checked ~ .value-5{
+  background: #9C27B0;
+  border-color:#9C27B0;
+}
+.wrapper .box label .select-dots{
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+#value-1:checked ~ .value-1 .select-dots,
+#value-2:checked ~ .value-2 .select-dots,
+#value-3:checked ~ .value-3 .select-dots,
+#value-4:checked ~ .value-4 .select-dots,
+#value-5:checked ~ .value-5 .select-dots{
+  background: #fff;
+}
+.box label .select-dots::before{
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+#value-1:checked ~ .value-1 .select-dots::before,
+#value-2:checked ~ .value-2 .select-dots::before,
+#value-3:checked ~ .value-3 .select-dots::before,
+#value-4:checked ~ .value-4 .select-dots::before,
+#value-5:checked ~ .value-5 .select-dots::before{
+  background: #9C27B0;
+  transform: translate(-50%, -50%) scale(1);
+}
+.wrapper .box label .text{
+  color: #333;
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 10px;
+  transition: color 0.3s ease;
+}
+#value-1:checked ~ .value-1 .text,
+#value-2:checked ~ .value-2 .text,
+#value-3:checked ~ .value-3 .text,
+#value-4:checked ~ .value-4 .text,
+#value-5:checked ~ .value-5 .text{
+  color: #fff;
+}
+.wrapper .box input[type="radio"]{
+  display: none;
+}
+
+
+
+
+
+
+
+#value1:checked ~ .value1,
+#value2:checked ~ .value2,
+#value3:checked ~ .value3,
+#value4:checked ~ .value4,
+#value4:checked ~ .value4,
+#value5:checked ~ .value5{
+  background: #9C27B0;
+  border-color:#9C27B0;
+}
+
+
+#value1:checked ~ .value1 .select-dots,
+#value2:checked ~ .value2 .select-dots,
+#value3:checked ~ .value3 .select-dots,
+#value4:checked ~ .value4 .select-dots,
+#value5:checked ~ .value5 .select-dots{
+  background: #fff;
+}
+
+
+#value1:checked ~ .value1 .select-dots::before,
+#value2:checked ~ .value2 .select-dots::before,
+#value3:checked ~ .value3 .select-dots::before,
+#value4:checked ~ .value4 .select-dots::before,
+#value5:checked ~ .value5 .select-dots::before{
+  background: #9C27B0;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+#value1:checked ~ .value1 .text,
+#value2:checked ~ .value2 .text,
+#value3:checked ~ .value3 .text,
+#value4:checked ~ .value4 .text,
+#value5:checked ~ .value5 .text{
+  color: #fff;
+}
+
+
+/* feed side menu */
+/* body{background-color: #eee} */
+
+.nav-link{border-radius:0px !important;transition:all 0.5s;width:100px;display:flex;flex-direction:column; align-items: center;}
+.nav-link small{font-size:12px}
+.nav-link:hover{background-color: #52525240 !important}
+.nav-link .fa{transition: all 1s;font-size:20px}
+.nav-link:hover .fa{transform: rotate(360deg)}
+
+/* .nav-item {
+    display: flex;
+    justify-content: center;
+} */
+#sideMenu {
+    position: fixed;
+
+}
+
+h1 {
+    text-align: center;
+}

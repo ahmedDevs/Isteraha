@@ -2,21 +2,74 @@
 <%- include('partials/menu') -%>
 <!-- <main class="main mainFeed"></main> -->
 
-<h1><%= network.name %></h1>
 
-<div id="menu">
+
+<header class="bg-white shadow feedHeader">
+  <% if (general) { %>
+    <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 networkDashInfoFeed">
+    
+      <div>
+      <img src="#" alt="logo">
+      <!-- <span>members: <%= network.numberOfMembers %></span> -->
+      <span></span>
+      </div>
+  
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">General Feed</h1>
+     
+    </div>
+  <% } else { %>
+
+
+  <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 networkDashInfoFeed">
+    
+    <div>
+    <img src="<%= network.logo %>" alt="logo">
+    <span>members: <%= network.numberOfMembers %></span>
+    <span></span>
+    </div>
+
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900"><%= network.name %></h1>
+   
+  </div>
+  <% } %>
+</header>
+
+
+  <!-- <div class="networkLogo networkDashInfoFeed">
+    <img src="<%= network.logo %>" alt="logo">
+    <h1><%= network.name %></h1>
+    <span>members: <%= network.numberOfMembers %></span>
+    <span></span>
+  </div> -->
+<!-- <div id="menu"> -->
   <!-- <div class="imgDiv"><img class="image placeholder" src="http://placekitten.com/200/200" alt="profile picture"></div> -->
-  <div class="imgDiv"><img class="image placeholder" src="<%= network.logo %>" width="200" height="200" alt="profile picture"></div>
-  <ul>
+    
+  <!-- <div class="d-flex flex-row mb-3 networkDashInfoFeed" >
+    <img src="<%= network.logo %>" >
+    <p><%= network.slogan %></p>
+    <span><%= network.numberOfMembers %></span>
+  </div>
+
+  </div> -->
+
+  
+  
+  
+
+    <!--Container Main end-->
+  <!-- <div class="imgDiv"><img class="image placeholder" src="<%= network.logo %>" width="200" height="200" alt="profile picture"></div> -->
+
+  
+  <!-- <ul>
       <li id="profile"><span><a href="/profile">Profile</a></span></li>
       <li id="followers"><span><a href="#">Followers</a></span></li>
       <li id="following"><span><a href="#">Following</a></span></li>
       <li id="posts"><span><a href="#">Posts</a></span></li>
       <li id="likes" ><span><a href="#">Likes</a></span></li>
       <li><button id="clickEventNewPost">New Post</button></li>
-  </ul>
+  </ul> -->
 
-</div>
+
 
   <!-- <div class="container" id="feedContainer">
     <h1>Network name</h1>
