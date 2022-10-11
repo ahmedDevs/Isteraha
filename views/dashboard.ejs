@@ -32,7 +32,7 @@
       
               <h2>My Networks:</h2>
               <% if(networks.length  < 1) { %>
-                <p>You don't have any networks. You can create networks and communities from <a href="/network">here!</a></p>
+                <p>You don't have any networks. You can create networks and communities from <a href="/networks/create">here!</a></p>
               <% } %>
               <% for(let i = 0; i < networks.length; i++) { %>
                 <a href="/<%=networks[i].name%>/feed">
@@ -68,7 +68,7 @@
                
                 <h2>Member of:</h2>
                 <% if(memberOf.length  < 1) { %>
-                  <p>You're not a member of any networks. You can either be invited to join networks or join public networks from <a href="/feed">here!</a></p>
+                  <p>You're not a member of any networks. You can either be invited to join networks or join public networks from <a href="/networks">here!</a></p>
                 <% } %>
 
                 <% for(let i = 0; i < memberOf.length; i++) { %>

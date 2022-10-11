@@ -4,7 +4,7 @@ module.exports = {
       return next();
     } else {
       res.redirect("/login");
-      res.redirect("/");
+      // res.redirect("/");
     }
   },
   ensureGuest: function (req, res, next) {
