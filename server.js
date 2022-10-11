@@ -8,6 +8,7 @@ const methodOverride = require("method-override")
 const flash = require("express-flash")
 const logger = require("morgan")
 const nodemailer = require("nodemailer")
+// const { flash } = require('express-flash-message')
 const connectDB = require("./config/database")
 const mainRoutes = require("./routes/main")
 const postRoutes = require("./routes/posts")
@@ -65,6 +66,7 @@ app.use(passport.session())
 
 //Use flash messages for errors, info, ect...
 app.use(flash())
+// app.use(flash({ sessionKeyName: 'flashMessage' }));
 
 
 
@@ -95,7 +97,7 @@ app.use(flash())
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes)
 app.use("/post", postRoutes)
-app.use('/network', networkRoutes)
+app.use('/networks', networkRoutes)
 app.use("/comment", commentRoutes);
 // app.use("/notifications", notificationRoutes);
 // app.use('/:id', networkRoutes)

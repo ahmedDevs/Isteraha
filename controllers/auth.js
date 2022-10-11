@@ -50,7 +50,7 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       req.flash("success", { msg: "Success! You are logged in." });
-      res.redirect(req.session.returnTo || "/dashboard");
+      res.redirect(req.session.returnTo || `/${req.user.userName}/dashboard`);
     });
   })(req, res, next);
 };
@@ -69,7 +69,7 @@ exports.logout = (req, res) => {
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect("/profile");
+    return res.redirect(`/${req.user.userName}/profile`);
   }
   res.render("signup", {
     title: "Create Account",
@@ -143,7 +143,8 @@ exports.getDashboard = async (req,res) => {
     }
     // sendEmail()
 
-    res.redirect('/inviteUser')
+    res.redirect(`/${req.user.userName}/dashboard`)
+   
     // res.render('network-invitation.ejs', { invitationTo, adminNetwork })
   }  catch(err) {
     console.error(err)
@@ -177,25 +178,24 @@ exports.getDashboard = async (req,res) => {
  }
  exports.getNetworkFeed = async (req,res) => {
   try {
-    
-   
     const param = req.params.id
     const network = await Network.findOne({ name: param }).lean()
     const networkId = network._id
-    console.log(networkId)
-    const posts = await Post.find({ network: network._id}).sort({ createdAt: "desc" }).lean();
 
-    const user = await User.findOne({ _id: req.user._id }).lean()
-   
- 
-    const userNetworks = networkId
-    const networkUser = await Network.findOne({ _id: { "$in" : userNetworks } }).lean()
+    const posts = await Post.find({ network: networkId}).sort({ createdAt: "desc" }).lean();
+    const userIds = posts.map(e => e.user)
+    const uniqueUserIds = [...new Set(userIds)]
+    console.log(uniqueUserIds)
+    const users = await User.find({ '_id': { $in: uniqueUserIds } }).lean();
+    console.log(users)
+
+    const networkUser = await Network.findOne({ _id: { "$in" : networkId } }).lean()
     console.log(networkUser)
     if(!networkUser) {
       res.redirect('/')
      
     }
-    res.render("feed.ejs", { posts: posts, user, network });
+    res.render("feed.ejs", { posts: posts, user: req.user, users, network });
 
   }  catch(err) {
     console.error(err)
@@ -228,6 +228,37 @@ exports.getDashboard = async (req,res) => {
     console.error(err)
   }
  }
+
+
+exports.postFollow = async (req,res) => {
+  try {
+    const params = req.params.id
+    const follower = await User.findById(req.user._id)
+    const followed = await User.findOne({ userName: params })
+    follower.following.push(followed._id)
+    followed.followers.push(follower._id)
+    await follower.save()
+    await followed.save()
+  }  catch(err) {
+    console.error(err)
+  }
+
+}
+
+exports.postUnfollow = async (req,res) => {
+  try {
+    const params = req.params.id
+    const unfollower = await User.findById(req.user._id)
+    const unfollowed = await User.findOne({ userName: params })
+    unfollower.following.splice(following.indexOf(unfollowed._id), 1)
+    unfollowed.followers.splice(followers.indexOf(unfollower._id), 1)
+    await unfollower.save()
+    await unfollowed.save()
+  }  catch(err) {
+    console.error(err)
+  }
+}
+
 
 //  exports.postInviteUser = async (req,res) => {
 //   try {

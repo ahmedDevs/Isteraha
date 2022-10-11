@@ -37,7 +37,8 @@ router.get("/:id/notifications", ensureAuth, authController.getNotifications);
 
 router.get("/:id/feed", ensureAuth, authController.getNetworkFeed);
 
-
+router.post("/:id/follow", ensureAuth, authController.postFollow)
+router.post("/:id/unfollow", ensureAuth, authController.postUnfollow)
 
 // router.get("/:id", ensureAuth, networksController.getDashboard)
 

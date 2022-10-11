@@ -1,8 +1,51 @@
 <%- include('partials/header') -%>
 
-<main class="container">
-    <h1>heyaaaa</h1>
-</main>
+
+<% if(locals.isAuth) { %>
+<%- include('partials/menu') -%>
+<% } %>
+
+<header class="bg-white shadow">
+    <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">Public Networks</h1>
+    </div>
+  </header>
+
+  
+
+
+
+    <div class="container mt-5">
+        <!-- <div class="row"> -->
+            <div class="col-md-4 networkContainer">
+              <% for(let i = 0; i < networks.length; i++) { %>
+                <a href="/<%=networks[i].name%>/feed">
+                <div class="card p-3">
+                
+                    <div class="d-flex flex-row mb-3"><img src="<%= networks[i].logo %>" width="70">
+                        <div class="d-flex flex-column ml-2"><span><%= networks[i].name %></span><span class="text-black-50"><%= networks[i].slogan %></span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
+                    </div>
+                    <h6><%= networks[i].about %></h6>
+                    <div class="d-flex justify-content-between install mt-3"><span><%= networks[i].numberOfMembers %> members</span>
+                        <% if(locals.isAuth) { %>
+            
+                         <a href="/<%=networks[i].name%>/inviteUser"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
+                         <a href="#"><span class="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </a>
+                        
+                         <%  } %>
+                        <!-- <span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span> -->
+                         <% if(!locals.isAuth) { %>
+                            <form action="/<%= networks[i].name %>/join">
+                                <span class="text-primary">Join&nbsp;<i class="fa fa-angle-right"></i></span>
+                            </form>
+                        <% } %>
+                    </div>
+                </div>
+              </a>
+                <% } %>
+            </div>
+          <!-- </div> -->
+        </div>
     
 
 <%- include('partials/footer') -%>

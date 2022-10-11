@@ -627,7 +627,7 @@
       color: #fff;
     line-height: 65px;
     text-align: center;
-    background: burlywood;
+    background: rgb(0, 114, 244);
     font-size: 25px;
     font-weight: 500;
     border-radius: 4px 4px 0 0;
@@ -775,4 +775,13 @@
 
 h1 {
     text-align: center;
+}
+
+
+
+/* networks and notifications page */
+
+.container.mt-5 {
+    position: relative;
+    left: 10%;
 }

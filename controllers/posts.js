@@ -20,12 +20,21 @@ module.exports = {
       // const posts = await Post.find().sort({ createdAt: "desc" }).lean();
       let general = false
       const posts = await Post.find().sort({ likes: "desc" }).lean();
+      const userIds = posts.map(e => e.user)
+
+      const users = await User.find({ '_id': { $in: userIds } }).lean();
+      console.log(users)
+  
       const network = await Network.find().sort({ numberOfMemebrs: "desc" }).lean()
-      const user = await User.find({ _id: network.user }).lean()
+     
+      const user = await User.find({ _id: posts.user }).lean()
+
+      // console.log(user)
+      // console.log('uuuuuser')
       if(!req.params.id) {
         general = true
       }
-      res.render("feed.ejs", { posts: posts, user, network, general });
+      res.render("feed.ejs", { posts: posts, user, network, general, users });
     } catch (err) {
       console.log(err);
     }
