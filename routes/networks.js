@@ -11,7 +11,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth")
 
 router.get("/", networksController.getNetworks)
 
-
+  
 router.get("/create", ensureAuth, networksController.getNetworkPage)
 // router.get("/networks", networkController.getNetworks)
 

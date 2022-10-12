@@ -3,6 +3,7 @@ const router = express.Router();
 const authController = require("../controllers/auth");
 const homeController = require("../controllers/home");
 const postsController = require("../controllers/posts");
+const networksController = require("../controllers/networks")
 // const networksController = require("../controllers/networks")
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
@@ -45,6 +46,12 @@ router.post("/:id/unfollow", ensureAuth, authController.postUnfollow)
 // router.get('/network', ensureAuth, homeController.getNetwork)
 
 router.post("/:id/searchUsernames", authController.postSearchUsernames)
+
+
+router.get("/:id/settings", ensureAuth, networksController.getNetworkSettings)
+router.get("/:id/user-settings", ensureAuth, networksController.getUserSettings)
+router.post("/:id/settings/save", ensureAuth, networksController.postNetworkSettings)
+router.post("/:id/user-settings/save", ensureAuth, networksController.postUserSettings)
 
 module.exports = router;
 

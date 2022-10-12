@@ -16,7 +16,6 @@ module.exports = {
             logo: result.secure_url,
             cloudinaryId: result.public_id,
             slogan: req.body.slogan,
-            members: members.push(req.user._id),
             about: req.body.description,
             type: req.body.type,
             foundHow: req.body.how,
@@ -27,7 +26,6 @@ module.exports = {
             await Network.create({
                 name: req.body.networkName,
                 slogan: req.body.slogan,
-                members: members.push(req.user._id),
                 about: req.body.description,
                 type: req.body.type,
                 foundHow: req.body.how,
@@ -35,14 +33,15 @@ module.exports = {
         })
         }
           const user = await User.findOne({ _id: req.user._id })
-          const network = await Network({ name: req.body.networkName}).lean()
+          const network = await Network({ name: req.body.networkName})
           user.networks.push(network._id)
+          network.members.push(req.user._id)
           console.log(user)
-          console.log(network.name)
+          console.log(network)
           const param = await req.body.networkName
           console.log("Network created!");
           res.redirect(`/${param}/feed`);
-
+ 
     
     } catch (err) {
         console.error(err)
@@ -66,7 +65,51 @@ module.exports = {
         const networks = await Network.find({ type: 'Public'}).sort({ numberOfMembers: "desc" }).lean()
         res.render('network-page.ejs', { networks, isAuth })
     }
- 
+   },
+   getNetworkSettings: async (req,res) => {
+    try {
+        const network = await Network.findOne({ name: req.params.id }).lean()
+        res.render('settings.ejs', { network })
+    }  catch(err) {
+        console.error(err)
+    }
+   },
+   postNetworkSettings: async (req,res) => {
+    try {
+        const network = await Network.findOne({ name: req.params.id })
+        if(req.user.file) {
+            const result = await cloudinary.uploader.upload(req.file.path);
+          
+            await Network.findOneAndUpdate(
+                { name: req.params.id },
+                {
+                 $set: { name: req.body.networkName, logo: req.body.logo, cloudinaryId: result.public_id, slogan: req.body.slogan, type: req.body.type }
+                },
+                { new: true }
+              )
+            } 
+           
+        
+    }  catch(err) {
+        console.error(err)
+    }
+   },
+   getUserSettings: async(req,res) => {
+    try {
+        const user = req.user
+        res.render('settings.ejs', user)
+    }  catch(err) {
+        console.error(err)
+    }
+   },
+   postUserSettings: async(req,res) => {
+    try {
+        const result = await cloudinary.uploader.upload(req.file.path);
+        const user = await User.findById(req.user._id)
+
+    }  catch(err) {
+        console.error(err)
+    }
    }
 //    getDashboard: async (req,res) => {
 //     try {
@@ -78,5 +121,7 @@ module.exports = {
 //     }
     
 //    },
+
+
 
 }
