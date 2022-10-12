@@ -37,7 +37,9 @@
           <div>
             <p>Already a member, you can invite by username</p>
             <label for="userName" class="sr-only">Email address</label>
-            <input id="userName" name="userName" type="text"   class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="User name">
+            
+            <input id="userName" name="userName" type="text"   onkeyup="sendData(this)" class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="User name">
+            <div id="searchResults"></div>
           </div>
           <!-- <div>
             <label for="password" class="sr-only">Password</label>
@@ -71,5 +73,38 @@
     </div>
   </div>
 
+  
+  <script>
+    function sendData(e) {
+      const searchResults = document.getElementById('searchResults')
+      let match = e.value.match(/^[a-zA-z ]*/)
+      let mach2 = e.value.match(/\s*/)
+      if(match2[0] === e.value) {
+        searchResults.innerHTML = ''
+        return
+      }
+      if(match[0] === e.value) {
+        fetch('searchUsernames', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ search: e.value }),
+      }) .then(res => res.json()) 
+        .then(data => {
+          let search = data.search
+          searchResults.innerHTML = ''
+          if(search.length < 1) {
+            searchResults.innerHTML = '<p>No results</p>'
+            return
+          }
+          search.forEach((el,i) => {
+            if(i > 0) searchResults.innerHTML += '<hr>'
+            searchResults.innerHTML += `<p>${el.userName}</p>`
+          })
+      })
+      return 
+      }
+      searchResults.innerHTML = ''
+    }
+  </script>
 
 <%- include('partials/footer') -%>

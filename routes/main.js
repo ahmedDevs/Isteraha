@@ -44,6 +44,7 @@ router.post("/:id/unfollow", ensureAuth, authController.postUnfollow)
 
 // router.get('/network', ensureAuth, homeController.getNetwork)
 
+router.post("/:id/searchUsernames", authController.postSearchUsernames)
 
 module.exports = router;
 

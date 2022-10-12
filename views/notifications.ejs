@@ -78,7 +78,7 @@
           <p>You don't have any notifications.</p>
         <% } %>
         <h2>My Invitations</h2>
-        <% for(let i = 0; i < network.length; i++) { %>
+        <% for(let i = 0; i < network.reverse().length; i++) { %>
           <div class="card p-3">
                
               <div class="d-flex flex-row mb-3"><img src="<%= network[i].logo %>" width="70">

@@ -784,4 +784,7 @@ h1 {
 .container.mt-5 {
     position: relative;
     left: 10%;
+    height: 300px;
+    width: 80%;
+    flex-basis: 80%;
 }

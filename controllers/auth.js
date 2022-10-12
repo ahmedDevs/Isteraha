@@ -259,7 +259,20 @@ exports.postUnfollow = async (req,res) => {
   }
 }
 
+exports.postSearchUsernames = async (req,res) => {
+  try {
+    let search = await req.body.search.trim()
+    let user = await User.find({ userName: { $regex: new RegExp('^'+search+'.*','i') } }).exec()
+    // limit search results to 10
+    user = user.slice(0,10)
+    res.send({ search: user })
 
+    console.log(search)
+  }  catch(err) {
+    console.error(err)
+  } 
+ 
+}
 //  exports.postInviteUser = async (req,res) => {
 //   try {
   
