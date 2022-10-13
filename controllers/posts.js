@@ -8,9 +8,15 @@ module.exports = {
   getProfile: async (req, res) => {
     try {
       const params = req.params.id
-      const profile = await User.findOne({ userName: params }).lean()
+      let isFollower = false
+      const profile = await User.findOne({ userName: params })
+      const profileFollowers = profile.followers
       const posts = await Post.find({ user: profile._id }).lean()
-      res.render("profile.ejs", { profile, user: req.user, posts: posts});
+      if(params !== req.user.userName && profileFollowers.includes(req.user._id)) {
+        isFollower = true
+      }
+      console.log(isFollower)
+      res.render("profile.ejs", { profile, user: req.user, posts: posts, isFollower});
     } catch (err) {
       console.log(err);
     }

@@ -14,6 +14,9 @@ const mainRoutes = require("./routes/main")
 const postRoutes = require("./routes/posts")
 const networkRoutes = require('./routes/networks')
 const commentRoutes = require("./routes/comments")
+const notificationRoutes = require("./routes/notifications")
+const settingsRoutes = require("./routes/settings")
+const inviteRoutes = require("./routes/invitations")
 // const notificationRoutes = require("./routes/notifications")
 
 //Use .env file in config folder
@@ -97,8 +100,11 @@ app.use(flash())
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes)
 app.use("/post", postRoutes)
-app.use('/networks', networkRoutes)
-app.use("/comment", commentRoutes);
+app.use('/network', networkRoutes)
+app.use("/:id/comment", commentRoutes)
+app.use("/:id/notification", notificationRoutes)
+app.use("/:id/settings", settingsRoutes)
+app.use("/:id/invite", inviteRoutes)
 // app.use("/notifications", notificationRoutes);
 // app.use('/:id', networkRoutes)
 

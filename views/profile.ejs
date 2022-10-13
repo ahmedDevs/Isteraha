@@ -24,8 +24,8 @@
                   <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
                   <h4 class="mt-2 mb-0"><%= profile.name %></h4>
                   <h5 class="mt-2 mb-0">username: <%= profile.userName %></h5>
-                  <span>followers <%= profile.numberOfFollowers %></span>
-                  <span>following <%= profile.numberOfPeopleFollowed %></span>
+                  <span>followers <%= profile.followers.length %></span>
+                  <span>following <%= profile.following.length %></span>
                   
                   <div class="px-4 mt-1">
                       <p class="fonts"><%= profile.bio %></p>
@@ -43,17 +43,25 @@
                   <div class="buttons">
                     <% if (user.id == profile._id) { %>
                       <button class="btn btn-outline-primary px-4">Edit</button>
+                      <% } %>
 
-
-                      <% } else { %>
+                      <% if(user.id != profile._id) { %>
                       <form action=""></form>
                       <button class="btn btn-outline-primary px-4">Message</button>
-
-
+                        <% } %>
+                    
+                        <% if(!locals.isFollower && user.id != profile._id) { %>
                       <form  class="buttons" action="/<%= profile.userName %>/follow" method="post">
-                      <button class="btn btn-primary px-4 ms-3">Follow</button>
+                     <button class="btn btn-outline-primary px-4 ">Follow</button>
                     </form>
-                    <% } %>
+                      <% } %>
+                    
+                      <% if(locals.isFollower) { %>
+                      <form  class="buttons" action="/<%= profile.userName %>/unfollow" method="post">
+                        <button class="btn btn-primary px-4 ms-3">Unfollow</button>
+                        </form>
+                        <% } %>
+
                   </div>
                   
                   

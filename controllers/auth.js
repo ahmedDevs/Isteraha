@@ -99,83 +99,7 @@ exports.getDashboard = async (req,res) => {
 //   }
 //  }
 
- exports.getInvitePage = async (req,res) => {
-  try {
-    const user = await User.findOne({ userName: req.user.userName })
-    const userId = user._id
-    // console.log(userId)
-    const network = await Network.findOne({ createdBy: userId }).lean()
-    // console.log(network)
-    if(!network) return
-    res.render('network-invitation.ejs', { network, user })
-  }  catch(err) {
-    console.error(err)
-  }
- }
- exports.postInvitePage = async (req,res) => {
-  try {
-    // const user = await User.findOne({ userName: req.params.id })
-    // const userId = user._id
-    const user = req.user.id
-    console.log(user)
-    
-    const invitationTo = await Network.findOne({ name: req.params.id }).lean()
-    // const adminNetwork = await Network.findOne({ admins: user }).lean()
-    const invitee = await req.body.email
-    console.log(invitationTo)
-    // console.log(adminNetwork)
-    // if(!adminNetwork) return
-    if(!invitee) {
-      const invitee = await User.findOne({ userName: req.body.userName })
-      if(invitee.invitations.includes(invitationTo._id)) return
-      invitee.invitations.push(invitationTo._id)
-      
-      invitee.update({ 
-        $set: {
-          notifications: true
-        }
-       })
-      invitee.save()
-      console.log('Mission Accomplished!')
-      // const filter = invitee.invitations
-      // const update = filter.push(req.params.id)
-      // await User.findOneAndUpdate({ filter, update })
-    }
-    // sendEmail()
 
-    res.redirect(`/${req.user.userName}/dashboard`)
-   
-    // res.render('network-invitation.ejs', { invitationTo, adminNetwork })
-  }  catch(err) {
-    console.error(err)
-  }
- }
-
- exports.postAcceptInvitation = async (req,res) => {
-  try {
-    const invitation = await Network.findOne({ name: req.params.id })
-    const user = await User.findOne({ _id: req.user._id })
-    const invitationId = invitation._id
-    if(user.networks.includes(invitationId)) return 
-    console.log('Invitation accepted')
-    user.networks.push(invitationId)
-    
-    invitation.update(
-      {
-        $inc: { numberOfMembers: 1 },
-      }, 
-      {
-        new: true,
-      },
-      )
-
-    await user.save()
-    await invitation.save()
-    res.redirect(`/${req.params.id}/feed`)
-  }  catch(err) {
-    console.error(err)
-  }
- }
  exports.getNetworkFeed = async (req,res) => {
   try {
     const param = req.params.id
@@ -237,8 +161,10 @@ exports.postFollow = async (req,res) => {
     const followed = await User.findOne({ userName: params })
     follower.following.push(followed._id)
     followed.followers.push(follower._id)
+    
     await follower.save()
     await followed.save()
+    res.redirect(`/${params}/profile`)
   }  catch(err) {
     console.error(err)
   }
@@ -250,10 +176,11 @@ exports.postUnfollow = async (req,res) => {
     const params = req.params.id
     const unfollower = await User.findById(req.user._id)
     const unfollowed = await User.findOne({ userName: params })
-    unfollower.following.splice(following.indexOf(unfollowed._id), 1)
-    unfollowed.followers.splice(followers.indexOf(unfollower._id), 1)
+    unfollower.following.splice(unfollower.following.indexOf(unfollowed._id), 1)
+    unfollowed.followers.splice(unfollowed.followers.indexOf(unfollower._id), 1)
     await unfollower.save()
     await unfollowed.save()
+    res.redirect(`/${params}/profile`)
   }  catch(err) {
     console.error(err)
   }
@@ -343,71 +270,6 @@ exports.postSignup = (req, res, next) => {
 
 
 
-// const LocalStrategy = require("passport-local").Strategy;
-// const mongoose = require("mongoose");
-// const Model = require('../models/ModelSchema.js')
-// const Stylist = require('../models/StylistSchema.js')
-
-// module.exports = function (passport) {
-//   passport.use(
-//     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
-//       Model.findOne({ email: email.toLowerCase() }, (err, user) => {
-//         if (err) {
-//           return done(err);
-//         }
-//         if (!user) {
-//           Stylist.findOne({ email: email.toLowerCase() }, (err, user) => {
-//             if (err) {
-//               return done(err);
-//             }
-//             if (!user) {
-//               return done(null, false, { msg: `Email ${email} not found.` });
-//             }
-//             if (!user.password) {
-//               return done(null, false, {
-//                 msg:
-//                   "Your account was registered using a sign-in provider. To enable password login, sign in using a provider, and then set a password under your user profile.",
-//               });
-//             }
-//             user.comparePassword(password, (err, isMatch) => {
-//               if (err) {
-//                 return done(err);
-//               }
-//               if (isMatch) {
-//                 return done(null, user);
-//               }
-//               return done(null, false, { msg: "Invalid email or password." });
-//             });
-//           });
-//           // return done(null, false, { msg: `Email ${email} not found.` });
-//         }
-//         if (!user.password) {
-//           return done(null, false, {
-//             msg:
-//               "Your account was registered using a sign-in provider. To enable password login, sign in using a provider, and then set a password under your user profile.",
-//           });
-//         }
-//         user.comparePassword(password, (err, isMatch) => {
-//           if (err) {
-//             return done(err);
-//           }
-//           if (isMatch) {
-//             return done(null, user);
-//           }
-//           return done(null, false, { msg: "Invalid email or password." });
-//         });
-//       });
-//     })
-//   );
-
-//   passport.serializeUser((user, done) => {
-//     done(null, user.id);
-//   });
-
-//   passport.deserializeUser((id, done) => {
-//     User.findById(id, (err, user) => done(err, user));
-//   });
-// };
 
 
 
@@ -419,54 +281,3 @@ exports.postSignup = (req, res, next) => {
 
 
 
-
-
-
-
-
-// mks solution
-// exports.getLogin = async (req, res) => {
-// if(req.user) {  
-//   const user = req.user.userName
-//   const model = await ModelSchema.findOne({ userName: user }).lean()
-//   const stylist = await StylistSchema.findOne({ userName: user }).lean()
-//     if (model) {
-//       res.redirect("/model/profile")
-//     }  else if (stylist) {
-//       res.redirect("/stylist/profile")
-//     } else {
-//       console.error(err)
-//     }
-//     res.render("login", {
-//       title: "Login",
-//     });
-// }
-// }
-
-
-// exports.getLogin = (req, res) => {
-//   if (req.user) {
-//     return res.redirect("/profile");
-//   }
-//   res.render("login", {
-//     title: "Login",
-//   });
-// };
-
-
-
-// exports.getLogin = async (req, res) => {
-//   if(req.user) {  
-//     const user = req.user.userName
-//     const model = await ModelSchema.findOne({ userName: user }).lean()
-//     const stylist = await StylistSchema.findOne({ userName: user }).lean()
-//       if (model) {
-//         res.redirect("/model/profile")
-//       }  else if (stylist) {
-//         res.redirect("/stylist/profile")
-//       } 
-//   }
-//   res.render("login", {
-//     title: "Login",
-//   });
-//   }

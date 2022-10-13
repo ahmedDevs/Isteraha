@@ -1,68 +1,35 @@
-const express = require("express");
-const router = express.Router();
-const authController = require("../controllers/auth");
-const homeController = require("../controllers/home");
-const postsController = require("../controllers/posts");
+const express = require("express")
+const router = express.Router()
+const authController = require("../controllers/auth")
+const homeController = require("../controllers/home")
+const postsController = require("../controllers/posts")
 const networksController = require("../controllers/networks")
 // const networksController = require("../controllers/networks")
-const { ensureAuth, ensureGuest } = require("../middleware/auth");
-
-//Main Routes - simplified for now
-router.get("/", homeController.getIndex);
-router.get("/:id/profile", ensureAuth, postsController.getProfile);
-router.get("/feed", ensureAuth, postsController.getFeed);
-router.get("/login", authController.getLogin);
-router.post("/login", authController.postLogin);
-router.get("/logout", authController.logout);
-router.get("/signup", authController.getSignup);
-router.post("/signup", authController.postSignup);
-
-// test
-
-router.get("/:id/dashboard", ensureAuth, authController.getDashboard);
-
-router.get("/:id/dashboard/inviteUser", ensureAuth, authController.getInvitePage);
-router.post("/:id/dashboard/inviteUser", ensureAuth, authController.postInvitePage);
-// router.post("/:id/dashboard/inviteUser/:id", ensureAuth, authController.postInviteUser);
-
-router.get("/:id/inviteUser", ensureAuth, authController.getInvitePage);
-router.post("/:id/inviteUser", ensureAuth, authController.postInvitePage);
-
-// router.get("/:id/acceptInvitation", ensureAuth, authController.getInvitePage);
-router.post("/:id/acceptInvitation", ensureAuth, authController.postAcceptInvitation);
+const { ensureAuth, ensureGuest } = require("../middleware/auth")
 
 
-router.get("/:id/notifications", ensureAuth, authController.getNotifications);
+router.get("/", homeController.getIndex)
+router.get("/:id/profile", ensureAuth, postsController.getProfile)
+router.get("/feed", ensureAuth, postsController.getFeed)
+router.get("/login", authController.getLogin)
+router.post("/login", authController.postLogin)
+router.get("/logout", authController.logout)
+router.get("/signup", authController.getSignup)
+router.post("/signup", authController.postSignup)
 
-// router.get("/:id/profile", ensureAuth, authController.getUserProfile);
+// router.get("/:id/notifications", ensureAuth, authController.getNotifications)
+// router.get("/:id/profile", ensureAuth, authController.getUserProfile)
 
-router.get("/:id/feed", ensureAuth, authController.getNetworkFeed);
-
+router.get("/:id/dashboard", ensureAuth, authController.getDashboard)
+router.get("/:id/feed", ensureAuth, authController.getNetworkFeed)
 router.post("/:id/follow", ensureAuth, authController.postFollow)
 router.post("/:id/unfollow", ensureAuth, authController.postUnfollow)
-
-// router.get("/:id", ensureAuth, networksController.getDashboard)
-
-// router.get('/network', ensureAuth, homeController.getNetwork)
-
 router.post("/:id/searchUsernames", authController.postSearchUsernames)
 
 
-router.get("/:id/settings", ensureAuth, networksController.getNetworkSettings)
-router.get("/:id/user-settings", ensureAuth, networksController.getUserSettings)
-router.post("/:id/settings/save", ensureAuth, networksController.postNetworkSettings)
-router.post("/:id/user-settings/save", ensureAuth, networksController.postUserSettings)
-
-module.exports = router;
 
 
-// function ensureAuthModel(req, res, next) {
-//     if (isModel(req.user)) { return next(); }
-//     res.redirect('/profile')
-//   }
+module.exports = router
 
-//   function ensureAuthStylist(req, res, next) {
-//     if (isStylist(req.user)) { return next(); }
-//     res.redirect('/profile')
-//   }
+
 
