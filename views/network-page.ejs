@@ -30,7 +30,7 @@
                     <div class="d-flex justify-content-between install mt-3"><span><%= networks[i].numberOfMembers %> members</span>
                         <% if(locals.isAuth) { %>
             
-                         <a href="/<%=networks[i].name%>/inviteUser"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
+                         <a href="/invite/<%=networks[i].name%>"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
                          <a href="#"><span class="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </a>
                         
                          <%  } %>

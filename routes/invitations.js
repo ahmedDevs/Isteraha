@@ -13,10 +13,10 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth")
 // router.post("/dashboard", ensureAuth, invitationsController.postInvitePage)
 // router.post("/:id/dashboard/inviteUser/:id", ensureAuth, authController.postInviteUser)
 
-router.get("/", ensureAuth, invitationsController.getInvitePage)
-router.post("/", ensureAuth, invitationsController.postInvitePage)
+router.get("/:id", ensureAuth, invitationsController.getInvitePage)
+router.post("/:id", ensureAuth, invitationsController.postInvitePage)
 
 // router.get("/:id/acceptInvitation", ensureAuth, authController.getInvitePage)
-router.post("/accept", ensureAuth, invitationsController.postAcceptInvitation)
+router.put("/:id/accept", ensureAuth, invitationsController.postAcceptInvitation)
 
 module.exports = router

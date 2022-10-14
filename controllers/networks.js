@@ -1,6 +1,6 @@
-const cloudinary = require("../middleware/cloudinary");
 const Network = require("../models/Network")
 const User = require("../models/User")
+const cloudinary = require("../middleware/cloudinary");
 
 module.exports = {
    createNetwork: async (req,res) => {

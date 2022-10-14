@@ -20,11 +20,11 @@ router.post("/signup", authController.postSignup)
 // router.get("/:id/notifications", ensureAuth, authController.getNotifications)
 // router.get("/:id/profile", ensureAuth, authController.getUserProfile)
 
-router.get("/:id/dashboard", ensureAuth, authController.getDashboard)
+router.get("/dashboard", ensureAuth, authController.getDashboard)
 router.get("/:id/feed", ensureAuth, authController.getNetworkFeed)
 router.post("/:id/follow", ensureAuth, authController.postFollow)
 router.post("/:id/unfollow", ensureAuth, authController.postUnfollow)
-router.post("/:id/searchUsernames", authController.postSearchUsernames)
+// router.post("/:id/searchUsernames", authController.postSearchUsernames)
 
 
 

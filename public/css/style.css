@@ -314,7 +314,9 @@
     top:0;
     width:4px;
     height:100%;
-    background-color:#E1BEE7;
+    /* background-color:#E1BEE7; */
+
+    background-color: rgb(0, 114, 244);
     transform:scaleY(1);
     transition:all 0.5s;
     transform-origin: bottom
@@ -802,3 +804,8 @@ h1 {
 .cursor:hover{color: blue}
 .cursor{cursor: pointer}
 .textarea{resize: none} */
+
+
+
+/* main page footer */
+

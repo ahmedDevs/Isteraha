@@ -15,7 +15,7 @@ exports.getLogin = async (req, res) => {
     // return res.redirect("/profile");
     const userName = req.user.userName
     // console.log(userName)
-    return res.redirect(`${userName}/dashboard`);
+    return res.redirect('/dashboard');
   }
   res.render("login", {
     title: "Login",
@@ -50,7 +50,7 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       req.flash("success", { msg: "Success! You are logged in." });
-      res.redirect(req.session.returnTo || `/${req.user.userName}/dashboard`);
+      res.redirect(req.session.returnTo || '/dashboard');
     });
   })(req, res, next);
 };
@@ -78,7 +78,7 @@ exports.getSignup = (req, res) => {
 
 exports.getDashboard = async (req,res) => {
   try {
-      const user = await User.findOne({ userName: req.params.id }).lean()
+      const user = await User.findOne({ _id: req.user._id }).lean()
       const networks = await Network.find({ createdBy: user._id }).lean()
       const memberOf = await Network.find({ _id: user.networks}).lean()
     // console.log(networks)
@@ -186,20 +186,20 @@ exports.postUnfollow = async (req,res) => {
   }
 }
 
-exports.postSearchUsernames = async (req,res) => {
-  try {
-    let search = await req.body.search.trim()
-    let user = await User.find({ userName: { $regex: new RegExp('^'+search+'.*','i') } }).exec()
-    // limit search results to 10
-    user = user.slice(0,10)
-    res.send({ search: user })
+// exports.postSearchUsernames = async (req,res) => {
+//   try {
+//     let search = await req.body.search.trim()
+//     let user = await User.find({ userName: { $regex: new RegExp('^'+search+'.*','i') } }).exec()
+//     // limit search results to 10
+//     user = user.slice(0,10)
+//     res.send({ search: user })
 
-    console.log(search)
-  }  catch(err) {
-    console.error(err)
-  } 
+//     console.log(search)
+//   }  catch(err) {
+//     console.error(err)
+//   } 
  
-}
+// }
 //  exports.postInviteUser = async (req,res) => {
 //   try {
   

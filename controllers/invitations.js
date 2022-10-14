@@ -1,29 +1,36 @@
-
-const Network = require("../models/Network")
-const User = require("../models/User")
+const passport = require("passport");
 const validator = require("validator");
+const User = require("../models/User");
+const Network = require("../models/Network");
+const Post = require("../models/Post");
 
 
 
 exports.getInvitePage = async (req,res) => {
     try {
-      const user = await User.findOne({ userName: req.user.userName })
-      const userId = user._id
-      // console.log(userId)
-      const network = await Network.findOne({ createdBy: userId }).lean()
-      // console.log(network)
+      const user = await User.findOne({ _id: req.user._id })
+   
+    //   const userId = user._id
+    //   // console.log(userId)
+   console.log(req.id)
+      const network = await Network.findOne({ name: req.params.id }).lean()
+      console.log(network)
       if(!network) return
       res.render('network-invitation.ejs', { network, user })
     }  catch(err) {
       console.error(err)
     }
    }
+
    exports.postInvitePage = async (req,res) => {
     try {
+
       // const user = await User.findOne({ userName: req.params.id })
       // const userId = user._id
-      const user = req.user.id
+
+      const user = req.user._id
       console.log(user)
+      const params = await req.params.id
       console.log(req.params.id)
       const invitationTo = await Network.findOne({ name: req.params.id }).lean()
       console.log(invitationTo)
@@ -36,7 +43,9 @@ exports.getInvitePage = async (req,res) => {
       // if(!adminNetwork) return
     //   if(!invitee) {
         const invitee = await User.findOne({ userName: req.body.userName })
-        if(invitee.invitations.includes(invitationToId)) return
+        if(invitee.invitations.includes(invitationToId)) {
+            res.redirect('/dashboard')
+        }
         invitee.invitations.push(invitationToId)
         
         invitee.update({ 
@@ -52,7 +61,7 @@ exports.getInvitePage = async (req,res) => {
     //   }
       // sendEmail()
   
-      res.redirect(`/${req.user.userName}/dashboard`)
+      res.redirect('/dashboard')
      
       // res.render('network-invitation.ejs', { invitationTo, adminNetwork })
     }  catch(err) {
@@ -65,11 +74,13 @@ exports.getInvitePage = async (req,res) => {
       const invitation = await Network.findOne({ name: req.params.id })
       const user = await User.findOne({ _id: req.user._id })
       const invitationId = invitation._id
-      if(user.networks.includes(invitationId)) return 
+      if(user.networks.includes(invitationId)) {
+        return 
+      }
       console.log('Invitation accepted')
       user.networks.push(invitationId)
       
-      invitation.update(
+      await invitation.update(
         {
           $inc: { numberOfMembers: 1 },
         }, 
@@ -77,7 +88,7 @@ exports.getInvitePage = async (req,res) => {
           new: true,
         },
         )
-  
+        console.log(invitation.numberOfMembers)
       await user.save()
       await invitation.save()
       res.redirect(`/${req.params.id}/feed`)

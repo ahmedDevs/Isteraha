@@ -11,6 +11,7 @@ module.exports = {
       let isFollower = false
       const profile = await User.findOne({ userName: params })
       const profileFollowers = profile.followers
+      
       const posts = await Post.find({ user: profile._id }).lean()
       if(params !== req.user.userName && profileFollowers.includes(req.user._id)) {
         isFollower = true
