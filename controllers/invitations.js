@@ -79,7 +79,7 @@ exports.getInvitePage = async (req,res) => {
       }
       console.log('Invitation accepted')
       user.networks.push(invitationId)
-      
+      user.invitations.splice(user.invitations.indexOf(invitationId), 1)
       await invitation.update(
         {
           $inc: { numberOfMembers: 1 },
