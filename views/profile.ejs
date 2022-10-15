@@ -8,6 +8,7 @@
   </div>
 </header>
 
+<main class="mainContainerProfile">
 <div class="container mt-5">
     
   <div class="row d-flex justify-content-center">
@@ -42,7 +43,7 @@
                   
                   <div class="buttons">
                     <% if (user.id == profile._id) { %>
-                      <button class="btn btn-outline-primary px-4">Edit</button>
+                      <button class="btn btn-outline-primary px-4 editButton">Edit</button>
                       <% } %>
 
                       <% if(user.id != profile._id) { %>
@@ -77,6 +78,17 @@
   </div>
   
 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -181,6 +193,63 @@
   </div> -->
 
 </main>
+
+
+
+
+<div class="container mt-3 editProfileForm hidden" id="profileForm">
+  <div class="card p-3 text-center">
+    <form action="/settings/profile?_method=PUT" method="POST">
+      <div class="d-flex flex-row justify-content-center mb-3">
+          <div class="image"> 
+            <% if(!user.image) { %>
+              <img src="https://placekitten.com/g/100/100" width="100" height="100" class="rounded-circle">
+              <% } %>
+            <img src="<%= user.image %>" class="rounded-circle"> 
+            <!-- <span><i class='bx bxs-camera-plus'></i></span>  -->
+          </div>
+          <div class="d-flex flex-column ms-3 user-details">
+              <h4 class="mb-0">Zenda Grace</h4>
+              <div class="ratings"> <span>4.0</span> <i class='bx bx-star ms-1'></i> </div> <span>Pro Member</span>
+          </div>
+      </div>
+      <h4>Edit Profile</h4>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="inputs"> <label>Name</label> <input class="form-control" type="text" placeholder="Name" name="name"> </div>
+          </div>
+          <!-- <div class="col-md-6">
+              <div class="inputs"> <label>Email</label> <input class="form-control" type="text" placeholder="Email"> </div>
+          </div> --> 
+      </div>
+
+
+      <div class="mb-3">
+        <label for="imgUpload" class="form-label">Profile Picture (optional)</label>
+        <input type="file" class="form-control" id="imageUpload" name="file">
+      </div>
+
+
+      <div class="row">
+          <div class="col-md-12">
+              <div class="about-inputs"> <label>Bio</label> <textarea class="form-control" type="text" placeholder="Tell us about yourself" name="bio"> </textarea> </div>
+          </div>
+      </div>
+
+
+
+      <div class="mt-3 gap-2 d-flex justify-content-end">   <button class="px-3 btn btn-sm btn-primary submitButton">Save</button> </div>
+    </form>
+    <div class="mt-3 gap-2 d-flex justify-content-end"> <button class="px-3 btn btn-sm btn-outline-primary cancelButton">Cancel</button> 
+  </div>
+</div>
+
+
+
+
+
+
+
 <script src="/js/main.js"></script>
 
 <%- include('partials/footer') -%>

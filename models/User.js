@@ -21,6 +21,7 @@ const UserSchema = new mongoose.Schema({
   comments: {type: Array },
   following: { type: Array },
   followers: { type: Array },
+  messages: { type: Object},
   joined: { type: Date, default: Date.now },
   numberOfFollowers: {type: Number, default: 0 },
   numberOfPeopleFollowed: {type: Number, default: 0 },

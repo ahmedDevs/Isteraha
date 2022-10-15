@@ -3,6 +3,7 @@ const validator = require("validator");
 const User = require("../models/User");
 const Network = require("../models/Network");
 const Post = require("../models/Post");
+const Comment = require("../models/Comment")
 // const { findOne } = require("../models/User");
 
 // const nodemailer = require('nodemailer');
@@ -108,18 +109,25 @@ exports.getDashboard = async (req,res) => {
 
     const posts = await Post.find({ network: networkId}).sort({ createdAt: "desc" }).lean();
     const userIds = posts.map(e => e.user)
-    const uniqueUserIds = [...new Set(userIds)]
-    console.log(uniqueUserIds)
-    const users = await User.find({ '_id': { $in: uniqueUserIds } }).lean();
-    console.log(users)
+    // const uniqueUserIds = [...new Set(userIds)]
+    // console.log(uniqueUserIds)
+    // console.log(userIds)
+    // console.log(uniqueUserIds)
+    // const users = await User.find({ '_id': { $in: userIds } }).lean();
+    const users = await User.find({ networks: networkId }).lean()
 
-    const networkUser = await Network.findOne({ _id: { "$in" : networkId } }).lean()
-    console.log(networkUser)
+    // console.log('heyaa')
+    //  things.find({tennants: mongoose.Types.ObjectId("123")});
+    const members = await User.find({ 'networks': { $in: networkId } }).limit(5).lean()
+    // console.log(members)
+    const comments = await Comment.find({ 'post': { $in: posts } }).lean()
+    const networkUser = await User.findOne({'networks': { $in : networkId } }).lean()
+    // console.log(networkUser)
     if(!networkUser) {
       res.redirect('/')
      
     }
-    res.render("feed.ejs", { posts: posts, user: req.user, users, network });
+    res.render("feed.ejs", { posts: posts, user: req.user, users, network, members: members, comments: comments });
 
   }  catch(err) {
     console.error(err)
