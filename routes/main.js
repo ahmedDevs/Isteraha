@@ -24,7 +24,7 @@ router.get("/dashboard", ensureAuth, authController.getDashboard)
 router.get("/:id/feed", ensureAuth, authController.getNetworkFeed)
 router.post("/:id/follow", ensureAuth, authController.postFollow)
 router.post("/:id/unfollow", ensureAuth, authController.postUnfollow)
-// router.post("/:id/searchUsernames", authController.postSearchUsernames)
+router.post("/searchUsernames", authController.postSearchUsernames)
 
 
 

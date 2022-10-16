@@ -108,7 +108,7 @@
         <%- include('partials/post') -%> 
        
           <% for(let i = 0; i < posts.length; i++) { %>
-
+            
      
 
            
@@ -117,7 +117,7 @@
             <a href="/post/<%= posts[i]._id %>">
               <div class="d-flex justify-content-between p-2 px-3">
                   <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/UXdKE3o.jpg" width="50" class="rounded-circle">
-                      <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"> userName</span> <small class="text-primary">Collegues</small> </div>
+                      <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"><%= hashMap[posts[i].user].userName %></span> <small class="text-primary">Collegues</small> </div>
                   </div>
               
                

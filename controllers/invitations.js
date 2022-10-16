@@ -44,7 +44,7 @@ exports.getInvitePage = async (req,res) => {
     //   if(!invitee) {
         const invitee = await User.findOne({ userName: req.body.userName })
         if(invitee.invitations.includes(invitationToId)) {
-            res.redirect('/dashboard')
+            return res.redirect('/dashboard')
         }
         invitee.invitations.push(invitationToId)
         

@@ -108,7 +108,9 @@ exports.getDashboard = async (req,res) => {
     const networkId = network._id
 
     const posts = await Post.find({ network: networkId}).sort({ createdAt: "desc" }).lean();
-    const userIds = posts.map(e => e.user)
+   
+   
+  
     // const uniqueUserIds = [...new Set(userIds)]
     // console.log(uniqueUserIds)
     // console.log(userIds)
@@ -116,7 +118,18 @@ exports.getDashboard = async (req,res) => {
     // const users = await User.find({ '_id': { $in: userIds } }).lean();
     const users = await User.find({ networks: networkId }).lean()
 
-    // console.log('heyaa')
+    const userIds = posts.map(e => e.user)
+
+    const posters = await User.find({ '_id': { $in: userIds } }).lean()
+    const hashMap = {}
+    for(let i = 0; i < posters.length; i++) {
+      if(hashMap[posters[i]._id] !== undefined) {
+        break
+      }
+      hashMap[posters[i]._id] = posters[i]
+    }
+  
+   console.log(hashMap)
     //  things.find({tennants: mongoose.Types.ObjectId("123")});
     const members = await User.find({ 'networks': { $in: networkId } }).limit(5).lean()
     // console.log(members)
@@ -127,7 +140,7 @@ exports.getDashboard = async (req,res) => {
       res.redirect('/')
      
     }
-    res.render("feed.ejs", { posts: posts, user: req.user, users, network, members: members, comments: comments });
+    res.render("feed.ejs", { posts: posts, user: req.user, users: users, network, members: members, comments: comments, hashMap });
 
   }  catch(err) {
     console.error(err)
@@ -194,20 +207,20 @@ exports.postUnfollow = async (req,res) => {
   }
 }
 
-// exports.postSearchUsernames = async (req,res) => {
-//   try {
-//     let search = await req.body.search.trim()
-//     let user = await User.find({ userName: { $regex: new RegExp('^'+search+'.*','i') } }).exec()
-//     // limit search results to 10
-//     user = user.slice(0,10)
-//     res.send({ search: user })
+exports.postSearchUsernames = async (req,res) => {
+  try {
+    let search = await req.body.search.trim()
+    let user = await User.find({ userName: { $regex: new RegExp('^'+search+'.*','i') } }).exec()
+    // limit search results to 10
+    user = user.slice(0,10)
+    res.send({ search: user })
 
-//     console.log(search)
-//   }  catch(err) {
-//     console.error(err)
-//   } 
+    console.log(search)
+  }  catch(err) {
+    console.error(err)
+  } 
  
-// }
+}
 //  exports.postInviteUser = async (req,res) => {
 //   try {
   

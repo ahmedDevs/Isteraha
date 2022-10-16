@@ -216,7 +216,7 @@
       <h4>Edit Profile</h4>
       <div class="row">
           <div class="col-md-12">
-              <div class="inputs"> <label>Name</label> <input class="form-control" type="text" placeholder="Name" name="name"> </div>
+              <div class="inputs"> <label>Name</label> <input class="form-control" type="text" placeholder="<%= user.name %>" name="name"> </div>
           </div>
           <!-- <div class="col-md-6">
               <div class="inputs"> <label>Email</label> <input class="form-control" type="text" placeholder="Email"> </div>
@@ -232,7 +232,11 @@
 
       <div class="row">
           <div class="col-md-12">
+          <% if(!user.bio) { %>
               <div class="about-inputs"> <label>Bio</label> <textarea class="form-control" type="text" placeholder="Tell us about yourself" name="bio"> </textarea> </div>
+           <% } else { %>
+            <div class="about-inputs"> <label>Bio</label> <textarea class="form-control" type="text" placeholder="<%= user.bio %>" name="bio"> </textarea> </div>
+            <% } %>
           </div>
       </div>
 
