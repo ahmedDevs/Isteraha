@@ -1,4 +1,18 @@
 <%- include('partials/header') -%>
+<%- include('partials/menu') -%>
+
+
+
+<header class="bg-white shadow">
+  <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900"><%= post.title %></h1>
+  </div>
+</header>
+
+<div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+  <p class="text1 "><%= post.caption %></p>
+</div>
+
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-6">
@@ -61,7 +75,7 @@
 
 
 
-<div class="container mt-5 mb-5">
+<!-- <div class="container mt-5 mb-5">
  
   <div class="row d-flex  ">
       <div class="col-md-6">
@@ -112,23 +126,83 @@
       
       </div>
   </div>
+</div> -->
+
+
+
+
+
+
+
+<div class="container justify-content-center mt-5 border-left border-right" id="commentSectionContainer">
+
+
+  <div class="d-flex justify-content-between p-2 px-3" id="postBoxCommentSection">
+    <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/UXdKE3o.jpg" width="50" class="rounded-circle">
+        <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"><%= post.caption %> </span> <small class="text-primary">Collegues</small> </div>
+    </div>
+  
+  
+    <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div>
+  </div> <img src="" class="img-fluid postImage">
+
+
+
+  <div class="d-flex justify-content-center pt-3 pb-2"> <form action="/comment/createComment/<%= post.id %>" method="POST" id="commentForm"><input type="text" name="comment" placeholder="+ Add a note" required class="form-control addtxt"></form></div>
+  <div class="d-flex justify-content-center py-2">
+      <div class="second py-2 px-2"> <span class="text1">Type your note, and hit enter to add it</span>
+          <div class="d-flex justify-content-between py-1 pt-2">
+              <div><img src="https://i.imgur.com/AgAC1Is.jpg" width="18"><span class="text2">Martha</span></div>
+              <div><span class="text3">Upvote?</span><span class="thumbup"><i class="fa fa-thumbs-o-up"></i></span><span class="text4">3</span></div>
+          </div>
+      </div>
+  </div>
+  <div class="d-flex justify-content-center py-2">
+      <div class="second py-2 px-2"> <span class="text1">Type your note, and hit enter to add it</span>
+          <div class="d-flex justify-content-between py-1 pt-2">
+              <div><img src="https://i.imgur.com/tPvlEdq.jpg" width="18"><span class="text2">Curtis</span></div>
+              <div><span class="text3">Upvote?</span><span class="thumbup"><i class="fa fa-thumbs-o-up"></i></span><span class="text4">3</span></div>
+          </div>
+      </div>
+  </div>
+  <div class="d-flex justify-content-center py-2">
+      <div class="second py-2 px-2"> <span class="text1">Type your note, and hit enter to add it</span>
+          <div class="d-flex justify-content-between py-1 pt-2">
+              <div><img src="https://i.imgur.com/gishFbz.png" width="18" height="18"><span class="text2">Beth</span></div>
+              <div><span class="text3 text3o">Upvoted</span><span class="thumbup"><i class="fa fa-thumbs-up thumbupo"></i></span><span class="text4 text4i">1</span></div>
+          </div>
+      </div>
+  </div>
+  <div class="d-flex justify-content-center py-2 pb-3">
+      <div class="second py-2 px-2"> <span class="text1">Type your note, and hit enter to add it</span>
+          <div class="d-flex justify-content-between py-1 pt-2">
+              <div><img src="https://i.imgur.com/tPvlEdq.jpg" width="18"><span class="text2">Curtis</span></div>
+              <div><span class="text3">Upvote?</span><span class="thumbup"><i class="fa fa-thumbs-o-up"></i></span><span class="text4 text4o">1</span></div>
+          </div>
+      </div>
+  </div>
 </div>
 
 
 
 
 
-<div class="container mt-5">
+
+
+
+
+
+<!-- <div class="container mt-5">
   <div class="d-flex justify-content-center row">
       <div class="col-md-8">
           <div class="d-flex flex-column comment-section">
-              <div class="bg-white p-2">
+              <div class="bg-white p-2"> -->
                   <!-- <div class="d-flex flex-row user-info"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">
                       <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>
                   </div> -->
 
 
-                  <div class="d-flex flex-row user-info">
+                  <!-- <div class="d-flex flex-row user-info">
                       <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name"></span><span class="date text-black-50"> </span></div>
                   </div>
 
@@ -150,6 +224,8 @@
           </div>
       </div>
   </div>
-</div>
+</div> -->
+
+<script src="/js/commentForm" ></script>
 
 <%- include('partials/footer') -%>

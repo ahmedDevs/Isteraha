@@ -129,18 +129,27 @@ exports.getDashboard = async (req,res) => {
       hashMap[posters[i]._id] = posters[i]
     }
   
-   console.log(hashMap)
-    //  things.find({tennants: mongoose.Types.ObjectId("123")});
+  //  console.log(hashMap)
+     //  things.find({tennants: mongoose.Types.ObjectId("123")});
     const members = await User.find({ 'networks': { $in: networkId } }).limit(5).lean()
     // console.log(members)
     const comments = await Comment.find({ 'post': { $in: posts } }).lean()
+    const hashMap2 = {}
+    for(let i = 0; i < comments.length; i++) {
+      if(hashMap2[comments[i].post] !== undefined) {
+        break
+      } 
+      hashMap2[comments[i].post] = comments[i]
+    }
+    console.log(hashMap2)
+    // get the comments for the posts
     const networkUser = await User.findOne({'networks': { $in : networkId } }).lean()
     // console.log(networkUser)
     if(!networkUser) {
-      res.redirect('/')
+     return res.redirect('/')
      
     }
-    res.render("feed.ejs", { posts: posts, user: req.user, users: users, network, members: members, comments: comments, hashMap });
+    res.render("feed.ejs", { posts: posts, user: req.user, users: users, network, members: members, hashMap2, hashMap });
 
   }  catch(err) {
     console.error(err)
