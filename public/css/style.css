@@ -633,6 +633,24 @@
     width: 100%;
 }
 
+.formAndPostsBox {
+    display: flex;
+    flex-flow: column nowrap;
+}
+.postTitle {
+    color: black;
+    font-weight: 400;
+    text-align: center;
+}
+/* .postContent {
+    font-weight: 200;
+} */
+#postForm {
+    width: 50%;
+}
+
+
+
 
 
 /* create network form  */
@@ -847,7 +865,7 @@ h1 {
 
 /* profile page edit  */
 .hidden {
-    display: hidden;
+    display: hidden !important;
 }
 #profileForm {
     width: 50%;

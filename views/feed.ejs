@@ -103,9 +103,13 @@
 
 <div class="container mt-5 mb-5">
  
-  <div class="row d-flex  ">
-      <div class="col-md-6">
-        <%- include('partials/post') -%> 
+  <div class="row d-flex formAndPostsBox">
+
+    <%- include('partials/post') -%>
+
+
+      <div class="col-md-6" id="feedBox">
+         
        
           <% for(let i = 0; i < posts.length; i++) { %>
             
@@ -114,43 +118,67 @@
            
           <div class="card cardFeed">
 
-            <a href="/post/<%= posts[i]._id %>">
+            <a href="/<%= hashMap[posts[i].user].userName %>/profile">
               <div class="d-flex justify-content-between p-2 px-3">
                   <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/UXdKE3o.jpg" width="50" class="rounded-circle">
-                      <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"><%= hashMap[posts[i].user].userName %></span> <small class="text-primary">Collegues</small> </div>
+                      <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"><%= hashMap[posts[i].user].name %></span> <small class="text-primary"><%= hashMap[posts[i].user].userName %></small> </div>
                   </div>
               
                
-                  <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div>
+                  <!-- <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div> -->
               </div> <img src="<%= posts[i].image %>" class="img-fluid postImage">
               </a>
 
+
+              <a href="/post/<%= posts[i]._id %>">
               <div class="p-2">
-                  <h3><%= posts[i].title %></h3>
-                  <p class="text-justify"><%= posts[i].caption %></p>
+                  <h3 class="postTitle"><%= posts[i].title %></h3>
+                  <p class="text-justify postContent"><%= posts[i].caption %></p>
                   <hr>
                   <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex flex-row icons d-flex align-items-center"> <i class="fa fa-heart"></i> <i class="fa fa-smile-o ml-2"></i> </div>
-                      <div class="d-flex flex-row muted-color"> <span>2 comments</span> <span class="ml-2">Share</span> </div>
+
+                     
+
+
+                      <div class="d-flex flex-row muted-color"> <span>2 comments</span> 
+                        <!-- <span class="ml-2">Share</span>  -->
+                      </div>
+
+                      <div class="d-flex flex-row icons d-flex align-items-center">
+                        <%if(posts[i].user==user.id){ %>
+                          <form action="/post/deletePost/<%=posts[i]._id%>?_method=DELETE" method="POST" class="col-3">
+                            <button class="btn btn-primary fa fa-trash" type="submit"></button>
+                          </form>
+                          <%}%>
+                        </div>
+
+
                   </div>
                   <hr>
-                  <div class="comments">
+                  <!-- <div class="comments">
                     
                       <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/9AZ2QX1.jpg" width="40" class="rounded-image">
-                          <div class="d-flex flex-column ml-2"> <span class="name">Daniel Frozer</span> <small class="comment-text"><%= hashMap2[posts[i]._id].post %></small>
+        
+                     
+                          <div class="d-flex flex-column ml-2"> <span class="name">Daniel Frozer</span> <small class="comment-text"></small>
                               <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>18 mins</small> </div>
                           </div>
+                     
                       </div>
                       <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/1YrCKa1.jpg" width="40" class="rounded-image">
-                          <div class="d-flex flex-column ml-2"> <span class="name">Elizabeth goodmen</span> <small class="comment-text">Thanks for sharing!</small>
+                          <div class="d-flex flex-column ml-2"> <span class="name">Elizabeth goodmen</span> <small class="comment-text"></small>
                               <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>8 mins</small> </div>
                           </div>
                       </div>
                       <div class="comment-input"> <input type="text" class="form-control">
                           <div class="fonts"> <i class="fa fa-camera"></i> </div>
                       </div>
-                  </div>
+                  </div> -->
               </div>
+              </a>
+
+
           </div>
          
           
@@ -159,5 +187,6 @@
   </div>
 </div>
 
+<script src="/js/postForm.js"></script>
 
 <%- include('partials/footer') -%>

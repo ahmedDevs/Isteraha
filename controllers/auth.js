@@ -110,7 +110,7 @@ exports.getDashboard = async (req,res) => {
     const posts = await Post.find({ network: networkId}).sort({ createdAt: "desc" }).lean();
    
    
-  
+    const networkFeed = true
     // const uniqueUserIds = [...new Set(userIds)]
     // console.log(uniqueUserIds)
     // console.log(userIds)
@@ -134,14 +134,14 @@ exports.getDashboard = async (req,res) => {
     const members = await User.find({ 'networks': { $in: networkId } }).limit(5).lean()
     // console.log(members)
     const comments = await Comment.find({ 'post': { $in: posts } }).lean()
-    const hashMap2 = {}
-    for(let i = 0; i < comments.length; i++) {
-      if(hashMap2[comments[i].post] !== undefined) {
-        break
-      } 
-      hashMap2[comments[i].post] = comments[i]
-    }
-    console.log(hashMap2)
+    // const hashMap2 = {}
+    // for(let i = 0; i < comments.length; i++) {
+    //   if(hashMap2[comments[i].post] !== undefined) {
+    //     break
+    //   } 
+    //   hashMap2[comments[i].post] = comments[i]
+    // }
+    // console.log(hashMap2)
     // get the comments for the posts
     const networkUser = await User.findOne({'networks': { $in : networkId } }).lean()
     // console.log(networkUser)
@@ -149,7 +149,8 @@ exports.getDashboard = async (req,res) => {
      return res.redirect('/')
      
     }
-    res.render("feed.ejs", { posts: posts, user: req.user, users: users, network, members: members, hashMap2, hashMap });
+  
+    res.render("feed.ejs", { posts: posts, user: req.user, users: users, network, members: members, hashMap, networkFeed });
 
   }  catch(err) {
     console.error(err)

@@ -1,4 +1,4 @@
-<div class="mt-5">
+<div class="mt-5 hidden" id="postForm">
     <h2>Add a post</h2>
     <% if(network) { %>
         <form action="/post/createPost/<%=network.name%>" enctype="multipart/form-data" method="POST">
@@ -14,7 +14,8 @@
               <label for="imgUpload" class="form-label">Image</label>
               <input type="file" class="form-control" id="imageUpload" name="file">
             </div>
-            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            <button type="submit" class="btn btn-primary" id="submitPostButton" value="Upload">Submit</button>
+            <button type="reset" class="btn btn-primary" id="cancelButton">Cancel</button>
           </form> 
 
           <% } %>
