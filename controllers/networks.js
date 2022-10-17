@@ -123,7 +123,7 @@ module.exports = {
         console.error(err)
     }
    },
-   getNetworksPage: async (req,res) => {
+   getMembersPage: async (req,res) => {
     try {
         const network = await Network.findOne({ name: req.params.id }).lean()
         const members = await User.find({ "_id": { $in: network.members } }).lean()
