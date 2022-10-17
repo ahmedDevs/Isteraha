@@ -110,7 +110,30 @@ module.exports = {
     }  catch(err) {
         console.error(err)
     }
-   }
+   },
+   postLeaveNetwork: async(req,res) => {
+    try {
+        const network = await Network.findOne({ name: req.params.id }).lean()
+        const user = await User.findById(req.user._id)
+        const networksArr = user.networks
+        networksArr.splice(networksArr.indexOf(network._id), 1)
+        await user.save()
+        res.redirect('/dashboard')
+    }  catch(err) {
+        console.error(err)
+    }
+   },
+   getNetworksPage: async (req,res) => {
+    try {
+        const network = await Network.findOne({ name: req.params.id }).lean()
+        const members = await User.find({ "_id": { $in: network.members } }).lean()
+        res.render("members.ejs", { members: members })
+    }  catch(err) {
+        console.error(err)
+    }
+   },
+
+
 //    getDashboard: async (req,res) => {
 //     try {
        

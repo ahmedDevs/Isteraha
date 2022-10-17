@@ -3,17 +3,56 @@
 
 
 
-<header class="bg-white shadow">
+<header class="bg-white shadow commentPageHeader">
+  <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+    <% if(user.image) { %>
+    <img src="<%= user.image %>" alt="profile pic">
+    <% } else { %> 
+      <img src="https://placekitten.com/g/100/100" alt="profile pic">
+    <% } %>
+
+    <div>
+    <span><%= user.name %></span>
+    <span>username: <%= user.userName %></span>
+    <span>likes: <%= post.likes %></span>
+
+    <div class="commentPageIcons">
+      <form
+      class="col-1"
+      action="/post/likePost/<%= post.id %>?_method=PUT"
+      method="POST"
+    >
+      <button class="btn btn-primary fa fa-heart" type="submit"></button>
+    </form>
+  
+    <form
+    action="/post/deletePost/<%= post.id %>?_method=DELETE"
+    method="POST"
+    class="col-3"
+  >
+    <button class="btn btn-primary fa fa-trash" type="submit"></button>
+  </form>
+    </div>
+ 
+    </div>
+
+  </div>
+
+
+
+
+
   <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
     <h1 class="text-3xl font-bold tracking-tight text-gray-900"><%= post.title %></h1>
+
   </div>
 </header>
 
-<div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+<!-- <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
   <p class="text1 "><%= post.caption %></p>
-</div>
+</div> -->
 
-<div class="container">
+<!-- <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <h2><%= post.title %></h2>
@@ -37,20 +76,20 @@
         </form>
         <%}%>
       </div>
-    </div>
-    <div class="col-3 mt-5">
+    </div> -->
+    <!-- <div class="col-3 mt-5">
       <p><%= post.caption %></p>
-    </div>
+    </div> -->
 
-
+<!-- 
     <h2>Add Comment</h2>
     <div>
       <form action="/<%= post.id %>/comments/createComment" method="POST" class="col-3">
         <input type="text" name="comment" required>
         <button class="btn btn-primary" type="submit">Comment</button>
       </form>
-    </div>
-    <ul>
+    </div> -->
+    <!-- <ul>
       <% for (let i=0; i < comments.length; i++) {%>
         <li class="col-6 justify-content-between mt-5">
           <%=comments[i].comment%>
@@ -61,15 +100,17 @@
               <%}%>
                 <%}%>
         </li>
-    </ul>
+    </ul> -->
 
     
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
-    </div>
-  </div>
-</div>
+    <!-- <div class="col-6 mt-5"> -->
+      <!-- <a class="btn btn-primary" href="/profile">Return to Profile</a> -->
+      <!-- <a class="btn btn-primary" href="/feed">Return to Feed</a> -->
+    <!-- </div> -->
+
+
+  <!-- </div>
+</div> -->
 
 
 
@@ -138,26 +179,42 @@
 
 
   <div class="d-flex justify-content-between p-2 px-3" id="postBoxCommentSection">
-    <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/UXdKE3o.jpg" width="50" class="rounded-circle">
-        <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"><%= post.caption %> </span> <small class="text-primary">Collegues</small> </div>
+    <div class="d-flex flex-row align-items-center">
+       <!-- <img src="https://i.imgur.com/UXdKE3o.jpg" width="50" class="rounded-circle"> -->
+        <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"><%= post.caption %> </span> 
+          <!-- <small class="text-primary">Collegues</small>  -->
+        </div>
     </div>
   
   
-    <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div>
-  </div> <img src="" class="img-fluid postImage">
+    <div class="d-flex flex-row mt-1 ellipsis"> 
+      <!-- <small class="mr-2">20 mins</small> 
+      <i class="fa fa-ellipsis-h"></i>  -->
+    </div>
+  </div> 
+  
+  <!-- <img src="" class="img-fluid postImage"> -->
 
 
 
-  <div class="d-flex justify-content-center pt-3 pb-2"> <form action="/comment/createComment/<%= post.id %>" method="POST" id="commentForm"><input type="text" name="comment" placeholder="+ Add a note" required class="form-control addtxt"></form></div>
+  <div class="d-flex justify-content-center pt-3 pb-2"> 
+    <form action="/comment/createComment/<%= post._id %>" method="POST" id="commentForm"><input type="text" name="comment" placeholder="+ Add a note" required class="form-control addtxt"></form>
+  </div>
+
+  <% for(let i = 0; i < comments.length; i++) { %>
   <div class="d-flex justify-content-center py-2">
-      <div class="second py-2 px-2"> <span class="text1">Type your note, and hit enter to add it</span>
+      <div class="second py-2 px-2"> <p class="text1"><%= comments[i].comment %></p>
           <div class="d-flex justify-content-between py-1 pt-2">
               <div><img src="https://i.imgur.com/AgAC1Is.jpg" width="18"><span class="text2">Martha</span></div>
               <div><span class="text3">Upvote?</span><span class="thumbup"><i class="fa fa-thumbs-o-up"></i></span><span class="text4">3</span></div>
           </div>
       </div>
   </div>
-  <div class="d-flex justify-content-center py-2">
+  <% } %>
+
+
+
+  <!-- <div class="d-flex justify-content-center py-2">
       <div class="second py-2 px-2"> <span class="text1">Type your note, and hit enter to add it</span>
           <div class="d-flex justify-content-between py-1 pt-2">
               <div><img src="https://i.imgur.com/tPvlEdq.jpg" width="18"><span class="text2">Curtis</span></div>
@@ -180,7 +237,7 @@
               <div><span class="text3">Upvote?</span><span class="thumbup"><i class="fa fa-thumbs-o-up"></i></span><span class="text4 text4o">1</span></div>
           </div>
       </div>
-  </div>
+  </div> -->
 </div>
 
 
@@ -226,6 +283,6 @@
   </div>
 </div> -->
 
-<script src="/js/commentForm" ></script>
+<!-- <script src="/js/commentForm.js" ></script> -->
 
 <%- include('partials/footer') -%>

@@ -78,7 +78,7 @@
           <p>You don't have any notifications.</p>
         <% } %>
         <h2>My Invitations</h2>
-        <% for(let i = 0; i < network.reverse().length; i++) { %>
+        <% for(let i = 0; i < network.length; i++) { %>
           <div class="card p-3">
                
               <div class="d-flex flex-row mb-3"><img src="<%= network[i].logo %>" width="70">
@@ -96,7 +96,7 @@
                     <button><span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span></button>
                 </form>
 
-                <form action="/<%=network[i].name%>/declineInvitation?method_DELETE" method="post">
+                <form action="/invite/<%=network[i].name%>/decline?method_DELETE" method="post">
                     <button><span class="text-primary">Decline&nbsp;<i class="fa fa-angle-right"></i></span></button>
                 </form>
        

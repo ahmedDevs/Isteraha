@@ -80,7 +80,7 @@ exports.getInvitePage = async (req,res) => {
       console.log('Invitation accepted')
       user.networks.push(invitationId)
       user.invitations.splice(user.invitations.indexOf(invitationId), 1)
-      await invitation.update(
+      await invitation.updateOne(
         {
           $inc: { numberOfMembers: 1 },
         }, 
@@ -95,4 +95,15 @@ exports.getInvitePage = async (req,res) => {
     }  catch(err) {
       console.error(err)
     }
+   }
+   exports.postDeclineInvitation = async (req,res) => {
+      try {
+        const network = await Network.findOne({ name: req.params.id }).lean()
+        const invitedUser = await User.findById(req.user._id)
+        invitedUser.invitations.splice(invitedUser.invitations.indexOf(network._id), 1)
+        await invitedUser.save()
+        res.redirect('/notification')
+      }  catch(err) {
+        console.error(err)
+      }
    }

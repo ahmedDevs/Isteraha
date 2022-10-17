@@ -34,8 +34,10 @@
               <% if(networks.length  < 1) { %>
                 <p>You don't have any networks. You can create networks and communities from <a class="text-primary" href="/networks/create">here!</a></p>
               <% } %>
+
+            
               <% for(let i = 0; i < networks.length; i++) { %>
-                <a href="/<%=networks[i].name%>/feed">
+                <a href="/<%=networks[i].name%>/feed" class="createdNetworks">
                 <div class="card p-3">
                  
                     <div class="d-flex flex-row mb-3"><img src="<%= networks[i].logo %>" width="70">
@@ -57,6 +59,9 @@
                 </div>
                 </a>
                 <% } %>
+             
+
+
             </div>
           <!-- </div> -->
         </div>
@@ -64,7 +69,7 @@
 
         <div class="container mt-5">
           <!-- <div class="row"> -->
-              <div class="col-md-4 networkContainer">
+              <div class="col-md-4  networkContainer">
                
                 <h2>Member of:</h2>
                 <% if(memberOf.length  < 1) { %>
@@ -82,7 +87,10 @@
                       <div class="d-flex justify-content-between install mt-3"><span><%= memberOf[i].numberOfMembers %> members</span>
    
                            <a href="/invite/<%=memberOf[i].name%>"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
-                           <a href="#"><span class="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </a>
+                           <form action="/network/<%= memberOf[i].name %>/leave" method="POST">
+                            <button><span class="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </button>
+                           </form>
+                           
                           <!-- <span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span> -->
                        
                       </div>

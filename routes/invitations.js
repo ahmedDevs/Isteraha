@@ -18,5 +18,5 @@ router.post("/:id", ensureAuth, invitationsController.postInvitePage)
 
 // router.get("/:id/acceptInvitation", ensureAuth, authController.getInvitePage)
 router.put("/:id/accept", ensureAuth, invitationsController.postAcceptInvitation)
-
+router.post("/:id/decline", invitationsController.postDeclineInvitation)
 module.exports = router
