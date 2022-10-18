@@ -9,9 +9,9 @@ module.exports = {
     try {
       const params = req.params.id
       let isFollower = false
-      const profile = await User.findOne({ userName: params })
+      const profile = await User.findOne({ userName: params }).lean()
       const profileFollowers = profile.followers
-      
+
       const posts = await Post.find({ user: profile._id }).lean()
       if(params !== req.user.userName && profileFollowers.includes(req.user._id)) {
         isFollower = true
@@ -52,6 +52,7 @@ module.exports = {
       const user = await User.findById(post.user).lean()
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
       res.render("post.ejs", { post: post, user: req.user, comments: comments, user })
+      // isLiked?
     } catch (err) {
       console.log(err);
     }
@@ -115,16 +116,34 @@ module.exports = {
   },
   likePost: async (req, res) => {
     try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        },
-        {
-          new: true,
-        },
-      );
-      console.log("Likes +1");
+      const post = await Post.findById(req.params.id)
+      const likeArr = post.likeBy
+     
+      if(likeArr.includes(req.user._id) === true) {
+        await post.updateOne(
+          {
+            $inc: { likes: -1 },
+          },
+          {
+            new: true,
+          },
+        ) 
+        
+        likeArr.splice(likeArr.indexOf(req.user._id),1)
+        await post.save()
+      }  else { 
+        await post.updateOne(
+          {
+            $inc: { likes: 1 },
+          },
+          {
+            new: true,
+          },
+        ) 
+        
+        likeArr.push(req.user._id)
+        await post.save()
+      }
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);

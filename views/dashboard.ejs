@@ -32,7 +32,7 @@
       
               <h2>My Networks:</h2>
               <% if(networks.length  < 1) { %>
-                <p>You don't have any networks. You can create networks and communities from <a class="text-primary" href="/networks/create">here!</a></p>
+                <p>You don't have any networks. You can create networks and communities from <a class="text-primary" href="/network/create">here!</a></p>
               <% } %>
 
             
@@ -44,8 +44,10 @@
                         <div class="d-flex flex-column ml-2"><span><%= networks[i].name %></span><span class="text-black-50"><%= networks[i].slogan %></span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
                     </div>
                     <h6><%= networks[i].about %></h6>
-                    <div class="d-flex justify-content-between install mt-3"><span><%= networks[i].numberOfMembers %> members</span>
- 
+                    <div class="d-flex justify-content-between install mt-3">
+                      <a href="/network/<%= networks[i].name %>/members">
+                      <span><%= networks[i].numberOfMembers %> members</span>
+                    </a>
                          <a href="/invite/<%=networks[i].name%>"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
 
                          <a href="/<%= networks[i].name %>/settings/network"><span class="text-primary">Settings&nbsp;<i class="fa fa-angle-right"></i></span> </a>
@@ -84,8 +86,13 @@
                           <div class="d-flex flex-column ml-2"><span><%= memberOf[i].name %></span><span class="text-black-50"><%= memberOf[i].slogan %></span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
                       </div>
                       <h6><%= memberOf[i].about %></h6>
-                      <div class="d-flex justify-content-between install mt-3"><span><%= memberOf[i].numberOfMembers %> members</span>
-   
+                      <div class="d-flex justify-content-between install mt-3">
+                       
+                        <a href="/network/<%= memberOf[i].name %>/members">
+                          <span><%= memberOf[i].numberOfMembers %> members</span>
+                        </a>
+                 
+                        
                            <a href="/invite/<%=memberOf[i].name%>"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
                            <form action="/network/<%= memberOf[i].name %>/leave" method="POST">
                             <button><span class="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </button>

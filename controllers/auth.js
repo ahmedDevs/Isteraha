@@ -196,6 +196,7 @@ exports.postFollow = async (req,res) => {
     await follower.save()
     await followed.save()
     res.redirect(`/${params}/profile`)
+
   }  catch(err) {
     console.error(err)
   }
@@ -212,6 +213,7 @@ exports.postUnfollow = async (req,res) => {
     await unfollower.save()
     await unfollowed.save()
     res.redirect(`/${params}/profile`)
+   
   }  catch(err) {
     console.error(err)
   }

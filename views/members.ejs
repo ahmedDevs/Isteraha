@@ -1,0 +1,108 @@
+<%- include('partials/header') -%>
+<%- include('partials/menu') -%>
+
+
+
+<header class="bg-white shadow feedHeader">
+      <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 networkDashInfoFeed">
+      
+        <div>
+        <img src="<%= network.logo %>" alt="logo">
+        <span>members: <%= network.numberOfMembers %></span>
+        <span></span>
+        </div>
+    
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">People also in <%= network.name %></h1>
+        
+      </div>
+    
+  </header>
+
+
+
+<div class="container mt-5">
+   
+    <div class="row d-flex justify-content-center">
+        
+        <div class="col-md-7">
+            <% for(let i = 0; i < members.length; i++) { %>
+            <div class="card p-3 py-4 memberPageProfiles">
+                
+                <div class="text-center">
+                    <% if(members[i].image) { %>
+                    <img src="<%= members[i].image %>" width="100" class="rounded-circle">
+                    <% } else { %>
+                    <img src="https://api.lorem.space/image/movie?w=100&h=100" width="100" class="rounded-circle">
+                    <% } %>
+                </div>
+                
+                <div class="text-center mt-3">
+                    <% if (user.id == members[i]._id) { %>
+                    <span class="bg-secondary p-1 px-4 rounded text-white">You</span>
+                    <% } %>
+                    <h4 class="mt-2 mb-0"><%= members[i].name %></h4>
+                    <h5 class="mt-2 mb-0">username: <%= members[i].userName %></h5>
+                    <span>followers <%= members[i].followers.length %></span>
+                    <span>following <%= members[i].following.length %></span>
+                    
+                    <div class="px-4 mt-1">
+                        <p class="fonts"><%= members[i].bio %></p>
+                    </div>
+                    
+                     <!-- <ul class="social-list">
+                        <li><i class="fa fa-facebook"></i></li>
+                        <li><i class="fa fa-dribbble"></i></li>
+                        <li><i class="fa fa-instagram"></i></li>
+                        <li><i class="fa fa-linkedin"></i></li>
+                        <li><i class="fa fa-google"></i></li>
+                    </ul> -->
+                    
+                    <div class="buttons">
+                      <% if (user.id == members[i]._id) { %>
+                        <button class="btn btn-outline-primary px-4 editButton">Edit</button>
+                        <% } %>
+  
+                        <% if(user.id != members[i]._id) { %>
+                        <form action=""></form>
+                        <button class="btn btn-outline-primary px-4">Message</button>
+                          <% } %>
+                      
+                         <!-- check if they're followers -->
+  
+                         <% if(!followingObj[members[i]._id] && user.id != members[i]._id) { %>
+                            <form  class="buttons" action="/<%= members[i].userName %>/follow" method="post">
+                           <button class="btn btn-outline-primary px-4 ">Follow</button>
+                          </form>
+                            <% } %>
+                          
+                            <% if(followingObj[members[i]._id && user.id != members[i]._id]) { %>
+                            <form  class="buttons" action="/<%= members[i].userName %>/unfollow" method="post">
+                              <button class="btn btn-primary px-4 ms-3">Unfollow</button>
+                              </form>
+                              <% } %>
+
+
+                    </div>
+                    
+                    
+                </div>
+                
+               
+                
+                
+            </div>
+            <% } %>
+        </div>
+        
+    </div>
+   
+  </div>
+ 
+
+
+
+
+
+
+
+<%- include('partials/footer') -%>

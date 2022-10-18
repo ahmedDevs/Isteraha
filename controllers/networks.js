@@ -48,8 +48,12 @@ module.exports = {
     }
    },
    getNetworkPage: async (req,res) => {
-    const user = await User.findOne({ userName: req.user.userName }).lean()
-    res.render('network.ejs', { user })
+    try {
+        const user = await User.findOne({ userName: req.user.userName }).lean()
+        res.render('network.ejs', { user })
+    }  catch(err) {
+        console.error(err)
+    }
    },
 
    getNetworks: async (req,res) => {
@@ -125,14 +129,36 @@ module.exports = {
    },
    getMembersPage: async (req,res) => {
     try {
+       
+        const user = req.user
         const network = await Network.findOne({ name: req.params.id }).lean()
-        const members = await User.find({ "_id": { $in: network.members } }).lean()
-        res.render("members.ejs", { members: members })
+        const members = await User.find({ "networks": { $in: network._id } }).lean()
+        const following = await User.find({ "followers": { $in: user._id } }).lean()
+        const followingObj = following.reduce((a, v) => ({...a, ...v}), {});
+        console.log(followingObj)
+        res.render("members.ejs", { members: members, user, network, followingObj })
     }  catch(err) {
         console.error(err)
     }
    },
 
+//    getProfile: async (req, res) => {
+//     try {
+//       const params = req.params.id
+//       let isFollower = false
+//       const profile = await User.findOne({ userName: params }).lean()
+//       const profileFollowers = profile.followers
+
+//       const posts = await Post.find({ user: profile._id }).lean()
+//       if(params !== req.user.userName && profileFollowers.includes(req.user._id)) {
+//         isFollower = true
+//       }
+//       console.log(isFollower)
+//       res.render("profile.ejs", { profile, user: req.user, posts: posts, isFollower});
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   },
 
 //    getDashboard: async (req,res) => {
 //     try {
