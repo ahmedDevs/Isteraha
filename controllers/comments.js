@@ -26,5 +26,40 @@ module.exports = {
         } catch (err) {
             res.redirect("/profile");
         }
+    },
+    likeComment: async (req,res) => {
+        try {
+            const comment = await Comment.findById(req.params.id)
+            const likeArr = comment.likedBy
+     
+      if(likeArr.includes(req.user._id) === true) {
+        await comment.updateOne(
+          {
+            $inc: { likes: -1 },
+          },
+          {
+            new: true,
+          },
+        ) 
+        
+        likeArr.splice(likeArr.indexOf(req.user._id),1)
+        await comment.save()
+      }  else { 
+        await comment.updateOne(
+          {
+            $inc: { likes: 1 },
+          },
+          {
+            new: true,
+          },
+        ) 
+        
+        likeArr.push(req.user._id)
+        await comment.save()
+      }
+      res.redirect(`/post/${req.params.id}`);
+        }  catch(err) {
+            console.error(err)
+        }
     }
 }

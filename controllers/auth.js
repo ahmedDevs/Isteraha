@@ -103,18 +103,26 @@ exports.getDashboard = async (req,res) => {
 
  exports.getNetworkFeed = async (req,res) => {
   try {
+    
     const param = req.params.id
     const network = await Network.findOne({ name: param }).lean()
+    // const user = await User.findById(req.user._id).lean()
     const networkId = network._id
 
+    if(network.type == 'Private' && network.createdBy != req.user._id && network[members.includes(req.user._id)] == false) {
+      return res.redirect('/dashboard')
+      
+     }
+    // if(req.user.networks.includes(networkId) || network.type == 'Public' || network.createdBy == req.user._id) {
+
+    //     return res.redirect('/dashboard')
+    
     const posts = await Post.find({ network: networkId}).sort({ createdAt: "desc" }).lean();
    
    
     const networkFeed = true
     // const uniqueUserIds = [...new Set(userIds)]
-    // console.log(uniqueUserIds)
-    // console.log(userIds)
-    // console.log(uniqueUserIds)
+
     // const users = await User.find({ '_id': { $in: userIds } }).lean();
     const users = await User.find({ networks: networkId }).lean()
 
@@ -129,7 +137,6 @@ exports.getDashboard = async (req,res) => {
       hashMap[posters[i]._id] = posters[i]
     }
   
-  //  console.log(hashMap)
      //  things.find({tennants: mongoose.Types.ObjectId("123")});
     const members = await User.find({ 'networks': { $in: networkId } }).limit(5).lean()
     // console.log(members)
@@ -143,12 +150,9 @@ exports.getDashboard = async (req,res) => {
     // }
     // console.log(hashMap2)
     // get the comments for the posts
-    const networkUser = await User.findOne({'networks': { $in : networkId } }).lean()
-    // console.log(networkUser)
-    if(!networkUser) {
-     return res.redirect('/')
-     
-    }
+    // const networkUser = await User.findOne({'networks': { $in : networkId } }).lean()
+    // const userNetworks = req.user.networks
+   
   
     res.render("feed.ejs", { posts: posts, user: req.user, users: users, network, members: members, hashMap, networkFeed });
 

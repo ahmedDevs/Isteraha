@@ -5,8 +5,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 
 router.get("/network/:id", ensureAuth, networksController.getNetworkSettings)
-router.get("/user", ensureAuth, networksController.getUserSettings)
+// router.put("/user", ensureAuth, networksController.putUserSettings)
 router.post("/network/:id/save", ensureAuth, networksController.postNetworkSettings)
-router.post("/user/save", ensureAuth, networksController.postUserSettings)
+router.put("/user/save", ensureAuth, networksController.putUserSettings)
 
 module.exports = router;

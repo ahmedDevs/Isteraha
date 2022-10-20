@@ -58,10 +58,6 @@
                     </ul> -->
                     
                     <div class="buttons">
-                      <% if (user.id == members[i]._id) { %>
-                        <button class="btn btn-outline-primary px-4 editButton">Edit</button>
-                        <% } %>
-  
                         <% if(user.id != members[i]._id) { %>
                         <form action=""></form>
                         <button class="btn btn-outline-primary px-4">Message</button>
@@ -80,7 +76,13 @@
                               <button class="btn btn-primary px-4 ms-3">Unfollow</button>
                               </form>
                               <% } %>
-
+                            
+                              <% if(network.createdBy == user.id && members[i]._id != user.id) { %>
+                              <form  class="buttons" action="/network/<%= network.name %>/<%= members[i].userName %>/remove" method="post">
+                                <button class="btn btn-primary px-4 ms-3">Remove User</button>
+                                </form>
+                              <% } %>
+                          
 
                     </div>
                     

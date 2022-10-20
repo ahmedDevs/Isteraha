@@ -2,14 +2,23 @@
 
   <div id="sideMenu" class="d-flex flex-column flex-shrink-0 bg-light vh-100" style="width: 100px;">
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-        <li class="nav-item"> <a href="/" class="nav-link active py-3 border-bottom"> <i class="fa fa-home"></i> <small>Home</small> </a> </li>
+        <!-- <li class="nav-item"> 
+          <a href="/" class="nav-link active py-3 border-bottom"> 
+            <i class="fa fa-home"></i> <small>Home</small> </a> </li>-->
+
+            <li class="nav-item"> 
+              <a href="/" class="nav-link py-3 border-bottom menuLogo">
+                <img src="/imgs/default.png" class="fa" alt="logo">
+              </a> 
+            </li>
+
         <li> <a href="/dashboard" class="nav-link py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small>Dashboard</small> </a> </li>
         <li> <a href="/<%= user.userName %>/profile" class="nav-link py-3 border-bottom"> <i class="fa fa-light fa-user"></i> <small>My Profile</small> </a> </li>
         
 
         <!-- <i class="fa fa-first-order"></i> -->
       
-        <li> <a href="" class="nav-link py-3 border-bottom"> <i class="fa fa-solid fa-people-group"></i> <small>Public</small> </a> </li>
+        <li> <a href="/network" class="nav-link py-3 border-bottom"> <i class="fa fa-solid fa-people-group"></i> <small>Public</small> </a> </li>
         <li class="nav-item"> 
             <!-- <span class="sr-only">View notifications</span> -->
             <!-- Heroicon name: outline/bell -->

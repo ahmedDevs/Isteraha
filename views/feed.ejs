@@ -39,7 +39,9 @@
  
   
   <div class="suggestionBox">
+    <% if(members.length > 1) { %>
     <h3 class="text-1xl font-bold tracking-tight text-gray-400">People in <%= network.name %> you might know</h3>
+    <% } %>
     <ul>
         
         <% for(let i = 0; i < members.length; i++) { %>

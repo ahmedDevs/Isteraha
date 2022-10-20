@@ -494,12 +494,15 @@ html {
 .networkContainer {
     display: flex;
     flex-flow: column nowrap;
- 
 }
 
 .memberPageProfiles {
     max-height: 400px;
 }
+
+/* .commenterProfilePic :hover {
+    border: rgb(248, 249, 250) !important;
+} */
 
 
 /* .createdNetworks {

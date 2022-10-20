@@ -13,7 +13,7 @@ module.exports = {
       const profileFollowers = profile.followers
 
       const posts = await Post.find({ user: profile._id }).lean()
-      if(params !== req.user.userName && profileFollowers.includes(req.user._id)) {
+      if(params != req.user.userName && profileFollowers.includes(req.user._id)) {
         isFollower = true
       }
       console.log(isFollower)
@@ -33,15 +33,15 @@ module.exports = {
       console.log(users)
   
       const network = await Network.find().sort({ numberOfMemebrs: "desc" }).lean()
-     
-      const user = await User.find({ _id: posts.user }).lean()
+    
+      // const user = await User.find({ _id: posts.user }).lean()
 
       // console.log(user)
       // console.log('uuuuuser')
       if(!req.params.id) {
         general = true
       }
-      res.render("feed.ejs", { posts: posts, user, network, general, users });
+      res.render("feed.ejs", { posts: posts, user: req.user, network, general, users });
     } catch (err) {
       console.log(err);
     }
@@ -49,9 +49,14 @@ module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id).lean()
-      const user = await User.findById(post.user).lean()
+      const poster = await User.findById(post.user).lean()
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
-      res.render("post.ejs", { post: post, user: req.user, comments: comments, user })
+      const userIds = comments.map(e => e.user)
+      const users = await User.find({ "_id": { $in: userIds } }).lean()   
+      const commenters = users.reduce((a,c) => ({...a, [c._id]: c}), {})
+      console.log(commenters)
+      
+      res.render("post.ejs", { post: post, user: req.user, comments: comments, poster, commenters })
       // isLiked?
     } catch (err) {
       console.log(err);

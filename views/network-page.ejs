@@ -12,9 +12,6 @@
     </div>
   </header>
 
-  
-
-
 
     <div class="container mt-5">
         <!-- <div class="row"> -->
@@ -28,11 +25,9 @@
                     </div>
                     <h6><%= networks[i].about %></h6>
                     <div class="d-flex justify-content-between install mt-3"><span><%= networks[i].numberOfMembers %> members</span>
-                        <% if(locals.isAuth) { %>
-            
+                        <% if(locals.isAuth) { %> 
                          <a href="/invite/<%=networks[i].name%>"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
                          <a href="#"><span class="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </a>
-                        
                          <%  } %>
                         <!-- <span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span> -->
                          <% if(!locals.isAuth) { %>

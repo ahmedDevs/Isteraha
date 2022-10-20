@@ -18,11 +18,16 @@
           <div class="card p-3 py-4">
               
               <div class="text-center">
-                  <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle">
+                <% if(profile.image) { %>
+                  <img src="<%= profile.image %>" alt="profile pic">
+                <% } %>
+                  <img src="/imgs/favicon-32x32.png" width="100" class="rounded-circle">
               </div>
               
               <div class="text-center mt-3">
-                  <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                <% if(user.id == profile._id) { %>
+                  <span class="bg-secondary p-1 px-4 rounded text-white">You</span>
+                <% } %>
                   <h4 class="mt-2 mb-0"><%= profile.name %></h4>
                   <h5 class="mt-2 mb-0">username: <%= profile.userName %></h5>
                   <span>followers <%= profile.followers.length %></span>
@@ -185,7 +190,7 @@
                             
                             </div>
                         <hr>
-                        
+
                     </div>
                     </a>
 
@@ -221,7 +226,7 @@
 
 <div class="container mt-3 editProfileForm hidden" id="profileForm">
   <div class="card p-3 text-center">
-    <form action="/settings/profile?_method=PUT" method="POST">
+    <form action="/settings/user/save?_method=PUT" method="POST">
       <div class="d-flex flex-row justify-content-center mb-3">
           <div class="image"> 
             <% if(!user.image) { %>
@@ -230,10 +235,10 @@
             <img src="<%= user.image %>" class="rounded-circle"> 
             <!-- <span><i class='bx bxs-camera-plus'></i></span>  -->
           </div>
-          <div class="d-flex flex-column ms-3 user-details">
+          <!-- <div class="d-flex flex-column ms-3 user-details">
               <h4 class="mb-0">Zenda Grace</h4>
               <div class="ratings"> <span>4.0</span> <i class='bx bx-star ms-1'></i> </div> <span>Pro Member</span>
-          </div>
+          </div> -->
       </div>
       <h4>Edit Profile</h4>
       <div class="row">

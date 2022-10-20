@@ -33,9 +33,11 @@ module.exports = {
         })
         }
           const user = await User.findOne({ _id: req.user._id })
-          const network = await Network({ name: req.body.networkName})
+          const network = await Network.findOne({ name: req.body.networkName})
           user.networks.push(network._id)
           network.members.push(req.user._id)
+        //   await user.save()
+        //   await network.save()
           console.log(user)
           console.log(network)
           const param = await req.body.networkName
@@ -55,10 +57,10 @@ module.exports = {
         console.error(err)
     }
    },
-
    getNetworks: async (req,res) => {
+    let isAuth = ''
     if(req.user) {
-    let isAuth = true
+    isAuth = true
     // const userNetworks = await Network.find({ _id: { "$elemMatch" : req.user.networks } }).lean()
     const userNetworks = await Network.find({ _id: { $in: req.user.networks } }).sort({ numberOfMembers: "desc" }).lean()
     console.log(userNetworks)
@@ -106,10 +108,29 @@ module.exports = {
         console.error(err)
     }
    },
-   postUserSettings: async(req,res) => {
+   putUserSettings: async(req,res) => {
     try {
+        if(req.file) {
         const result = await cloudinary.uploader.upload(req.file.path);
+        }
         const user = await User.findById(req.user._id)
+        if(req.body.name && req.body.bio && result) {
+        await user.update(
+            {
+                $set: { image: result.secure_url, cloudinaryId: result.public_id, name: req.body.name, bio: req.body.bio },
+            },
+        )
+        }  
+           
+        // await Post.create({
+        //   title: req.body.title,
+        //   image: result.secure_url,
+        //   cloudinaryId: result.public_id,
+        //   caption: req.body.caption,
+        //   likes: 0,
+        //   user: req.user.id,  
+        // });
+      
 
     }  catch(err) {
         console.error(err)
@@ -133,6 +154,7 @@ module.exports = {
         const user = req.user
         const network = await Network.findOne({ name: req.params.id }).lean()
         const members = await User.find({ "networks": { $in: network._id } }).lean()
+        console.log(members)
         const following = await User.find({ "followers": { $in: user._id } }).lean()
         const followingObj = following.reduce((a, v) => ({...a, ...v}), {});
         console.log(followingObj)
@@ -141,7 +163,27 @@ module.exports = {
         console.error(err)
     }
    },
-
+   postRemoveUser: async (req,res) => {
+        try { 
+            const network = await Network.findOne({ name: req.params.network })
+            const user = await User.findOne({ userName: req.params.user })
+            network.members.splice(network.members.indexOf(user._id), 1)
+            await network.update(
+                {
+                    $inc: { numberOfMembers: -1 },
+                },
+                {
+                    new: true,
+                },
+            )
+            user.networks.splice(user.networks.indexOf(network._id), 1)
+            await network.save()
+            await user.save()
+            res.redirect(`/network/${req.params.network}/members`)
+        }  catch(err) {
+            console.error(err)
+        }
+   }
 //    getProfile: async (req, res) => {
 //     try {
 //       const params = req.params.id
