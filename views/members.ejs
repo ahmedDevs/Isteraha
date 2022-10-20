@@ -71,7 +71,7 @@
                           </form>
                             <% } %>
                           
-                            <% if(followingObj[members[i]._id && user.id != members[i]._id]) { %>
+                            <% if(followingObj[members[i]._id] == members[i]._id && user.id != members[i]._id) { %>
                             <form  class="buttons" action="/<%= members[i].userName %>/unfollow" method="post">
                               <button class="btn btn-primary px-4 ms-3">Unfollow</button>
                               </form>
