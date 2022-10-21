@@ -18,7 +18,7 @@
                     <span class="sr-only">Your Company</span>
                     <img alt="Your Company" class="h-8 w-auto sm:h-20" src="/imgs/cover.png">
                   </a>
-                  <div class="-mr-2 flex items-center md:hidden">
+                  <div class="-mr-2 flex items-center md:hidden" id="hamburgerMenu">
                     <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
                       <span class="sr-only">Open main menu</span>
                       <!-- Heroicon name: outline/bars-3 -->
@@ -57,7 +57,7 @@
             <div class="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
               <div class="flex items-center justify-between px-5 pt-4">
                 <div>
-                  <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+                  <img class="h-8 w-auto" src="/imgs/cover.png" alt="pic">
                 </div>
                 <div class="-mr-2">
                   <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -69,7 +69,7 @@
                   </button>
                 </div>
               </div>
-              <div class="space-y-1 px-2 pt-2 pb-3">
+              <div class="space-y-1 px-2 pt-2 pb-3" id="mobileMenu">
                 <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Product</a>
   
                 <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Features</a>
@@ -103,7 +103,7 @@
       </div>
     </div>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-      <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full" src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="">
+      <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full" src="/imgs/homePic.png" alt="pic">
     </div>
   </div>
 
@@ -189,6 +189,14 @@
         <a href="/network" class="col-3 btn btn-primary">Create Your Social or Professional Network</a>
     </div>
 </main> -->
+
+<!-- <script>
+  const mobileMenu = document.getElementById('mobileMenu')
+  const hamburgerMenu = document.getElementById('hamburgerMenu')
+  hamburgerMenu.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden')
+  })
+</script> -->
     
 
 <%- include('partials/footer') -%>

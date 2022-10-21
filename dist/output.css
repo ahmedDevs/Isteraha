@@ -1,0 +1,1693 @@
+/*
+! tailwindcss v3.2.0 | MIT License | https://tailwindcss.com
+*/
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+*/
+
+html {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font family by default.
+2. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::-webkit-backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+/* profile stylings */
+
+/* *{
+    margin:0;
+    padding:0;
+} */
+
+/* .container{
+    min-height:100vh;
+    background-color:#ccc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+}
+
+.card{
+  height:430px;
+  width:320px;
+  background-color:#fff;
+  overflow:hidden;
+  border-radius:10px;
+  cursor:pointer;
+  font-family: 'Poppins', sans-serif;
+  position:relative;
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index:999;
+}
+
+.overlay .fa-close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  color:#fff;
+}
+
+.overlay img{
+  -o-object-fit:cover;
+     object-fit:cover;
+  transition:all 2s;
+  height: 100%;
+  width: 100%;
+}
+
+.d-none{
+  display:none;
+}
+
+.top-div{
+  position:relative;
+  padding:20px;
+  font-size:17px;
+  color:#fff;
+  z-index:1;
+}
+
+.top-div i:nth-child(1){
+  position:absolute;
+  transition:all 0.5s;
+  left:-40px;
+}
+
+.top-div i:nth-child(2){
+  position:absolute;
+  top:19px;
+  right:-40px;
+  transition:all 0.5s;
+}
+
+.card:hover i:nth-child(1){
+  top:20px;
+  left:20px;
+}
+
+.card:hover i:nth-child(2){
+  right:20px;
+}
+
+.image{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  height:180px;
+  width:100%;
+}
+
+.image span{
+  height:90px;
+  width:90px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:50%;
+  background-color:#ccc;
+  border:3px solid #fff;
+  z-index:100;
+}
+
+.image span img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  -o-object-fit:cover;
+     object-fit:cover;
+}
+
+.image h3{
+  margin-top:5px;
+  font-weight:900;
+  font-size:18px;
+  z-index:100;
+  color:#fff;
+}
+
+.image h4{
+  margin-top:-3px;
+  font-size:13px;
+  z-index:100;
+  color:#fff;
+}
+
+.arc{
+  display:flex;
+  position:relative;
+}
+
+.arc span{
+  height:600px;
+  width:600px;
+  background-image: linear-gradient(to bottom,#B8550F,#626262);
+  border-radius:50%;
+  position:absolute;
+  right:-135px;
+  top:-590px;
+}
+
+.about{
+  padding:10px 20px;
+}
+
+.about p:nth-child(1){
+  font-weight:600;
+}
+
+.about p:nth-child(2){
+  font-size:13px;
+  padding-right:90px;
+}
+
+.social{
+  padding-left:20px;
+  position:relative;
+}
+
+.social i{
+  padding:0px 4px;
+  color:#626262;
+}
+
+.social i:nth-child(1){
+  position:absolute;
+  left:-40px;
+  top:4px;
+  transition:all 0.5s;
+}
+
+.social i:nth-child(2){
+  position:absolute;
+  left:-40px;
+  top:4px;
+  transition:all 0.5s;
+  transition-delay:0.1s;
+}
+
+.social i:nth-child(3){
+  position:absolute;
+  left:-40px;
+  top:4px;
+  transition:all 0.5s;
+  transition-delay:0.2s;
+}
+
+.social i:nth-child(4){
+  position:absolute;
+  left:-40px;
+  top:4px;
+  transition:all 0.5s;
+  transition-delay:0.3s;
+}
+
+.card:hover .social i:nth-child(1){
+  left:20px;
+  top:4px;
+}
+
+.card:hover .social i:nth-child(2){
+  left:45px;
+  top:4px;
+}
+
+.card:hover .social i:nth-child(3){
+  left:70px;
+  top:4px;
+}
+
+.card:hover .social i:nth-child(4){
+  left:96px;
+  top:4px;
+}
+
+.button{
+  padding-left:20px;
+  display:flex;
+  position:relative;
+  padding-top:35px;
+  /*transition:all 0.5s;*/
+}
+
+.button button:nth-child(1){
+  height:30px;
+  width:90px;
+  margin-right:10px;
+  color:#fff;
+  background-color:green;
+  font-size:12px;
+  border-radius:30px;
+  border:none;
+  transition:all 0.5s;
+  cursor:pointer;
+}
+
+.button button:nth-child(2){
+  height:30px;
+  width:90px;
+  margin-right:10px;
+  color:#4D38F6;
+  border-radius:30px;
+  border:2px solid green;
+  font-size:12px;
+  background-color:#fff;
+  transition:all 0.5s;
+}
+
+.button button:nth-child(1):hover{
+  background-image: linear-gradient(to right,#B8550F,#626262);
+}
+
+.button button:nth-child(2):hover{
+  background-color:#ccc;
+  color:#000;
+  font-weight:700;
+}
+
+/* .profile-info{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+}
+.profile-info h2:nth-child(1){
+    position:absolute;
+    top:230px;
+    right:20px;
+    font-size:30px;
+    color:#626262;
+}
+.profile-info span:nth-child(2){
+      position:absolute;
+    top:260px;
+    right:20px;
+    font-size:10px;
+    font-weight:bold;
+    margin-top:6px;
+    color:#626262;
+}
+.profile-info h2:nth-child(3){
+    position:absolute;
+    top:290px;
+    right:20px;
+    font-size:30px;
+    color:#626262;
+}
+.profile-info span:nth-child(4){
+      position:absolute;
+    top:320px;
+    right:20px;
+    font-size:10px;
+    font-weight:bold;
+    margin-top:6px;
+    color:#626262;
+}
+.profile-info h2:nth-child(5){
+    position:absolute;
+    top:350px;
+    right:20px;
+    font-size:30px;
+    color:#626262;
+}
+.profile-info span:nth-child(6){
+    position:absolute;
+    top:380px;
+    right:20px;
+    font-size:10px;
+    font-weight:bold;
+    margin-top:6px;
+    color:#626262; 
+} */
+
+.card{
+  border:none;
+  position:relative;
+  overflow:hidden;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* .card:before{
+    
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:#E1BEE7;
+
+    background-color: rgb(0, 114, 244);
+    transform:scaleY(1);
+    transition:all 0.5s;
+    transform-origin: bottom
+} */
+
+.card:after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:4px;
+  height:100%;
+  /* background-color:#8E24AA; */
+  background-color:rgb(0, 114, 244);
+  transform:scaleY(0);
+  transition:all 0.5s;
+  transform-origin: bottom
+}
+
+.card:hover::after{
+  transform:scaleY(1);
+}
+
+.fonts{
+  font-size:11px;
+}
+
+.social-list{
+  display:flex;
+  list-style:none;
+  justify-content:center;
+  padding:0;
+}
+
+.social-list li{
+  padding:10px;
+  color:#8E24AA;
+  font-size:19px;
+}
+
+.buttons{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.buttons button:nth-child(1){
+  /* border:1px solid #8E24AA !important;
+       color:#8E24AA; */
+  height:40px;
+}
+
+.buttons button:nth-child(1):hover{
+  /* border:1px solid #8E24AA !important; */
+  color:#fff;
+  height:40px;
+  background-color:rgb(0, 114, 244);
+}
+
+.buttons button:nth-child(2){
+  /* border:1px solid #8E24AA !important;
+       background-color:#8E24AA;
+       color:#fff; */
+  height:40px;
+}
+
+.unfollowButton {
+  background-color: lightcoral;
+}
+
+.removeUserButton {
+  background-color: white !important;
+  color: rgb(0, 114, 244) !important;
+}
+
+.removeUserButton:hover {
+  background-color: lightcoral !important;
+}
+
+/* 
+ review this one */
+
+.container {
+  width: 40%;
+  flex-basis: 40%;
+}
+
+.card {
+  /* width: 100%; */
+  width: 100%;
+  flex-basis: 100%;
+}
+
+/* for the feed */
+
+.cardFeed {
+  height: auto;
+}
+
+.postImage {
+  max-height: 400px;
+  width: auto;
+}
+
+.networkDashInfoFeed {
+  position: relative;
+  left: 10%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.networkLogoContainer {
+  position: relative;
+  left: 10%;
+}
+
+.networkDashInfoFeed img {
+  width: 100px;
+}
+
+.networkDashInfoFeed h1 {
+  position: relative;
+  left: 20%;
+}
+
+.notifications-h1 {
+  text-align: center;
+}
+
+/* .networkDashInfoFeed span {
+    align-content: flex-end;
+} */
+
+/* forms  */
+
+/* .mb-3 {
+    display: flex;
+    flex-flow: column nowrap;
+} */
+
+#mainNetworkForm {
+  height: 70vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary {
+  color: black;
+}
+
+.h-96 {
+  display: flex;
+}
+
+/* .container.box {
+    border: 2px solid black;
+} */
+
+.dashboardList {
+  border-bottom: 1px solid black;
+}
+
+#mainDashboard {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+
+/* .container.mt-5 {
+    display: flex;
+    flex-flow: row wrap;
+
+} */
+
+.networkContainer {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.memberCardContainer {
+  width: 80%;
+}
+
+.card.memberPageProfiles {
+  width: 80%;
+}
+
+.memberPageProfiles {
+  max-height: 400px;
+}
+
+/* .commenterProfilePic :hover {
+    border: rgb(248, 249, 250) !important;
+} */
+
+/* .createdNetworks {
+    width: 30%;
+} */
+
+/* #feedContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    border: 2px solid red;
+}
+#feedContainer > .mt-5 {
+    flex-basis: 100%;
+    border: 2px solid violet;
+} */
+
+.mainFeed {
+  display: flex !important;
+  flex-basis: 100%;
+  width: 100%;
+}
+
+#posts {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  flex-basis: 40%;
+  height: 40%;
+  border: 2px solid salmon;
+}
+
+#posts li {
+  /* display: flex;
+    flex-basis: 70%; */
+  width: 70%;
+  border: 2px solid lightskyblue;
+}
+
+#menu {
+  /* border: 2px solid red; */
+  width: 10%;
+  position: fixed;
+  height: 100%;
+  text-align: center;
+  left: 0;
+  top: 15%;
+}
+
+#menu * {
+  text-decoration: none;
+  /* color: rgb(61, 122, 187); */
+  color: brown;
+  list-style: none;
+}
+
+#menu li {
+  margin-top: 10%;
+  height: 10%;
+}
+
+.suggestionBox {
+  display: block;
+  width: 25%;
+  /* clear: both;
+    float: right; */
+  height: 100%;
+  /* border: 2px solid blue; */
+  /* position: absolute; */
+  position: fixed;
+  right: 5%;
+  top: 10%;
+  overflow-x: hidden;
+}
+
+.suggestionBox > ul{
+  height: 70%;
+  list-style: none;
+}
+
+.suggestion {
+  /* display: flex;
+    justify-content: center; */
+  /* align-items: center; */
+  width: 100%;
+  height: 25%;
+  /* color: brown; */
+  margin: 2%;
+  /* border-bottom: 1px solid rgb(0, 114, 244); */
+  background-color: rgb(248, 249, 250);
+}
+
+.suggestion > a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.suggestion > a > div {
+  /* width: 100%;
+    height: 100%; */
+}
+
+.suggestion img {
+  position: relative;
+  left: 10px;
+  top: 10px;
+  border-radius: 50%;
+}
+
+.suggestion span {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.suggestion h3 {
+  text-align: center;
+}
+
+.dashboardList.networks {
+  width: 100%;
+  height: 100%;
+}
+
+.networkBoxUl {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+
+.networkBoxLi {
+  display: flex;
+  flex-flow: row wrap;
+  width: 30%;
+  height: 40%;
+  border: 2px solid salmon;
+}
+
+.networkBox {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  flex-basis: 100%;
+  height: 100%;
+  width: 40%;
+}
+
+.networkBox img {
+  height: 100%;
+  border: 2px solid blue;
+}
+
+.container.box ul {
+  width: 100%;
+  height: 100%;
+}
+
+.container.box {
+  width: 100%;
+  height: 100%;
+}
+
+#mainProfile {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  flex-basis: 100%;
+  width: 100%;
+}
+
+.formAndPostsBox {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.postTitle {
+  color: black;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* .postContent {
+    font-weight: 200;
+} */
+
+#postForm {
+  width: 50%;
+}
+
+.commentPageHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.commentPageHeader > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-basis: 30%;
+  width: 30%;
+}
+
+.commentPageHeader > div > div {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-left: 5%;
+  width: 50%;
+}
+
+.commentPageHeader > div > img {
+  border-radius: 50%;
+}
+
+.commentPageHeader > div + div {
+  display: flex;
+  justify-content: flex-start;
+  flex-basis: 60%;
+  width: 60%;
+}
+
+.commentPageIcons {
+  display: flex;
+  justify-content: space-evenly;
+  flex-basis: 100%;
+  width: 100%;
+}
+
+/* create network form  */
+
+.radioInput{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.label {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap'); */
+
+#mainNetworkForm {
+  width: 70vw;
+}
+
+.wrapper {
+  width: 70vw;
+  background: none;
+  border-radius: 10px;
+  /* box-shadow: 3px 3px 36px rgba(0,0,0,0.2); */
+}
+
+.wrapper .title{
+  width: 70vw;
+  color: #fff;
+  line-height: 65px;
+  text-align: center;
+  background: rgb(0, 114, 244);
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 4px 4px 0 0;
+}
+
+.wrapper .box{
+  padding: 20px 30px;
+  background: none;
+  border-radius: 10px;
+}
+
+.wrapper .box label{
+  display: flex;
+  height: 53px;
+  width: 100%;
+  align-items: center;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding-left: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#value-1:checked ~ .value-1,
+#value-2:checked ~ .value-2,
+#value-3:checked ~ .value-3,
+#value-4:checked ~ .value-4,
+#value-4:checked ~ .value-4,
+#value-5:checked ~ .value-5{
+  background: #9C27B0;
+  border-color:#9C27B0;
+}
+
+.wrapper .box label .select-dots{
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+#value-1:checked ~ .value-1 .select-dots,
+#value-2:checked ~ .value-2 .select-dots,
+#value-3:checked ~ .value-3 .select-dots,
+#value-4:checked ~ .value-4 .select-dots,
+#value-5:checked ~ .value-5 .select-dots{
+  background: #fff;
+}
+
+.box label .select-dots::before{
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+#value-1:checked ~ .value-1 .select-dots::before,
+#value-2:checked ~ .value-2 .select-dots::before,
+#value-3:checked ~ .value-3 .select-dots::before,
+#value-4:checked ~ .value-4 .select-dots::before,
+#value-5:checked ~ .value-5 .select-dots::before{
+  background: #9C27B0;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.wrapper .box label .text{
+  color: #333;
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 10px;
+  transition: color 0.3s ease;
+}
+
+#value-1:checked ~ .value-1 .text,
+#value-2:checked ~ .value-2 .text,
+#value-3:checked ~ .value-3 .text,
+#value-4:checked ~ .value-4 .text,
+#value-5:checked ~ .value-5 .text{
+  color: #fff;
+}
+
+.wrapper .box input[type="radio"]{
+  display: none;
+}
+
+#value1:checked ~ .value1,
+#value2:checked ~ .value2,
+#value3:checked ~ .value3,
+#value4:checked ~ .value4,
+#value4:checked ~ .value4,
+#value5:checked ~ .value5{
+  background: #9C27B0;
+  border-color:#9C27B0;
+}
+
+#value1:checked ~ .value1 .select-dots,
+#value2:checked ~ .value2 .select-dots,
+#value3:checked ~ .value3 .select-dots,
+#value4:checked ~ .value4 .select-dots,
+#value5:checked ~ .value5 .select-dots{
+  background: #fff;
+}
+
+#value1:checked ~ .value1 .select-dots::before,
+#value2:checked ~ .value2 .select-dots::before,
+#value3:checked ~ .value3 .select-dots::before,
+#value4:checked ~ .value4 .select-dots::before,
+#value5:checked ~ .value5 .select-dots::before{
+  background: #9C27B0;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#value1:checked ~ .value1 .text,
+#value2:checked ~ .value2 .text,
+#value3:checked ~ .value3 .text,
+#value4:checked ~ .value4 .text,
+#value5:checked ~ .value5 .text{
+  color: #fff;
+}
+
+/* feed side menu */
+
+/* body{background-color: #eee} */
+
+.nav-link{
+  border-radius:0px !important;
+  transition:all 0.5s;
+  width:100px;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.nav-link small{
+  font-size:12px
+}
+
+.nav-link:hover{
+  background-color: #52525240 !important
+}
+
+.nav-link .fa{
+  transition: all 1s;
+  font-size:20px
+}
+
+.nav-link:hover .fa{
+  transform: rotate(360deg)
+}
+
+/* .nav-item {
+    display: flex;
+    justify-content: center;
+} */
+
+#sideMenu {
+  position: fixed;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* networks and notifications page */
+
+.container.mt-5 {
+  position: relative;
+  left: 10%;
+  height: 300px;
+  width: 80%;
+  flex-basis: 80%;
+}
+
+/* posts comments section  */
+
+/* body{background: #eee}
+.date{font-size: 11px}
+.comment-text{font-size: 12px}
+.fs-12{font-size: 12px}
+.shadow-none{box-shadow: none}
+.name{color: #007bff}
+.cursor:hover{color: blue}
+.cursor{cursor: pointer}
+.textarea{resize: none} */
+
+/* main page footer */
+
+/* profile page edit  */
+
+.hidden {
+  display: hidden !important;
+}
+
+#profileForm {
+  width: 50%;
+  height: 100%;
+  flex-basis: 100%;
+}
+
+#profileForm > div {
+  height: 100%;
+}
+
+/* body{background-color:blue}
+.card{border:none}
+.image{position:relative}
+.image span{background-color:blue;color:#fff;padding:6px;height:30px;width:30px;border-radius:50%;font-size:13px;position:absolute;display:flex;justify-content:center;align-items:center;top:-0px;right:0px}
+.user-details h4{color:blue}
+.ratings{font-size:30px;font-weight:600;display:flex;justify-content:left;align-items:center;color:#f9b43a}
+.user-details span{text-align:left}
+.inputs label{display:flex;margin-left:3px;font-weight:500;font-size:13px;margin-bottom:4px}
+.inputs input{font-size:14px;height:40px;border:2px solid #ced4da}
+.inputs input:focus{box-shadow:none;border:2px solid blue}
+.about-inputs label{display:flex;margin-left:3px;font-weight:500;font-size:13px;margin-bottom:4px}
+.about-inputs textarea{font-size:14px;height:100px;border:2px solid #ced4da;resize:none}
+.about-inputs textarea:focus{box-shadow:none}
+.btn{font-weight:600}
+.btn:focus{box-shadow:none} */
+
+/* comments section for posts */
+
+/* body{
+	background-color: #fff;
+} */
+
+/* .container{
+	background-color: #eef2f5;
+	width: 400px;
+} */
+
+.addtxt{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 13px;
+  width: 350px;
+  background-color: #e5e8ed;
+  font-weight: 500;
+}
+
+.form-control: focus{
+  color: #000;
+}
+
+.second{
+  width: 350px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.text1{
+  font-size: 13px;
+  font-weight: 500;
+  color: #56575b;
+}
+
+.text2{
+  font-size: 13px;
+  font-weight: 500;
+  margin-left: 6px;
+  color: #56575b;
+}
+
+.text3{
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 4px;
+  color: #828386;
+}
+
+.text3o{
+  color: #00a5f4;
+}
+
+.text4{
+  font-size: 13px;
+  font-weight: 500;
+  color: #828386;
+}
+
+.text4i{
+  color: #00a5f4;
+}
+
+.text4o{
+  color: white;
+}
+
+.thumbup{
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.thumbupo{
+  color: #17a2b8;
+}
+
+#commentSectionContainer {
+  position: relative;
+  left: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 85%;
+  align-items: center;
+  /* border: 2px solid salmon; */
+}
+
+#postBoxCommentSection {
+  position: relative;
+  left: 0;
+  border-bottom: 1px solid rgb(229,232,237);
+  width: 100%;
+}
+
+.likeIconPost:hover {
+  background-color: rgb(0, 114, 244);
+}
+
+.trashIconPost:hover {
+  background-color: rgb(0, 114, 244);
+}

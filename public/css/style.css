@@ -1,5 +1,7 @@
 
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* profile stylings */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -368,25 +370,44 @@ html {
     font-size:19px;
 }
 
+.buttons{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
 
 .buttons button:nth-child(1){
-       border:1px solid #8E24AA !important;
-       color:#8E24AA;
+       /* border:1px solid #8E24AA !important;
+       color:#8E24AA; */
        height:40px;
+   
 }
 
 .buttons button:nth-child(1):hover{
-       border:1px solid #8E24AA !important;
+       /* border:1px solid #8E24AA !important; */
        color:#fff;
        height:40px;
-       background-color:#8E24AA;
+       background-color:rgb(0, 114, 244);
 }
 
 .buttons button:nth-child(2){
-       border:1px solid #8E24AA !important;
+       /* border:1px solid #8E24AA !important;
        background-color:#8E24AA;
-       color:#fff;
+       color:#fff; */
         height:40px;
+}
+.unfollowButton {
+    background-color: lightcoral;
+}
+.removeUserButton {
+    background-color: white !important;
+    color: rgb(0, 114, 244) !important;
+}
+.removeUserButton:hover {
+    background-color: lightcoral !important;
 }
 
 
@@ -405,6 +426,7 @@ html {
     flex-basis: 40%;
 }
 .card {
+    /* width: 100%; */
     width: 100%;
     flex-basis: 100%;
 }
@@ -494,6 +516,14 @@ html {
 .networkContainer {
     display: flex;
     flex-flow: column nowrap;
+}
+
+.memberCardContainer {
+    width: 80%;
+}
+
+.card.memberPageProfiles {
+    width: 80%;
 }
 
 .memberPageProfiles {
