@@ -6,11 +6,12 @@
 <header class="bg-white shadow feedHeader">
       <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 networkDashInfoFeed">
       
-        <div>
+        <a href="/<%= network.name %>/feed"><div>
         <img src="<%= network.logo %>" alt="logo">
-        <span>members: <%= network.numberOfMembers %></span>
+        <span>members: <%= network.members.length %></span>
         <span></span>
         </div>
+        </a>
     
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">People also in <%= network.name %></h1>
         

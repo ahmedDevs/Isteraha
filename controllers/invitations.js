@@ -48,11 +48,7 @@ exports.getInvitePage = async (req,res) => {
         }
         invitee.invitations.push(invitationToId)
         
-        invitee.update({ 
-          $set: {
-            notifications: true
-          }
-         })
+        
         invitee.save()
         console.log('Mission Accomplished!')
         // const filter = invitee.invitations
@@ -80,15 +76,16 @@ exports.getInvitePage = async (req,res) => {
       console.log('Invitation accepted')
       user.networks.push(invitationId)
       user.invitations.splice(user.invitations.indexOf(invitationId), 1)
-      await invitation.updateOne(
-        {
-          $inc: { numberOfMembers: 1 },
-        }, 
-        {
-          new: true,
-        },
-        )
-        console.log(invitation.numberOfMembers)
+      invitation.members.push(user._id)
+      // await invitation.updateOne(
+      //   {
+      //     $inc: { numberOfMembers: 1 },
+      //   }, 
+      //   {
+      //     new: true,
+      //   },
+      //   )
+        console.log(invitation.members)
       await user.save()
       await invitation.save()
       res.redirect(`/${req.params.id}/feed`)

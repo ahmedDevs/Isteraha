@@ -9,7 +9,8 @@ module.exports = {
     try {
       const params = req.params.id
       let isFollower = false
-      const profile = await User.findOne({ userName: params })
+      const profile = await User.findOne({ userName: params }).lean()
+
       const profileFollowers = profile.followers
 
       const posts = await Post.find({ user: profile._id }).lean()
@@ -32,7 +33,7 @@ module.exports = {
       const users = await User.find({ '_id': { $in: userIds } }).lean();
       console.log(users)
   
-      const network = await Network.find().sort({ numberOfMemebrs: "desc" }).lean()
+      const network = await Network.find({ type: 'Public' }).lean()
     
       // const user = await User.find({ _id: posts.user }).lean()
 
@@ -122,7 +123,7 @@ module.exports = {
   likePost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id)
-      const likeArr = post.likeBy
+      const likeArr = post.likedBy
      
       if(likeArr.includes(req.user._id) === true) {
         await post.updateOne(
@@ -149,6 +150,7 @@ module.exports = {
         likeArr.push(req.user._id)
         await post.save()
       }
+    
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);

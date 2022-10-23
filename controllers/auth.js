@@ -79,12 +79,14 @@ exports.getSignup = (req, res) => {
 
 exports.getDashboard = async (req,res) => {
   try {
-      const user = await User.findOne({ _id: req.user._id }).lean()
-      const networks = await Network.find({ createdBy: user._id }).lean()
+      const user = req.user
+      // const networks = await Network.find({ createdBy: user._id }).lean()
       const memberOf = await Network.find({ _id: user.networks}).lean()
+      
+      console.log(memberOf)
     // console.log(networks)
-    //   console.log(user)
-      res.render('dashboard.ejs', { user, networks,  memberOf}) 
+      console.log(user)
+      res.render('dashboard.ejs', { user, memberOf}) 
       // console.log(user)
   } catch(err) {
       console.error(err)
@@ -103,31 +105,30 @@ exports.getDashboard = async (req,res) => {
 
  exports.getNetworkFeed = async (req,res) => {
   try {
-    
     const param = req.params.id
     const network = await Network.findOne({ name: param }).lean()
     // const user = await User.findById(req.user._id).lean()
     const networkId = network._id
 
+
+
+      const members = await User.find({ 'networks': { $in: networkId } }).limit(5).lean()
     if(network.type == 'Private' && network.createdBy != req.user._id && network[members.includes(req.user._id)] == false) {
       return res.redirect('/dashboard')
-      
-     }
+    }
+
+  
     // if(req.user.networks.includes(networkId) || network.type == 'Public' || network.createdBy == req.user._id) {
 
     //     return res.redirect('/dashboard')
     
     const posts = await Post.find({ network: networkId}).sort({ createdAt: "desc" }).lean();
-   
-   
     const networkFeed = true
     // const uniqueUserIds = [...new Set(userIds)]
 
     // const users = await User.find({ '_id': { $in: userIds } }).lean();
     const users = await User.find({ networks: networkId }).lean()
-
     const userIds = posts.map(e => e.user)
-
     const posters = await User.find({ '_id': { $in: userIds } }).lean()
     const hashMap = {}
     for(let i = 0; i < posters.length; i++) {
@@ -138,22 +139,9 @@ exports.getDashboard = async (req,res) => {
     }
   
      //  things.find({tennants: mongoose.Types.ObjectId("123")});
-    const members = await User.find({ 'networks': { $in: networkId } }).limit(5).lean()
+   
     // console.log(members)
     const comments = await Comment.find({ 'post': { $in: posts } }).lean()
-    // const hashMap2 = {}
-    // for(let i = 0; i < comments.length; i++) {
-    //   if(hashMap2[comments[i].post] !== undefined) {
-    //     break
-    //   } 
-    //   hashMap2[comments[i].post] = comments[i]
-    // }
-    // console.log(hashMap2)
-    // get the comments for the posts
-    // const networkUser = await User.findOne({'networks': { $in : networkId } }).lean()
-    // const userNetworks = req.user.networks
-   
-  
     res.render("feed.ejs", { posts: posts, user: req.user, users: users, network, members: members, hashMap, networkFeed });
 
   }  catch(err) {
@@ -236,6 +224,14 @@ exports.postSearchUsernames = async (req,res) => {
     console.error(err)
   } 
  
+}
+
+exports.getMessages = async (req,res) => {
+  try {
+    res.render("messages.ejs")
+  }  catch(err) {
+    console.error(err)
+  }
 }
 //  exports.postInviteUser = async (req,res) => {
 //   try {

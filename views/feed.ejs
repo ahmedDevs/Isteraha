@@ -11,7 +11,9 @@
     
       <div>
       <img src="#" alt="logo">
-      <!-- <span>members: <%= network.numberOfMembers %></span> -->
+      <a href="/network/<%= network.name %>/members">
+        <span>members: <%= network.members.length %></span>
+      </a>
       <span></span>
       </div>
   
@@ -25,7 +27,7 @@
     
     <div class="networkLogoContainer">
     <img src="<%= network.logo %>" alt="logo">
-    <a href="/network/<%= network.name %>/members"><span>members: <%= network.numberOfMembers %></span></a>
+    <a href="/network/<%= network.name %>/members"><span>members: <%= network.members.length %></span></a>
     <span></span>
     </div>
 
@@ -70,9 +72,8 @@
 
            
           <div class="card cardFeed">
-
-            <a href="/<%= hashMap[posts[i].user].userName %>/profile">
               <div class="d-flex justify-content-between p-2 px-3">
+                <a href="/<%= hashMap[posts[i].user].userName %>/profile">
                   <div class="d-flex flex-row align-items-center"> 
                     <% if(hashMap[posts[i].user].image) { %>
                       <img src="<%= hashMap[posts[i].user].image %>" width="50" class="rounded-circle">
@@ -81,19 +82,26 @@
                     <% } %>
                       <div class="d-flex flex-column ml-2"> <span class="font-weight-bold"><%= hashMap[posts[i].user].name %></span> <small class="text-primary"><%= hashMap[posts[i].user].userName %></small> </div>
                   </div>
+                </a>
               
                
                   <!-- <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div> -->
-              </div> <img src="<%= posts[i].image %>" class="img-fluid postImage">
-              </a>
+              </div> 
+              
+              
+              
+  
 
 
-              <a href="/post/<%= posts[i]._id %>">
-              <div class="p-2">
+              
+              <div class="p-2 postBox">
+                <a href="/post/<%= posts[i]._id %>" class="postBoxLink">
+                <img src="<%= posts[i].image %>" class="img-fluid postImage">
                   <h3 class="postTitle"><%= posts[i].title %></h3>
                   <p class="text-justify postContent"><%= posts[i].caption %></p>
                   <hr>
-                  <div class="d-flex justify-content-between align-items-center">
+                  </a>
+                  <div class="d-flex justify-content-between align-items-center postIconContainer">
 
                       <div class="d-flex flex-row icons d-flex align-items-center"> 
 
@@ -121,8 +129,10 @@
                      
 
 
-                      <div class="d-flex flex-row muted-color"> <span>2 comments</span> 
-                        <!-- <span class="ml-2">Share</span>  -->
+                      <div class="d-flex flex-row muted-color likesAndComments"> 
+                        <span>comments: <%= posts[i].comments.length %></span> 
+                        <span>likes: <%= posts[i].likes %></span>
+                      
                       </div>
 
                       <div class="d-flex flex-row icons d-flex align-items-center">
@@ -156,7 +166,7 @@
                       </div>
                   </div> -->
               </div>
-              </a>
+   
 
 
           </div>

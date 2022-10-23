@@ -8,7 +8,7 @@ const NetworkSchema = new mongoose.Schema ({
       },
      logo: {
         type: String,
-        // require: true,
+        required: true,
       },
       about: {
         type: String,
@@ -16,7 +16,7 @@ const NetworkSchema = new mongoose.Schema ({
       },
       cloudinaryId: {
         type: String,
-        // require: true,
+        required: true,
       },
       slogan: {
         type: String,
@@ -25,12 +25,11 @@ const NetworkSchema = new mongoose.Schema ({
       },
       members: {
         type: Array,
-
       },
-      numberOfMembers: {
-        type: Number,
-        default: 0,
-      },
+      // numberOfMembers: {
+      //   type: Number,
+      //   default: 0,
+      // },
       invitationCode: {
         type: String,
 
@@ -59,17 +58,7 @@ const NetworkSchema = new mongoose.Schema ({
         type: Date, 
         default: Date.now,
       },
-      numberOfMembers: {
-        type: Number,
-        default: 0,
-      },
-      admins: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
-      moderators: {
-        type: Object,
-      },
+
 })
 
 module.exports = mongoose.model("Network", NetworkSchema, 'networks')

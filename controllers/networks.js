@@ -4,12 +4,9 @@ const cloudinary = require("../middleware/cloudinary");
 
 module.exports = {
    createNetwork: async (req,res) => {
-    // console.log(req.body)
-    console.log(req.user.id)
-    
     try {
         // const param = await Network.findOne({ name: req.body.networkName })
-        if(req.user.file) {
+        // if(req.user.file) {
         const result = await cloudinary.uploader.upload(req.file.path);
         await Network.create({
             name: req.body.networkName,
@@ -22,22 +19,24 @@ module.exports = {
             // customFeatures: req.body.custom,
             createdBy: req.user.id,
           })
-        }   else {
-            await Network.create({
-                name: req.body.networkName,
-                slogan: req.body.slogan,
-                about: req.body.description,
-                type: req.body.type,
-                foundHow: req.body.how,
-                createdBy: req.user.id,
-        })
-        }
+        //  }  
+        
+        // else {
+        //     await Network.create({
+        //         name: req.body.networkName,
+        //         slogan: req.body.slogan,
+        //         about: req.body.description,
+        //         type: req.body.type,
+        //         foundHow: req.body.how,
+        //         createdBy: req.user.id,
+        // })
+        // }
           const user = await User.findOne({ _id: req.user._id })
           const network = await Network.findOne({ name: req.body.networkName})
           user.networks.push(network._id)
           network.members.push(req.user._id)
-        //   await user.save()
-        //   await network.save()
+          await user.save()
+          await network.save()
           console.log(user)
           console.log(network)
           const param = await req.body.networkName
@@ -62,13 +61,13 @@ module.exports = {
     if(req.user) {
     isAuth = true
     // const userNetworks = await Network.find({ _id: { "$elemMatch" : req.user.networks } }).lean()
-    const userNetworks = await Network.find({ _id: { $in: req.user.networks } }).sort({ numberOfMembers: "desc" }).lean()
+    const userNetworks = await Network.find({ _id: { $in: req.user.networks } }).lean()
     console.log(userNetworks)
-    const networks = await Network.find({ type: 'Public'}).sort({ numberOfMembers: "desc" }).lean()
+    const networks = await Network.find({ type: 'Public'}).lean()
     res.render('network-page.ejs', { networks, user: req.user, isAuth,  userNetworks: userNetworks})
     }  else if(!req.user) {
         isAuth = false
-        const networks = await Network.find({ type: 'Public'}).sort({ numberOfMembers: "desc" }).lean()
+        const networks = await Network.find({ type: 'Public'}).lean()
         res.render('network-page.ejs', { networks, isAuth })
     }
    },
@@ -168,14 +167,16 @@ module.exports = {
             const network = await Network.findOne({ name: req.params.network })
             const user = await User.findOne({ userName: req.params.user })
             network.members.splice(network.members.indexOf(user._id), 1)
-            await network.update(
-                {
-                    $inc: { numberOfMembers: -1 },
-                },
-                {
-                    new: true,
-                },
-            )
+
+            // await network.update(
+            //     {
+            //         $inc: { numberOfMembers: -1 },
+            //     },
+            //     {
+            //         new: true,
+            //     },
+            // )
+            
             user.networks.splice(user.networks.indexOf(network._id), 1)
             await network.save()
             await user.save()
