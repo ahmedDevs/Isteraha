@@ -1346,14 +1346,14 @@ html {
 }
 
 .wrapper {
-  width: 70vw;
+  /* width: 70vw; */
   background: none;
   border-radius: 10px;
   /* box-shadow: 3px 3px 36px rgba(0,0,0,0.2); */
 }
 
 .wrapper .title{
-  width: 70vw;
+  /* width: 70vw; */
   color: #fff;
   line-height: 65px;
   text-align: center;
