@@ -64,7 +64,15 @@ module.exports = {
     const userNetworks = await Network.find({ _id: { $in: req.user.networks } }).lean()
     console.log(userNetworks)
     const networks = await Network.find({ type: 'Public'}).lean()
-    const isMember = networks.map(e => e.members.includes(req.user._id) ? true : false)
+   
+    const isMember = []
+    for(let i = 0; i < networks.length; i++) {
+        if(networks[i].members.includes(req.user._id)) {
+            isMember.push[true]
+        }  else {
+            isMember.push[false]
+        }
+    }
     console.log(isMember)
     res.render('network-page.ejs', { networks, user: req.user, isAuth,  userNetworks: userNetworks, isMember})
     }  else if(!req.user) {
@@ -83,7 +91,7 @@ module.exports = {
         await user.save()
         res.redirect(`/${network.name}/feed`)
     }  catch(err) {
-        console.error(err)
+        console.error(err) 
     }
    },
    getNetworkSettings: async (req,res) => {

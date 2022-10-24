@@ -20,7 +20,7 @@ const Network = require("../models/Network");
 exports.getNotifications = async (req,res) => {
     try {
       const user = await User.findOne({ _id: req.user._id }).lean()
-    
+      
     //   const userId = user._id
       const networks = user.invitations
       // console.log(networks)
@@ -34,7 +34,6 @@ exports.getNotifications = async (req,res) => {
       //   networksInfo.push( await Network.findOne({ _id: networks[i] }))
       
       // }
-  
       // const network = await Network.findOne({ createdBy: userId }).lean()
       // console.log(network)
   

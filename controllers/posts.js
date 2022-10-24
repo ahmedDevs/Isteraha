@@ -9,14 +9,12 @@ module.exports = {
     try {
       const params = req.params.id
       let isFollower = false
-      const profile = await User.findOne({ userName: params }).lean()
-
-      const profileFollowers = profile.followers
-
+      const profile = await User.findOne({ userName: params })     
+      const profileFollowers = profile.followers  
       const posts = await Post.find({ user: profile._id }).lean()
       if(params != req.user.userName && profileFollowers.includes(req.user._id)) {
         isFollower = true
-      }  
+      } 
       console.log(isFollower)
       res.render("profile.ejs", { profile, user: req.user, posts: posts, isFollower});
     } catch (err) {

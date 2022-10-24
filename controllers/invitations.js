@@ -24,10 +24,6 @@ exports.getInvitePage = async (req,res) => {
 
    exports.postInvitePage = async (req,res) => {
     try {
-
-      // const user = await User.findOne({ userName: req.params.id })
-      // const userId = user._id
-
       const user = req.user._id
       console.log(user)
       const params = await req.params.id
@@ -43,7 +39,8 @@ exports.getInvitePage = async (req,res) => {
       // if(!adminNetwork) return
     //   if(!invitee) {
         const invitee = await User.findOne({ userName: req.body.userName })
-        if(invitee.invitations.includes(invitationToId)) {
+        const network = await Network.findById(invitationToId)
+        if(network.members.includes(invitee._id)) {
             return res.redirect('/dashboard')
         }
         invitee.invitations.push(invitationToId)
@@ -77,15 +74,7 @@ exports.getInvitePage = async (req,res) => {
       user.networks.push(invitationId)
       user.invitations.splice(user.invitations.indexOf(invitationId), 1)
       invitation.members.push(user._id)
-      // await invitation.updateOne(
-      //   {
-      //     $inc: { numberOfMembers: 1 },
-      //   }, 
-      //   {
-      //     new: true,
-      //   },
-      //   )
-        console.log(invitation.members)
+      console.log(invitation.members)
       await user.save()
       await invitation.save()
       res.redirect(`/${req.params.id}/feed`)

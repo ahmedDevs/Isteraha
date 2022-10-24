@@ -52,8 +52,9 @@
                       <% } %>
 
                       <% if(user.id != profile._id) { %>
-                      <form action=""></form>
-                      <button class="btn btn-outline-primary px-4">Message</button>
+                      <form action="">
+                      <button class="btn btn-outline-primary px-4"><i class="fa fa-solid fa-envelope"></i></button>
+                    </form>
                         <% } %>
                     
                         <% if(!locals.isFollower && user.id != profile._id) { %>

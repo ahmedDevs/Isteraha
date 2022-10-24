@@ -109,20 +109,15 @@ exports.getDashboard = async (req,res) => {
     const network = await Network.findOne({ name: param }).lean()
     // const user = await User.findById(req.user._id).lean()
     const networkId = network._id
-
-
-
-      const members = await User.find({ 'networks': { $in: networkId } }).limit(5).lean()
+    const members = await User.find({ 'networks': { $in: networkId } }).limit(5).lean()
     if(network.type == 'Private' && network.createdBy != req.user._id && network[members.includes(req.user._id)] == false) {
       return res.redirect('/dashboard')
     }
-
-  
     // if(req.user.networks.includes(networkId) || network.type == 'Public' || network.createdBy == req.user._id) {
 
     //     return res.redirect('/dashboard')
     
-    const posts = await Post.find({ network: networkId}).sort({ createdAt: "desc" }).lean();
+    const posts = await Post.find({ network: networkId}).sort({ likes: "desc" }).lean();
     const networkFeed = true
     // const uniqueUserIds = [...new Set(userIds)]
 
