@@ -6,14 +6,16 @@ const UserSchema = new mongoose.Schema({
   // email: { type: String, unique: false },
   email: { type: String, unique: true },
   password: String,
-  name: { type: String, unique: true },
+  name: { type: String },
   bio: { type: String },
   image: {
     type: String,
+    default: '',
     // require: true,
   },
   cloudinaryId: {
     type: String,
+    default: '',
     // require: true,
   },
   networks: { type: Array },

@@ -64,11 +64,26 @@ module.exports = {
     const userNetworks = await Network.find({ _id: { $in: req.user.networks } }).lean()
     console.log(userNetworks)
     const networks = await Network.find({ type: 'Public'}).lean()
-    res.render('network-page.ejs', { networks, user: req.user, isAuth,  userNetworks: userNetworks})
+    const isMember = networks.map(e => e.members.includes(req.user._id) ? true : false)
+    console.log(isMember)
+    res.render('network-page.ejs', { networks, user: req.user, isAuth,  userNetworks: userNetworks, isMember})
     }  else if(!req.user) {
         isAuth = false
         const networks = await Network.find({ type: 'Public'}).lean()
         res.render('network-page.ejs', { networks, isAuth })
+    }
+   },
+   postJoinNetwork: async (req,res) => {
+    try {
+        const network = await Network.findOne({ name: req.params.id })
+        const user = await User.findById(req.user._id)
+        network.members.push(user._id)
+        user.networks.push(network._id)
+        await network.save()
+        await user.save()
+        res.redirect(`/${network.name}/feed`)
+    }  catch(err) {
+        console.error(err)
     }
    },
    getNetworkSettings: async (req,res) => {
@@ -109,31 +124,89 @@ module.exports = {
    },
    putUserSettings: async(req,res) => {
     try {
-        if(req.file) {
-        const result = await cloudinary.uploader.upload(req.file.path);
-        }
+       
         const user = await User.findById(req.user._id)
-        if(req.body.name && req.body.bio && result) {
-        await user.update(
-            {
-                $set: { image: result.secure_url, cloudinaryId: result.public_id, name: req.body.name, bio: req.body.bio },
-            },
-        )
-        }  
-           
-        // await Post.create({
-        //   title: req.body.title,
-        //   image: result.secure_url,
-        //   cloudinaryId: result.public_id,
-        //   caption: req.body.caption,
-        //   likes: 0,
-        //   user: req.user.id,  
-        // });
-      
+        
+        const file = req.file
+        const name = req.body.name
+        const bio = req.body.bio
+        if(file && !name && !bio ) {
+            console.log('hey')
+            const result = await cloudinary.uploader.upload(file.path);
+            console.log(result.secure_url)
+            await user.updateMany(
+                {
+                    $set: { image: result.secure_url, cloudinaryId: result.public_id },
+                }, 
+                {
+                    new: true,
+                }
+            )
+        }   else if(name && !file && !bio ) {
+            await user.updateOne(
+                {
+                    $set: { name: req.body.name },
+                }, 
+                {
+                    new: true,
+                }
+            )
+        }   else if(bio && !file && !name) {
+            await user.updateOne(
+                {
+                    $set: { bio: req.body.bio },
+                }, 
+                {
+                    new: true,
+                }
+            )
+        }  else if(name && file && bio) {
+            const result = await cloudinary.uploader.upload(file.path);
+            await user.updateMany(
+                {
+                    $set: { image: result.secure_url, cloudinaryId: result.public_id, name: req.body.name, bio: req.body.bio },
+                }, 
+                {
+                    new: true,
+                },
+            )
+        }  else if(file && bio && !name) {
+            const result = await cloudinary.uploader.upload(file.path);
+            await user.updateMany(
+                {
+                    $set: { image: result.secure_url, cloudinaryId: result.public_id, bio: req.body.bio },
+                }, 
+                {
+                    new: true,
+                }
+            )
+        }  else if(file && name && !bio) {
+            const result = await cloudinary.uploader.upload(file.path);
+            await user.updateMany(
+                {
+                    $set: { image: result.secure_url, cloudinaryId: result.public_id },
+                }, 
+                {
+                    new: true,
+                }
+            )
+        }
 
-    }  catch(err) {
+        // if(userInput.file !== undefined) {
+        //     const result = await cloudinary.uploader.upload(req.file.path);
+        //     await user.update(
+        //         {
+        //             $set: { image: result.secure_url, cloudinaryId: result.public_id, name: req.body.name, bio: req.body.bio },
+        //         },
+        //     )
+        // }
+      
+       await user.save()
+        res.redirect(`/${req.user.userName}/profile`)
+        }  catch(err) {
         console.error(err)
     }
+
    },
    postLeaveNetwork: async(req,res) => {
     try {
@@ -176,7 +249,7 @@ module.exports = {
             //         new: true,
             //     },
             // )
-            
+
             user.networks.splice(user.networks.indexOf(network._id), 1)
             await network.save()
             await user.save()

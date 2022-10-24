@@ -156,8 +156,9 @@
                         <!-- <div class="d-flex flex-row mt-1 ellipsis"> 
                           <small class="mr-2">20 mins</small> 
                           <i class="fa fa-ellipsis-h"></i> </div> -->
-
-                    </div> <img src="<%= posts[i].image %>" class="img-fluid postImage">
+                          <img src="<%= posts[i].image %>" class="img-fluid postImage">
+                    </div> 
+                    
 
                     <a href="/post/<%= posts[i]._id %>">
                     <div class="p-2">
@@ -174,7 +175,9 @@
                               </form>
                             </div>
 
-                            <div class="d-flex flex-row muted-color"> <span>2 comments</span> 
+                            <div class="d-flex flex-row muted-color"> 
+                              <!-- <span>likes: <%= posts[i].likes %></span> -->
+                              <span>comments: <%= posts[i].comments.length %></span> 
                               <!-- <span class="ml-2">Share</span>  -->
                             </div>
 

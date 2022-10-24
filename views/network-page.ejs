@@ -24,15 +24,15 @@
                         <div class="d-flex flex-column ml-2"><span><%= networks[i].name %></span><span class="text-black-50"><%= networks[i].slogan %></span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
                     </div>
                     <h6><%= networks[i].about %></h6>
-                    <div class="d-flex justify-content-between install mt-3"><span><%= networks[i].numberOfMembers %> members</span>
-                        <% if(locals.isAuth) { %> 
+                    <div class="d-flex justify-content-between install mt-3"><span><%= networks[i].members.length %> members</span>
+                        <% if(locals.isAuth && isMember[i]) { %> 
                          <a href="/invite/<%=networks[i].name%>"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
                          <a href="#"><span class="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </a>
                          <%  } %>
                         <!-- <span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span> -->
-                         <% if(!locals.isAuth) { %>
-                            <form action="/<%= networks[i].name %>/join">
-                                <span class="text-primary">Join&nbsp;<i class="fa fa-angle-right"></i></span>
+                         <% if(!locals.isAuth || !isMember[i]) { %>
+                            <form action="/network/<%= networks[i].name %>/join" method="POST">
+                               <button><span class="text-primary">Join&nbsp;<i class="fa fa-angle-right"></i></span></button>
                             </form>
                         <% } %>
                     </div>
