@@ -4,8 +4,8 @@
 <div class="col-md-6">
             <div class="card card-bordered">
               <div class="card-header">
-                <h4 class="card-title"><strong>Chat</strong></h4>
-                <a class="btn btn-xs btn-secondary" href="#" data-abc="true">Let's Chat App</a>
+                <h4 class="card-title"><strong>Message</strong></h4>
+                <a class="btn btn-xs btn-secondary" href="#" data-abc="true">UserName</a>
               </div>
 
 
@@ -55,7 +55,11 @@
 
               <div class="publisher bt-1 border-light">
                 <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                <input class="publisher-input" type="text" placeholder="Write something">
+
+                <form action="/message/<%= params %>" method="POST" id="commentForm">
+                  <input  name="message" class="publisher-input" type="text" placeholder="Your message" required>
+                </form>
+
                 <span class="publisher-btn file-group">
                   <i class="fa fa-paperclip file-browser"></i>
                   <input type="file">

@@ -18,12 +18,13 @@ const MessageSchema = new mongoose.Schema ({
     type: Date,
     default: Date.now,
   },
-  isReply: {
-    type: Boolean,
-  },
-  replyTo: {
-    type: ObjectId,
-  },
+  // isReply: {
+  //   type: Boolean,
+  // },
+  // replyTo: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
 })
 
 module.exports = mongoose.model("Message", MessageSchema, 'messages')

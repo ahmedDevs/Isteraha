@@ -221,13 +221,7 @@ exports.postSearchUsernames = async (req,res) => {
  
 }
 
-exports.getMessages = async (req,res) => {
-  try {
-    res.render("messages.ejs")
-  }  catch(err) {
-    console.error(err)
-  }
-}
+
 //  exports.postInviteUser = async (req,res) => {
 //   try {
   

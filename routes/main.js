@@ -26,7 +26,7 @@ router.post("/:id/follow", ensureAuth, authController.postFollow)
 router.post("/:id/unfollow", ensureAuth, authController.postUnfollow)
 router.post("/searchUsernames", authController.postSearchUsernames)
 
-router.get("/messages", ensureAuth, authController.getMessages)
+
 
 
 module.exports = router

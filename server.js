@@ -17,6 +17,7 @@ const commentRoutes = require("./routes/comments")
 const notificationRoutes = require("./routes/notifications")
 const settingsRoutes = require("./routes/settings")
 const inviteRoutes = require("./routes/invitations")
+const messageRoutes = require("./routes/messages")
 // const notificationRoutes = require("./routes/notifications")
 
 //Use .env file in config folder
@@ -105,6 +106,7 @@ app.use("/comment", commentRoutes)
 app.use("/notification", notificationRoutes)
 app.use("/settings", settingsRoutes)
 app.use("/invite", inviteRoutes)
+app.use("/message", messageRoutes)
 // app.use("/notifications", notificationRoutes);
 // app.use('/:id', networkRoutes)
 
