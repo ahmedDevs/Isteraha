@@ -7,6 +7,7 @@
 <img src="https://user-images.githubusercontent.com/102767737/198288317-e798e316-81e3-4918-9b1a-fc1185353b4f.png" width="800">
 
 
+
 <!-- ![dashboard](https://user-images.githubusercontent.com/102767737/194168302-7ab3af2f-4fcf-4a80-896e-91373afa9713.png) -->
 
 ## Table of contents
@@ -28,7 +29,7 @@
 ## PURPOSE
 ### Overview  <a name="overview"></a>: This is a fullstack social networking app that allows communities to create their own unique, exclusive networks and rank up in comparison to other networks. 
 
-<img src="https://user-images.githubusercontent.com/102767737/194168302-7ab3af2f-4fcf-4a80-896e-91373afa9713.png" width="600">
+<img src="https://user-images.githubusercontent.com/102767737/198289134-9f75f93a-a760-4aae-b6c1-35df048a9d36.png" width="600">
 
 Please refer to the demo for sample output. 
 The live site/demo is here: https:// [insert link to live site]
