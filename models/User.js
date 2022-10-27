@@ -10,12 +10,12 @@ const UserSchema = new mongoose.Schema({
   bio: { type: String },
   image: {
     type: String,
-    default: '',
+ 
     // require: true,
   },
   cloudinaryId: {
     type: String,
-    default: '',
+
     // require: true,
   },
   networks: { type: Array },

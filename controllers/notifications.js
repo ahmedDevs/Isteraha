@@ -26,11 +26,11 @@ exports.getNotifications = async (req,res) => {
       // console.log(networks)
     
        const network = await Network.find({ _id: { "$in" : networks } }).lean()
-       const messages = await Message.find({ sentTo: user._id }).lean()
-       const sendersIds = messages.map(e => e._id)
-       console.log(sendersIds)
-       const senders = await User.find({ _id: { "$in": sendersIds } }).lean()
-       console.log(senders)
+      //  const messages = await Message.find({ sentTo: user._id }).lean()
+      //  const sendersIds = messages.map(e => e._id)
+      //  console.log(sendersIds)
+      //  const senders = await User.find({ _id: { "$in": sendersIds } }).lean()
+      //  console.log(senders)
    
       // const network = await Network.find({ _id: { "$in" : [invitations]} }).lean()
       // console.log(network)
@@ -43,7 +43,7 @@ exports.getNotifications = async (req,res) => {
       // console.log(network)
   
   
-      res.render('notifications.ejs', { user, network, messages, senders })
+      res.render('notifications.ejs', { user, network })
     }  catch(err) {
       console.error(err)
     }

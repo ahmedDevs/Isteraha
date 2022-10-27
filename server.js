@@ -28,13 +28,6 @@ require("./config/passport")(passport)
 
 
 
-// const initializePassport = require("./config/passport")
-// initializePassport(passport)
-// const modelPassport = require("./config/test")
-// const stylistPassport = require("./config/stylist-passport")
-// modelPassport(passport)
-// stylistPassport(stylistPass)
-
 //Connect To Database
 connectDB()
 
@@ -74,30 +67,6 @@ app.use(flash())
 
 
 
-// setting up nodemailer for sending email to users
-// let mailTransporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//       user: process.env.MAIL_ADDRESS,
-//       pass: process.env.MAIL_KEY,
-//   }
-// });
-
-// let mailDetails = {
-//   from: 'xyz@gmail.com',
-//   to: 'abc@gmail.com',
-//   subject: 'Test mail',
-//   text: 'Node.js testing mail for GeeksforGeeks'
-// };
-
-// mailTransporter.sendMail(mailDetails, function(err, data) {
-//   if(err) {
-//       console.log('Error Occurs');
-//   } else {
-//       console.log('Email sent successfully');
-//   }
-// });
-
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes)
 app.use("/post", postRoutes)
@@ -107,8 +76,7 @@ app.use("/notification", notificationRoutes)
 app.use("/settings", settingsRoutes)
 app.use("/invite", inviteRoutes)
 app.use("/message", messageRoutes)
-// app.use("/notifications", notificationRoutes);
-// app.use('/:id', networkRoutes)
+
 
 
 //Server Running

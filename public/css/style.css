@@ -594,6 +594,7 @@ html {
 .suggestionBox {
     display: block;
     width: 25%;
+    z-index: 1;;
     /* clear: both;
     float: right; */
     height: 100%;
@@ -1426,6 +1427,12 @@ button, input, optgroup, select, textarea {
 }
 .createNetworkForm {
     width: 50%;
+}
+.searchbarMessages {
+    text-align: center;
+}
+body {
+    overflow-x: hidden;
 }
 
 

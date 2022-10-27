@@ -132,16 +132,14 @@ module.exports = {
    },
    putUserSettings: async(req,res) => {
     try {
-       
-        const user = await User.findById(req.user._id)
-        
-        const file = req.file
-        const name = req.body.name
-        const bio = req.body.bio
+        const user = await User.findById(req.user._id) 
+        let file = req.file
+        let name = req.body.name
+        let bio = req.body.bio
+
         if(file && !name && !bio ) {
-            console.log('hey')
-            const result = await cloudinary.uploader.upload(file.path);
-            console.log(result.secure_url)
+            const result = await cloudinary.uploader.upload(req.file.path);
+          
             await user.updateMany(
                 {
                     $set: { image: result.secure_url, cloudinaryId: result.public_id },
@@ -169,7 +167,7 @@ module.exports = {
                 }
             )
         }  else if(name && file && bio) {
-            const result = await cloudinary.uploader.upload(file.path);
+            const result = await cloudinary.uploader.upload(req.file.path);
             await user.updateMany(
                 {
                     $set: { image: result.secure_url, cloudinaryId: result.public_id, name: req.body.name, bio: req.body.bio },
@@ -179,7 +177,7 @@ module.exports = {
                 },
             )
         }  else if(file && bio && !name) {
-            const result = await cloudinary.uploader.upload(file.path);
+            const result = await cloudinary.uploader.upload(req.file.path);
             await user.updateMany(
                 {
                     $set: { image: result.secure_url, cloudinaryId: result.public_id, bio: req.body.bio },
@@ -189,7 +187,7 @@ module.exports = {
                 }
             )
         }  else if(file && name && !bio) {
-            const result = await cloudinary.uploader.upload(file.path);
+            const result = await cloudinary.uploader.upload(req.file.path);
             await user.updateMany(
                 {
                     $set: { image: result.secure_url, cloudinaryId: result.public_id },

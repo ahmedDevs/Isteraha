@@ -3,7 +3,6 @@
 <!-- <main class="main mainFeed"></main> -->
 
 
-
 <header class="bg-white shadow feedHeader">
 
   <% if (locals.general) { %>
@@ -37,12 +36,10 @@
   <% } %>
 </header>
 
-
- 
   
   <div class="suggestionBox">
     <% if(members.length > 1) { %>
-    <h3 class="text-1xl font-bold tracking-tight text-gray-400">People in <%= network.name %> you might know</h3>
+    <h3 class="text-1xl font-bold tracking-tight text-black-400">People in <%= network.name %> you might know</h3>
     <% } %>
     <ul>
         
@@ -64,13 +61,7 @@
 
 
       <div class="col-md-6" id="feedBox">
-         
-       
           <% for(let i = 0; i < posts.length; i++) { %>
-            
-     
-
-           
           <div class="card cardFeed">
               <div class="d-flex justify-content-between p-2 px-3">
                 <a href="/<%= hashMap[posts[i].user].userName %>/profile">
@@ -87,12 +78,6 @@
                
                   <!-- <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div> -->
               </div> 
-              
-              
-              
-  
-
-
               
               <div class="p-2 postBox">
                 <a href="/post/<%= posts[i]._id %>" class="postBoxLink">
@@ -126,13 +111,11 @@
                         <!-- <i class="fa fa-smile-o ml-2"></i> -->
                       </div>
 
-                     
-
 
                       <div class="d-flex flex-row muted-color likesAndComments"> 
-                        <span>comments: <%= posts[i].comments.length %></span> 
+                         
                         <span>likes: <%= posts[i].likes %></span>
-                      
+                        <span>comments: <%= posts[i].comments.length %></span>
                       </div>
 
                       <div class="d-flex flex-row icons d-flex align-items-center">
@@ -146,25 +129,7 @@
 
                   </div>
                   <hr>
-                  <!-- <div class="comments">
-                    
-                      <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/9AZ2QX1.jpg" width="40" class="rounded-image">
-        
-                     
-                          <div class="d-flex flex-column ml-2"> <span class="name">Daniel Frozer</span> <small class="comment-text"></small>
-                              <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>18 mins</small> </div>
-                          </div>
-                     
-                      </div>
-                      <div class="d-flex flex-row mb-2"> <img src="https://i.imgur.com/1YrCKa1.jpg" width="40" class="rounded-image">
-                          <div class="d-flex flex-column ml-2"> <span class="name">Elizabeth goodmen</span> <small class="comment-text"></small>
-                              <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>8 mins</small> </div>
-                          </div>
-                      </div>
-                      <div class="comment-input"> <input type="text" class="form-control">
-                          <div class="fonts"> <i class="fa fa-camera"></i> </div>
-                      </div>
-                  </div> -->
+          
               </div>
    
 
@@ -176,6 +141,7 @@
       </div>
   </div>
 </div>
+
 
 <script src="/js/postForm.js"></script>
 

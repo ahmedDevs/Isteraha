@@ -30,7 +30,7 @@
                          <a href="#"><span class="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </a>
                          <%  } %>
                         <!-- <span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span> -->
-                         <% if(!locals.isAuth) { %>
+                         <% if(!locals.isAuth || !isMember[i]) { %>
                             <form action="/network/<%= networks[i].name %>/join" method="POST">
                                <button><span class="text-primary">Join&nbsp;<i class="fa fa-angle-right"></i></span></button>
                             </form>
