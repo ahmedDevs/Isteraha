@@ -13,8 +13,7 @@
        1. [Requirements](#requirements)
     3. [Build](#build)
         1. [Tech Stack](#stack)
-        3. [Installation](#installation)
-        4. [User Journey](#userjourney)
+        2. [User Journey](#userjourney)
 5. [PostProject Wrap-up](#post)
     1. [Learnings](#learnings)
     2. [Known Bugs](#bugs)
@@ -77,10 +76,6 @@ Extra
 - Users can interact in their networks
 - Networks have scoring system 
 
-
-#### Installation <a name="installation"></a>
-
-In order to run the program please do the following:
 
 
 ## Post Project Wrap Up <a name="post"></a>
