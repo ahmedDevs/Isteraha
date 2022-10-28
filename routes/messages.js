@@ -7,4 +7,4 @@ router.get("/:id", ensureAuth, messagesController.getMessageUser)
 router.post("/", ensureAuth, messagesController.postMessageUser)
 router.get("/", ensureAuth, messagesController.getMessagePage)
 
-module.exports = router
+module.exports = router 
