@@ -18,6 +18,7 @@ const notificationRoutes = require("./routes/notifications")
 const settingsRoutes = require("./routes/settings")
 const inviteRoutes = require("./routes/invitations")
 const messageRoutes = require("./routes/messages")
+const PORT = 2121
 // const notificationRoutes = require("./routes/notifications")
 
 //Use .env file in config folder
@@ -80,6 +81,6 @@ app.use("/message", messageRoutes)
 
 
 //Server Running
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log("Server is running, you better catch it!")
 })
