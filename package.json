@@ -4,7 +4,7 @@
   "description": "A platform for private and public customizable, social networks",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
