@@ -19,7 +19,6 @@ const settingsRoutes = require("./routes/settings")
 const inviteRoutes = require("./routes/invitations")
 const messageRoutes = require("./routes/messages")
 
-// const notificationRoutes = require("./routes/notifications")
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" })
@@ -81,6 +80,6 @@ app.use("/message", messageRoutes)
 
 
 //Server Running
-app.listen(process.env.PORT || PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!")
 })
