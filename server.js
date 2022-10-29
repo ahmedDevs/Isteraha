@@ -80,6 +80,6 @@ app.use("/message", messageRoutes)
 
 
 //Server Running
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 2121, () => {
   console.log("Server is running, you better catch it!")
 })
