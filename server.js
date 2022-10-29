@@ -18,7 +18,7 @@ const notificationRoutes = require("./routes/notifications")
 const settingsRoutes = require("./routes/settings")
 const inviteRoutes = require("./routes/invitations")
 const messageRoutes = require("./routes/messages")
-const PORT = 2121
+
 // const notificationRoutes = require("./routes/notifications")
 
 //Use .env file in config folder
