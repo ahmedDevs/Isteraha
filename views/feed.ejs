@@ -47,8 +47,13 @@
           <% if(members[i]._id == user.id) { %>
             <% continue %>
           <% } %>
-        <li class="suggestion"> <a href="/<%= members[i].userName %>/profile"><div><img src="http://placekitten.com/g/50/50" alt="pic" width="50" height="50"><h3><%= members[i].name %></h3><span>username: <%= members[i].userName %></span></div></a></li>
+        <li class="suggestion"> <a href="/<%= members[i].userName %>/profile"><div>
+          <% if(members[i].image) { %>
+          <img src="<%= members[i].image %>" alt="pic" width="50" height="50">
+          <% } else { %> 
+          <img src="http://placekitten.com/g/50/50" alt="pic" width="50" height="50">
           <% } %>
+          <h3><%= members[i].name %></h3><span>username: <%= members[i].userName %></span></div></a></li>
     </ul>
 </div>
 

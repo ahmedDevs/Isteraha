@@ -146,8 +146,9 @@
                 <a href="<%= commenters[comments[i].user].name %>/profile" class="commenterProfilePic">
                 <% if(commenters[comments[i].user].image) { %>
                 <img src="<%= commenters[comments[i].user].image %>" width="18" alt="profile pic">
-                <% } %>
+                <% } else { %>
                 <img src="https://i.imgur.com/tPvlEdq.jpg" width="18" alt="profile pic">
+                <% } %>
                 <span class="text2"><%= commenters[comments[i].user].name %></span>
                 </a>
               </div>
