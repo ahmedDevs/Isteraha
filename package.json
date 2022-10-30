@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "A platform for private and public customizable, social networks",
   "main": "server.js",
-  "engines": {
-    "node": "18.9.1",
-    "npm": "8.19.1"
-  },
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
