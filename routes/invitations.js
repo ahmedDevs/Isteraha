@@ -8,10 +8,6 @@ const invitationsController = require("../controllers/invitations")
 const { ensureAuth, ensureGuest } = require("../middleware/auth")
 
 
-// router.get("/dashboard", ensureAuth, invitationsController.getInvitePage)
-
-// router.post("/dashboard", ensureAuth, invitationsController.postInvitePage)
-// router.post("/:id/dashboard/inviteUser/:id", ensureAuth, authController.postInviteUser)
 
 router.get("/:id", ensureAuth, invitationsController.getInvitePage)
 router.post("/:id", ensureAuth, invitationsController.postInvitePage)
