@@ -16,7 +16,7 @@ module.exports = {
         isFollower = true
       } 
       console.log(isFollower)
-      res.render("profile.ejs", { profile, user: req.user, posts: posts, isFollower});
+      res.render("profile", { profile, user: req.user, posts: posts, isFollower, invitations: user.invitations});
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +40,7 @@ module.exports = {
       if(!req.params.id) {
         general = true
       }
-      res.render("feed.ejs", { posts: posts, user: req.user, network, general, users });
+      res.render("feed", { posts: posts, user: req.user, network, general, users });
     } catch (err) {
       console.log(err);
     }
@@ -55,7 +55,7 @@ module.exports = {
       const commenters = users.reduce((a,c) => ({...a, [c._id]: c}), {})
       console.log(commenters)
       
-      res.render("post.ejs", { post: post, user: req.user, comments: comments, poster, commenters })
+      res.render("post", { post: post, user: req.user, comments: comments, poster, commenters })
       // isLiked?
     } catch (err) {
       console.log(err);

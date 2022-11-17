@@ -29,7 +29,7 @@ exports.getMessageUser = async (req,res) => {
       // console.log(messagesTo)
      
        
-        res.render("messages.ejs", { params, user: req.user, messagesTo: messagesTo, messagesFrom: messagesFrom, sent, received, otherEnd })
+        res.render("messages", { params, user: req.user, messagesTo: messagesTo, messagesFrom: messagesFrom, sent, received, otherEnd })
       }  catch(err) {
         console.error(err)
       }
@@ -58,7 +58,7 @@ exports.postMessageUser = async (req,res) => {
 exports.getMessagePage = async (req,res) => {
     try {
         const user = req.user
-        res.render("messages.ejs", { user })
+        res.render("messages", { user })
       }  catch(err) {
         console.error(err)
       }

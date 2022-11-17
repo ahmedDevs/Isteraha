@@ -86,7 +86,7 @@ exports.getDashboard = async (req,res) => {
       console.log(memberOf)
     // console.log(networks)
       console.log(user)
-      res.render('dashboard.ejs', { user, memberOf}) 
+      res.render('dashboard', { user, memberOf}) 
       // console.log(user)
   } catch(err) {
       console.error(err)
@@ -96,7 +96,7 @@ exports.getDashboard = async (req,res) => {
 //  exports.getUserProfile = async (req,res) => {
 //   try {
 //     const user = await User.findOne({ userName: req.params.id }).lean()
-//     res.render('user-profile.ejs', { user })
+//     res.render('user-profile', { user })
 //   }  catch(err) {
 //     console.error(err)
 //   }
@@ -137,7 +137,7 @@ exports.getDashboard = async (req,res) => {
    
     // console.log(members)
     const comments = await Comment.find({ 'post': { $in: posts } }).lean()
-    res.render("feed.ejs", { posts: posts, user: req.user, users: users, network, members: members, hashMap, networkFeed });
+    res.render("feed", { posts: posts, user: req.user, users: users, network, members: members, hashMap, networkFeed });
 
   }  catch(err) {
     console.error(err)
@@ -165,7 +165,7 @@ exports.getDashboard = async (req,res) => {
     // console.log(network)
 
 
-    res.render('notifications.ejs', { user, network })
+    res.render('notifications', { user, network })
   }  catch(err) {
     console.error(err)
   }

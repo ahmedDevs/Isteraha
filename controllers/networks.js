@@ -51,7 +51,7 @@ module.exports = {
    getNetworkPage: async (req,res) => {
     try {
         const user = await User.findOne({ userName: req.user.userName }).lean()
-        res.render('network.ejs', { user })
+        res.render('network', { user })
     }  catch(err) {
         console.error(err)
     }
@@ -74,11 +74,11 @@ module.exports = {
         }
     }
     console.log(isMember)
-    res.render('network-page.ejs', { networks, user: req.user, isAuth,  userNetworks: userNetworks, isMember})
+    res.render('network-page', { networks, user: req.user, isAuth,  userNetworks: userNetworks, isMember})
     }  else if(!req.user) {
         isAuth = false
         const networks = await Network.find({ type: 'Public'}).lean()
-        res.render('network-page.ejs', { networks, isAuth })
+        res.render('network-page', { networks, isAuth })
     }
    },
    postJoinNetwork: async (req,res) => {
@@ -97,7 +97,7 @@ module.exports = {
    getNetworkSettings: async (req,res) => {
     try {
         const network = await Network.findOne({ name: req.params.id }).lean()
-        res.render('settings.ejs', { network })
+        res.render('settings', { network })
     }  catch(err) {
         console.error(err)
     }
@@ -125,7 +125,7 @@ module.exports = {
    getUserSettings: async(req,res) => {
     try {
         const user = req.user
-        res.render('settings.ejs', user)
+        res.render('settings', user)
     }  catch(err) {
         console.error(err)
     }
@@ -236,7 +236,7 @@ module.exports = {
         const following = await User.find({ "followers": { $in: user._id } }).lean()
         const followingObj = following.reduce((a, v) => ({...a, ...v}), {});
         console.log(followingObj)
-        res.render("members.ejs", { members: members, user, network, followingObj })
+        res.render("members", { members: members, user, network, followingObj })
     }  catch(err) {
         console.error(err)
     }
@@ -276,7 +276,7 @@ module.exports = {
 //         isFollower = true
 //       }
 //       console.log(isFollower)
-//       res.render("profile.ejs", { profile, user: req.user, posts: posts, isFollower});
+//       res.render("profile", { profile, user: req.user, posts: posts, isFollower});
 //     } catch (err) {
 //       console.log(err);
 //     }
@@ -286,12 +286,12 @@ module.exports = {
 //     try {
        
 //         const network = await Network.find({ name: req.params.id })
-//         res.render('dashboard.ejs', { network: network })
+//         res.render('dashboard', { network: network })
 //     } catch(err) {
 //         console.error(err)
 //     }
     
-//    },
+//    }, 
 
 
 

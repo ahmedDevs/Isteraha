@@ -43,7 +43,7 @@ exports.getNotifications = async (req,res) => {
       // console.log(network)
   
   
-      res.render('notifications.ejs', { user, network })
+      res.render('notifications', { user, network })
     }  catch(err) {
       console.error(err)
     }

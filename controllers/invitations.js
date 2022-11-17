@@ -16,7 +16,7 @@ exports.getInvitePage = async (req,res) => {
       const network = await Network.findOne({ name: req.params.id }).lean()
       console.log(network)
       if(!network) return
-      res.render('network-invitation.ejs', { network, user })
+      res.render('network-invitation', { network, user })
     }  catch(err) {
       console.error(err)
     }
@@ -56,7 +56,7 @@ exports.getInvitePage = async (req,res) => {
   
       res.redirect('/dashboard')
      
-      // res.render('network-invitation.ejs', { invitationTo, adminNetwork })
+      // res.render('network-invitation', { invitationTo, adminNetwork })
     }  catch(err) {
       console.error(err)
     }
