@@ -2,7 +2,7 @@ import React from 'react';
 import Main from './components/Main.jsx';
 import Menu from './components/Menu.jsx';
 
-const Profile = props => {
+const Profile = ({user, profile,isFollower, posts}) => {
     return (
     <Main>
 
@@ -25,20 +25,20 @@ const Profile = props => {
               <div className="text-center">
               
 
-                {props.profile.image ? <img src={`props.profile.image`} alt="profile pic"/> 
+                {profile.image ? <img src={profile.image} alt="profile pic"/> 
                 : <img src="/imgs/doggy2.png" width="100" className="rounded-circle"/>}
               </div>
               
               <div className="text-center mt-3">
              
-                {props.user.id == props.profile._id ?  <span className="bg-secondary p-1 px-4 rounded text-white">You</span> : null}
-                  <h4 className="mt-2 mb-0">{props.profile.name}</h4>
-                  <h5 className="mt-2 mb-0">username: {props.profile.userName}</h5>
-                  <span>followers {props.profile.followers.length}</span>
-                  <span>  following {props.profile.following.length}</span>
+                {user.id == profile._id ?  <span className="bg-secondary p-1 px-4 rounded text-white">You</span> : null}
+                  <h4 className="mt-2 mb-0">{profile.name}</h4>
+                  <h5 className="mt-2 mb-0">username: {profile.userName}</h5>
+                  <span>followers {profile.followers.length}</span>
+                  <span>  following {profile.following.length}</span>
                   
                   <div className="px-4 mt-1">
-                      <p className="fonts">{props.profile.bio}</p>
+                      <p className="fonts">{profile.bio}</p>
                   
                   </div>
                   
@@ -48,20 +48,20 @@ const Profile = props => {
                     {/* <% if (user.id == profile._id) { %>
                       <button className="btn btn-outline-primary px-4 editButton">Edit</button>
                       <% } %> */}
-                      {props.user.id == props.profile._id ?   <button className="btn btn-outline-primary px-4 editButton">Edit</button>
-                      :  <a href={`/message/${props.profile.userName}`}>
+                      {user.id == profile._id ?   <button className="btn btn-outline-primary px-4 editButton">Edit</button>
+                      :  <a href={`/message/${profile.userName}`}>
                       <button className="btn btn-outline-primary px-4"><i className="fa fa-solid fa-envelope"></i></button>
                     </a>}
 
                 
 
-                      {!props.isFollower && props.user.id != props.profile._id ? 
-                      <form  className="buttons" action={`${props.profile.userName}/follow`} method="post">
+                      {!isFollower && user.id != profile._id ? 
+                      <form  className="buttons" action={`${profile.userName}/follow`} method="post">
                      <button className="btn btn-outline-primary px-4 ">Follow</button>
                     </form> : null}
 
-                    {props.isFollower ? 
-                     <form  className="buttons" action={`${props.profile.userName}/unfollow`} method="post">
+                    {isFollower ? 
+                     <form  className="buttons" action={`${profile.userName}/unfollow`} method="post">
                         <button className="unfollowButton btn btn-primary px-4 ms-3">Unfollow</button>
                         </form> : null}
 
@@ -89,18 +89,18 @@ const Profile = props => {
  
         <div className="row d-flex align-items-center justify-content-center">
             <div className="col-md-6">
-                    {props.posts.map((posts,i) => {
+                    {posts ? posts.map((posts,i) => 
                            <div key={i} className="card cardFeed">
                            <div className="d-flex justify-content-between p-2 px-3">
                             <div className="d-flex flex-row align-items-center"> 
-                            {props.profile.image ? 
-                            <img src={props.profile.image} width="50" className="rounded-circle"/>
+                            {profile.image ? 
+                            <img src={profile.image} width="50" className="rounded-circle"/>
                             : <img src="https://place-puppy.com/50x50" width="50" className="rounded-circle"/>}
-                              <div className="d-flex flex-column ml-2"> <span className="font-weight-bold">{props.profile.name}</span> <small className="text-primary">{props.profile.userName}</small> </div>
+                              <div className="d-flex flex-column ml-2"> <span className="font-weight-bold">{profile.name}</span> <small className="text-primary">{profile.userName}</small> </div>
                             </div>
 
 
-                            <img src="{posts.image}" className="img-fluid postImage"/>
+                            <img src={posts.image} className="img-fluid postImage"/>
                     </div> 
                     
 
@@ -127,7 +127,7 @@ const Profile = props => {
                             </div>
 
                             <div className="d-flex flex-row icons d-flex align-items-center">
-                                {posts.user == props.user.id && 
+                                {posts.user == user.id && 
                                 <form action={`/post/deletePost/${posts._id}?_method=DELETE`} method="POST" className="col-3">
                                 <button className="btn fa fa-trash trashIconPost" type="submit"></button>
                               </form>}
@@ -144,7 +144,7 @@ const Profile = props => {
                 </div>
                 
 
-         }) }
+         ) : null}
 
         </div>
       </div>
@@ -164,9 +164,9 @@ const Profile = props => {
               <img src="https://placekitten.com/g/100/100" width="100" height="100" className="rounded-circle">
               <% } %>
             <img src="<%= user.image %>" className="rounded-circle">  */}
-            {!props.user.image ? 
+            {!user.image ? 
               <img src="https://placekitten.com/g/100/100" width="100" height="100" className="rounded-circle"/> :
-              <img src={props.user.image} className="rounded-circle"/>}
+              <img src={user.image} className="rounded-circle"/>}
           
           </div>
           
@@ -174,7 +174,7 @@ const Profile = props => {
       <h4>Edit Profile</h4>
       <div className="row">
           <div className="col-md-12">
-              <div className="inputs"> <label>Name</label> <input className="form-control" type="text" placeholder={props.user.name} name="name" /> </div>
+              <div className="inputs"> <label>Name</label> <input className="form-control" type="text" placeholder={user.name} name="name" /> </div>
           </div>
          
       </div>
@@ -193,9 +193,9 @@ const Profile = props => {
            <% } else { %>
             <div className="about-inputs"> <label>Bio</label> <textarea className="form-control" type="text" placeholder="<%= user.bio %>" name="bio"> </textarea> </div>
             <% } %> */}
-            {!props.user.bio ? 
+            {!user.bio ? 
                  <div className="about-inputs"> <label>Bio</label> <textarea className="form-control" type="text" placeholder="Tell us about yourself" name="bio"> </textarea> </div> : 
-                 <div className="about-inputs"> <label>Bio</label> <textarea className="form-control" type="text" placeholder={props.user.bio} name="bio"> </textarea> </div> }
+                 <div className="about-inputs"> <label>Bio</label> <textarea className="form-control" type="text" placeholder={user.bio} name="bio"> </textarea> </div> }
           </div>
       </div>
 

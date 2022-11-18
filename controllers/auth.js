@@ -80,13 +80,12 @@ exports.getSignup = (req, res) => {
 exports.getDashboard = async (req,res) => {
   try {
       const user = req.user
+      const userName = user.userName
       // const networks = await Network.find({ createdBy: user._id }).lean()
       const memberOf = await Network.find({ _id: user.networks}).lean()
-      
-      console.log(memberOf)
     // console.log(networks)
       console.log(user)
-      res.render('dashboard', { user, memberOf}) 
+      res.render('dashboard', { user, memberOf: memberOf, userName}) 
       // console.log(user)
   } catch(err) {
       console.error(err)

@@ -51,7 +51,7 @@ module.exports = {
    getNetworkPage: async (req,res) => {
     try {
         const user = await User.findOne({ userName: req.user.userName }).lean()
-        res.render('network', { user })
+        res.render('create-network', { user })
     }  catch(err) {
         console.error(err)
     }

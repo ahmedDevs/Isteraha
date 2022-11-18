@@ -1,22 +1,22 @@
 import React from 'react';
 import Main from './components/Main.jsx';
 import Menu from './components/Menu.jsx';
-import Post from './components/Post.jsx;';
+// import Post from './components/Post.jsx;';
 
-const feed = props => {
+const feed = ({general, network, members, posts, hashMap, user}) => {
     return (
         <Main>
             <Menu/>
 
             <header className="bg-white shadow feedHeader">
 
-{props.locals.general ? 
+{general ? 
   <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 networkDashInfoFeed">
   
     <div>
     <img src="#" alt="logo"/>
-    <a href="/network/<%= network.name %>/members">
-      <span>members: {props.network.members.length}</span>
+    <a href={`/network/${network.name}/members`}>
+      <span>members: {network.members.length}</span>
     </a>
     <span></span>
     </div>
@@ -29,12 +29,12 @@ const feed = props => {
 <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 networkDashInfoFeed">
   
   <div className="networkLogoContainer">
-  <img src={props.network.logo} alt="logo"/>
-  <a href={`/network/${props.network.name}/members`}><span>members: {props.network.members.length}</span></a>
+  <img src={network.logo} alt="logo"/>
+  <a href={`/network/${network.name}/members`}><span>members: {network.members.length}</span></a>
   <span></span>
   </div>
 
-  <h1 className="text-3xl font-bold tracking-tight text-gray-900">{props.network.name}</h1>
+  <h1 className="text-3xl font-bold tracking-tight text-gray-900">{network.name}</h1>
  
 </div>
 }
@@ -42,26 +42,30 @@ const feed = props => {
 
 
 <div className="suggestionBox">
-  {props.members.length > 1  &&
-  <h3 className="text-1xl font-bold tracking-tight text-black-400">People in {props.network.name} you might know</h3>
+  {members.length > 1  &&
+  <h3 className="text-1xl font-bold tracking-tight text-black-400">People in {network.name} you might know</h3>
   }
   
-
-    {props.members.map((e,i) => {
-        <ul key={i}>
-       e._id == user.id ?
-        continue :
+ 
+        <ul>
+        {members ? members.map((e,i) => 
+       {e._id == user.id ?
+        null :
        
-       <li className="suggestion"> <a href={`/${e.userName}/profile`}><div>
-        e.image ? 
+       <li key={i} className="suggestion"> <a href={`/${e.userName}/profile`}>
+        
+        <div>
+       {e.image ? 
         <img src={e.image} alt="pic" width="50" height="50"/>
         : <img src="http://placekitten.com/g/50/50" alt="pic" width="50" height="50"/>
+       }
         <h3>{e.name}</h3><span>username: {e.userName}</span></div></a></li>
+        
+       }
+
+       ) : null}
         </ul>
     
-    
-    })}
-
 </div>
       
     
@@ -71,22 +75,22 @@ const feed = props => {
 
 <div className="row d-flex formAndPostsBox">
 
-  <Post/>
+  {/* <Post/> */}
 
 
     <div className="col-md-6" id="feedBox">
-        {props.posts.map((e,i) => {
+        {posts ? posts.map((e,i) => 
 
             <div key={i} className="card cardFeed">
             <div className="d-flex justify-content-between p-2 px-3">
               <a href="/<%= hashMap[e.user].userName %>/profile">
                 <div className="d-flex flex-row align-items-center"> 
-                  {props.hashMap[e.user].image ? 
-                    <img src={props.hashMap[e.user].image} width="50" className="rounded-circle"/>
+                  {hashMap[e.user].image ? 
+                    <img src={hashMap[e.user].image} width="50" className="rounded-circle"/>
                  :
                   <img src="https://place-puppy.com/50x50" width="50" className="rounded-circle"/>
                 }
-                    <div className="d-flex flex-column ml-2"> <span className="font-weight-bold">{props.hashMap[e.user].name}</span> <small className="text-primary">{props.hashMap[e.user].userName}</small> </div>
+                    <div className="d-flex flex-column ml-2"> <span className="font-weight-bold">{hashMap[e.user].name}</span> <small className="text-primary">{hashMap[e.user].userName}</small> </div>
                 </div>
               </a>
             
@@ -151,7 +155,7 @@ const feed = props => {
         </div>
 
 
-        })}
+        ) : null}
    
     
     </div>

@@ -4,9 +4,7 @@ import Menu from './components/Menu.jsx';
 // import Post from './components/Post.jsx;';
 
 
-const dashboard = props => {
-    console.log(props.memberOf)
-    const numberOfNetworks = props.memberOf.length
+const Dashboard = ({memberOf,user}) => {
     return (
         <Main>
             <Menu/>
@@ -23,19 +21,19 @@ const dashboard = props => {
           {/* <!-- <div className="row"> --> */}
               <div className="col-md-4  networkContainer">
                
-                {/* <!-- <h2>Member of:</h2> --> */}
-             
-                {props.memberOf && props.memberOf.length < 1 ? 
+               {/* <h2>Member Of:</h2> */}
+              
+                {memberOf.length < 1 ?
                 <p>You're not a member of any networks. You can either be invited to join networks, join public networks from <a className="text-primary" href="/network">here</a> or <a className="text-primary" href="/network/create">create</a> one!</p>
-                : null
+                  : null
                 }
-            
+             
              
 
               
-                {props.memberOf.map((e,i) => {
+                {memberOf ? memberOf.map((e,i) => 
                     <a key={i} href={`/${e.name}/feed`}>
-                    {e.createdBy == props.user.id ? 
+                    {e.createdBy == user.id ? 
                       <span className="bg-secondary p-1 px-4 rounded text-white">Creator</span>
                      : null }
                   <div className="card p-3">
@@ -61,11 +59,11 @@ const dashboard = props => {
                         
                            <a href={`/invite/${e.name}`}><span className="text-primary">Invite&nbsp;<i className="fa fa-angle-right"></i></span> </a>
 
-                           {e.createdBy != props.user.id ? 
+                           {e.createdBy != user.id ? 
                            <form action={`/network/${e.name}/leave`} method="POST">
                             <button><span className="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </button>
                            </form>
-                            : null} 
+                            : null}
                            
                           {/* <!-- <span class="text-primary">Accept&nbsp;<i class="fa fa-angle-right"></i></span> --> */}
                        
@@ -73,17 +71,19 @@ const dashboard = props => {
                   </div>
                 </a>
 
-                })}
+                ) : null} 
   
                 
 
               </div>
              {/* <!-- </div> --> */}
           </div>
+         
+         
           </main>
-
-        </Main>
+          
+    </Main>
     )
 }
 
-export default dashboard;
+export default Dashboard;

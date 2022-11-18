@@ -7,6 +7,7 @@ const Network = require("../models/Network");
 module.exports = {
   getProfile: async (req, res) => {
     try {
+      const user = req.user
       const params = req.params.id
       let isFollower = false
       const profile = await User.findOne({ userName: params })     
@@ -16,7 +17,7 @@ module.exports = {
         isFollower = true
       } 
       console.log(isFollower)
-      res.render("profile", { profile, user: req.user, posts: posts, isFollower, invitations: user.invitations});
+      res.render("profile", { profile, user, posts: posts, isFollower, invitations: user.invitations});
     } catch (err) {
       console.log(err);
     }
