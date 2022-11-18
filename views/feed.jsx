@@ -49,20 +49,18 @@ const feed = ({general, network, members, posts, hashMap, user}) => {
  
         <ul>
         {members ? members.map((e,i) => 
-       {e._id == user.id ?
-        null :
-       
-       <li key={i} className="suggestion"> <a href={`/${e.userName}/profile`}>
-        
+         <li key={i} className="suggestion"> <a href={`/${e.userName}/profile`}>
+       {e._id != user.id ?
         <div>
        {e.image ? 
         <img src={e.image} alt="pic" width="50" height="50"/>
         : <img src="http://placekitten.com/g/50/50" alt="pic" width="50" height="50"/>
        }
-        <h3>{e.name}</h3><span>username: {e.userName}</span></div></a></li>
+        <h3>{e.name}</h3><span>username: {e.userName}</span></div>
         
-       }
-
+       : null}
+       </a>
+       </li>
        ) : null}
         </ul>
     

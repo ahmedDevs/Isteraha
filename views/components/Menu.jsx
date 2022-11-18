@@ -15,13 +15,17 @@ const Menu = ({user,invitations,networkFeed, userName}) => {
                 </li>
     
             <li> <a href="/dashboard" className="nav-link py-3 border-bottom"> <i className="fa fa-dashboard"></i> <small>Dashboard</small> </a> </li>
+            {user &&
+          
             <li>
-               {userName ?
+              
                  <a href={`${user.userName}/profile`} className="nav-link py-3 border-bottom"> 
                  <i className="fa fa-light fa-user"></i> <small>My Profile</small> </a>
-                 : null }
+            
              
             </li>
+             }
+        
             {/* <!-- <li className="nav-link py-3 border-bottom"><a href="/message"><i className="fa fa-solid fa-envelope"></i></a></li> --> */}
     
             {/* <!-- <li className="nav-link py-3 border-bottom"><i className="fa fa-solid fa-envelope-dot"></i></li> -->

@@ -34,7 +34,7 @@ const Invitation = ({network}) => {
             <p>Already a member, you can invite by username</p>
             <label htmlFor="userName" className="sr-only">Email address</label>
             
-            <input id="userName" name="userName" type="text"   onKeyup="sendData(this)" className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="User name"/>
+            <input id="userName" name="userName" type="text"  onKeyUp="sendData(this)" className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="User name"/>
             <div id="searchResults"></div>
           </div>
           

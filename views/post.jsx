@@ -2,23 +2,23 @@ import React from 'react';
 import Main from './components/Main.jsx';
 import Menu from './components/Menu.jsx';
 
-const post = props => {
+const post = ({poster, post, comments, commenters}) => {
     return (
         <Main>
             <Menu/>
             <header className="bg-white shadow commentPageHeader">
   <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-    {props.poster.image ? 
-        <img src={props.poster.image} alt="profile pic"/>
+    {poster.image ? 
+        <img src={poster.image} alt="profile pic"/>
         :   <img src="https://placekitten.com/g/100/100" alt="profile pic"/>
     }
    
    
 
     <div>
-    <span>props.poster.name</span>
-    <span>username: props.poster.userName</span>
-    <span>likes: props.post.likes</span>
+    <span>{poster.name}</span>
+    <span>username: {poster.userName}</span>
+    <span>likes: {post.likes}</span>
 
     <div className="commentPageIcons">
       <form
@@ -43,7 +43,7 @@ const post = props => {
   </div>
 
   <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-    <h1 className="text-3xl font-bold tracking-tight text-gray-900">{props.post.title}</h1>
+    <h1 className="text-3xl font-bold tracking-tight text-gray-900">{post.title}</h1>
 
   </div>
 </header>
@@ -56,7 +56,7 @@ const post = props => {
   <div className="d-flex justify-content-between p-2 px-3" id="postBoxCommentSection">
     <div className="d-flex flex-row align-items-center">
        {/* <!-- <img src="https://i.imgur.com/UXdKE3o.jpg" width="50" className="rounded-circle"> --> */}
-        <div className="d-flex flex-column ml-2"> <span className="font-weight-bold">{props.post.caption}</span> 
+        <div className="d-flex flex-column ml-2"> <span className="font-weight-bold">{post.caption}</span> 
           {/* <!-- <small className="text-primary">Collegues</small>  --> */}
         </div>
     </div>
@@ -80,19 +80,19 @@ const post = props => {
 
 
 
-  {props.comments.map((e,i) => 
+  {comments.map((e,i) => 
     <div key={i} className="d-flex justify-content-center py-2">
       <div className="second py-2 px-2"> <p className="text1">{e.comment}</p>
           <div className="d-flex justify-content-between py-1 pt-2">
             
               <div >
-                <a href={`${props.commenters[e.user].name}/profile`} className="commenterProfilePic">
-                {props.commenters[e.user].image ? 
-                 <img src={props.commenters[e.user].image} width="18" alt="profile pic"/>
+                <a href={`${commenters[e.user].name}/profile`} className="commenterProfilePic">
+                {commenters[e.user].image ? 
+                 <img src={commenters[e.user].image} width="18" alt="profile pic"/>
                  : <img src="https://i.imgur.com/tPvlEdq.jpg" width="18" alt="profile pic"/>
                 }
                 
-                <span className="text2">{props.commenters[e.user].name}</span>
+                <span className="text2">{commenters[e.user].name}</span>
                 </a>
               </div>
 

@@ -28,3 +28,4 @@ function sendData(e) {
     }
     searchResults.innerHTML = ''
   }
+
