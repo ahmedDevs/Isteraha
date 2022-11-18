@@ -1,12 +1,12 @@
 import React from 'react';
 import Main from './components/Main.jsx';
 import Menu from './components/Menu.jsx';
-// import Post from './components/Post.jsx;';
+import Post from './components/Post.jsx';
 
-const feed = ({general, network, members, posts, hashMap, user}) => {
+const feed = ({general, network, members, posts, hashMap, user, networkFeed}) => {
     return (
         <Main>
-            <Menu/>
+            <Menu networkFeed={networkFeed}/>
 
             <header className="bg-white shadow feedHeader">
 
@@ -73,7 +73,7 @@ const feed = ({general, network, members, posts, hashMap, user}) => {
 
 <div className="row d-flex formAndPostsBox">
 
-  {/* <Post/> */}
+  <Post network={network}/>
 
 
     <div className="col-md-6" id="feedBox">
@@ -161,12 +161,12 @@ const feed = ({general, network, members, posts, hashMap, user}) => {
 </div>
 
 
-
-
-
             <script src="/js/postForm.js"></script> 
         </Main>
     )
 }
+
+
+
 
 export default feed

@@ -118,6 +118,7 @@ exports.getDashboard = async (req,res) => {
     
     const posts = await Post.find({ network: networkId}).sort({ likes: "desc" }).lean();
     const networkFeed = true
+    console.log(networkFeed, 'yoooooooo')
     // const uniqueUserIds = [...new Set(userIds)]
 
     // const users = await User.find({ '_id': { $in: userIds } }).lean();

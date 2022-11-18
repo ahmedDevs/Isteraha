@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Menu = ({user,invitations,networkFeed, userName}) => {
+const Menu = ({user, invitations, networkFeed, userName}) => {
     return (
         <div id="sideMenu" className="d-flex flex-column flex-shrink-0 bg-light vh-100" style= {{width: "100px"}}>
         <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
@@ -51,12 +51,15 @@ const Menu = ({user,invitations,networkFeed, userName}) => {
                 
               </a>
             </li>
-            {networkFeed && 
+            {networkFeed && networkFeed == true  ?
             <li className="nav-item nav-link py-3 border-bottom" id="postIcon"> 
               <i className="fa fa-regular fa-comment"></i><small>Post</small>
            
           {/* <!-- </a> --> */}
-            </li>}
+            </li>  : null}
+    
+
+      
                 
     
             {/* <!-- <li> <a href="/<%=user.userName%>/user-settings" className="nav-link py-3 border-bottom"> <i className="fa fa-cog"></i> <small>Settings</small> </a> </li>

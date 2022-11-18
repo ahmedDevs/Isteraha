@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Post = props => {
+const Post = ({network}) => {
     return (
         <div class="mt-5 hidden" id="postForm">
     <h2>Add a post</h2>
-    {props.network &&
+    {network ?
         <form action={`/post/createPost/${network.name}`} enctype="multipart/form-data" method="POST">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -21,7 +21,7 @@ const Post = props => {
             <button type="submit" class="btn btn-primary" id="submitPostButton" value="Upload">Submit</button>
             <button type="reset" class="btn btn-primary" id="cancelButton">Cancel</button>
           </form> 
-    }
+     : null} 
   </div>
     )
 }
