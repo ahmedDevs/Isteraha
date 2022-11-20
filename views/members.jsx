@@ -7,7 +7,7 @@ import Menu from './components/Menu.jsx';
 const Members = ({network, members, user, followingObj}) => {
     return (
         <Main>
-            <Menu/>
+            <Menu user={user} />
 
             <header className="bg-white shadow feedHeader">
       <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 networkDashInfoFeed">

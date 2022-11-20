@@ -1,51 +1,34 @@
-import React from 'react';
-import Main from './components/Main.jsx';
-import Messages from './components/Messages.jsx';
-
+// import Main from '../components/Main.jsx';
+import Messages from '../components/Messages.jsx';
+import { Link } from 'react-router-dom';
 
 const Login = ({ messages }) => {
+    // const [user, setUser] = useState(null);
+    // const [messags, setMessages] = useState({});
     return (
-        <Main>
-        <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <>
+         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div className="w-full max-w-md space-y-8">
     <div>
-      <a href="/"><img className="mx-auto h-12 w-auto" src="/imgs/default.png" alt="logo" /></a>
+      <Link to="/"><img className="mx-auto h-12 w-auto" src="/imgs/default.png" alt="logo" /></Link>
       <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
-      <p className="mt-2 text-center text-sm text-gray-600">
-        Or
+      {/* <p className="mt-2 text-center text-sm text-gray-600">
+        Or  */}
+        <div className='mt-2 text-center text-sm text-gray-600'>
         <a href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">Sign Up</a>
-      </p>
+        </div>
+      {/* </p> */}
     </div>
-
-    {/* <section class="col-6 mt-5"> */}
-      {/* <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-      <div class="alert alert-danger"><%= el.msg %></div>
-      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-      messages.info.forEach( el => { %>
-      <div class="alert alert-info"><%= el.msg %></div>
-      <% }) %> <% } %> */}
-      {/* {props.messages.errors 
-       ? props.messages.errors.map((e,i) => 
-       <div key={i} className='alert alert-danger'>{e.msg}</div>
-       ) : null}
-
-{props.messages.info 
-       ? props.messages.info.map((e,i) => 
-       <div key={i} className='alert alert-danger'>{e.msg}</div>
-       ) :null} */}
-
-    <Messages messages={messages}/>
-
-
+    {/* <Messages messages={messages}/> */}
     <form className="mt-8 space-y-6" action="/login" method="POST">
       <input type="hidden" name="remember" value="true"/>
       <div className="-space-y-px rounded-md shadow-sm">
         <div>
-          <label for="email-address" className="sr-only">Email address</label>
+          <label htmlFor="email-address" className="sr-only">Email address</label>
           <input id="email-address" name="email" type="email" autocomplete="email" required className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Email address"/>
         </div>
         <div>
-          <label for="password" className="sr-only">Password</label>
+          <label htmlFor="password" className="sr-only">Password</label>
           <input id="password" name="password" type="password" autocomplete="current-password" required className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Password"/>
         </div>
       </div>
@@ -53,7 +36,7 @@ const Login = ({ messages }) => {
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
-          <label for="remember-me" className="ml-2 block text-sm text-gray-900">Remember me</label>
+          <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">Remember me</label>
         </div>
 
         <div className="text-sm"> 
@@ -66,19 +49,18 @@ const Login = ({ messages }) => {
           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
          
             <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+              <path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
             </svg>
           </span>
           Sign in
         </button>
       </div>
     </form>
-    {/* </section> */}
 
 
   </div>
 </div>
-    </Main>
+    </>
     )
 }
 

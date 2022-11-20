@@ -6,7 +6,7 @@ import Post from './components/Post.jsx';
 const feed = ({general, network, members, posts, hashMap, user, networkFeed}) => {
     return (
         <Main>
-            <Menu networkFeed={networkFeed}/>
+            <Menu networkFeed={networkFeed} user={user}/>
 
             <header className="bg-white shadow feedHeader">
 
