@@ -18,6 +18,7 @@ module.exports = {
       } 
       console.log(isFollower)
       res.render("profile", { profile, user, posts: posts, isFollower, invitations: user.invitations});
+      // return res.json({ user, profile, isFollower, posts });
     } catch (err) {
       console.log(err);
     }

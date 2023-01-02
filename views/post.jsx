@@ -86,7 +86,7 @@ const post = ({poster, post, comments, commenters}) => {
           <div className="d-flex justify-content-between py-1 pt-2">
             
               <div >
-                <a href={`${commenters[e.user].name}/profile`} className="commenterProfilePic">
+                <a href={`/${commenters[e.user].name}/profile`} className="commenterProfilePic">
                 {commenters[e.user].image ? 
                  <img src={commenters[e.user].image} width="18" alt="profile pic"/>
                  : <img src="https://i.imgur.com/tPvlEdq.jpg" width="18" alt="profile pic"/>

@@ -32,7 +32,8 @@ exports.postLogin = (req, res, next) => {
 
   if (validationErrors.length) {
     req.flash("errors", validationErrors);
-    return res.redirect("/login");
+    // return res.redirect("/login");
+    return res.json({ messages: req.flash() });
   }
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
@@ -45,6 +46,7 @@ exports.postLogin = (req, res, next) => {
     if (!user) {
       req.flash("errors", info);
       return res.redirect("/login");
+      // return res.json({ messages: req.flash() });
     }
     req.logIn(user, (err) => {
       if (err) {
@@ -52,6 +54,7 @@ exports.postLogin = (req, res, next) => {
       }
       req.flash("success", { msg: "Success! You are logged in." });
       res.redirect(req.session.returnTo || '/dashboard');
+      // return res.json({ user, messages: req.flash() })
     });
   })(req, res, next);
 };
@@ -247,6 +250,7 @@ exports.postSignup = (req, res, next) => {
   if (validationErrors.length) {
     req.flash("errors", validationErrors);
     return res.redirect("../signup");
+    // return res.json({ messages: req.flash() });
   }
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
@@ -270,6 +274,7 @@ exports.postSignup = (req, res, next) => {
           msg: "Account with that email address or username already exists.",
         });
         return res.redirect("../signup");
+        // return res.json({ messages: req.flash() });
       }
       user.save((err) => {
         if (err) {
@@ -280,10 +285,11 @@ exports.postSignup = (req, res, next) => {
             return next(err);
           }
           res.redirect(`${req.body.userName}/profile`);
+          // return res.json({ user, messages: req.flash() });
         });
       });
     }
-  );
+  );  
 };
 
 
