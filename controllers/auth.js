@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
@@ -305,4 +303,3 @@ exports.postSignup = (req, res, next) => {
 
 
 
->>>>>>> parent of 8364217 (i)
