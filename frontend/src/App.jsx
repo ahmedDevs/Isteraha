@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React from "react";
+>>>>>>> parent of b9c6542 (i)
 // import Main from './components/Main.jsx';
 import './style.css';
 

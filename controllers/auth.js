@@ -32,7 +32,12 @@ exports.postLogin = (req, res, next) => {
 
   if (validationErrors.length) {
     req.flash("errors", validationErrors);
+<<<<<<< HEAD
     return res.redirect("/login");
+=======
+    // return res.redirect("/login");
+    return res.json({ messages: req.flash() });
+>>>>>>> parent of b9c6542 (i)
   }
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
@@ -45,6 +50,10 @@ exports.postLogin = (req, res, next) => {
     if (!user) {
       req.flash("errors", info);
       return res.redirect("/login");
+<<<<<<< HEAD
+=======
+      // return res.json({ messages: req.flash() });
+>>>>>>> parent of b9c6542 (i)
     }
     req.logIn(user, (err) => {
       if (err) {
@@ -52,6 +61,10 @@ exports.postLogin = (req, res, next) => {
       }
       req.flash("success", { msg: "Success! You are logged in." });
       res.redirect(req.session.returnTo || '/dashboard');
+<<<<<<< HEAD
+=======
+      // return res.json({ user, messages: req.flash() })
+>>>>>>> parent of b9c6542 (i)
     });
   })(req, res, next);
 };
@@ -247,6 +260,10 @@ exports.postSignup = (req, res, next) => {
   if (validationErrors.length) {
     req.flash("errors", validationErrors);
     return res.redirect("../signup");
+<<<<<<< HEAD
+=======
+    // return res.json({ messages: req.flash() });
+>>>>>>> parent of b9c6542 (i)
   }
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
@@ -270,6 +287,10 @@ exports.postSignup = (req, res, next) => {
           msg: "Account with that email address or username already exists.",
         });
         return res.redirect("../signup");
+<<<<<<< HEAD
+=======
+        // return res.json({ messages: req.flash() });
+>>>>>>> parent of b9c6542 (i)
       }
       user.save((err) => {
         if (err) {
@@ -280,10 +301,18 @@ exports.postSignup = (req, res, next) => {
             return next(err);
           }
           res.redirect(`${req.body.userName}/profile`);
+<<<<<<< HEAD
         });
       });
     }
   );
+=======
+          // return res.json({ user, messages: req.flash() });
+        });
+      });
+    }
+  );  
+>>>>>>> parent of b9c6542 (i)
 };
 
 

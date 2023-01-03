@@ -1,17 +1,49 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, {useState} from 'react';
+>>>>>>> parent of b9c6542 (i)
 // import Main from '../components/Main.jsx';
 import Messages from '../components/Messages.jsx';
 import { Link } from 'react-router-dom';
 
+<<<<<<< HEAD
 const Signup = ({ messages }) => {
     return (
 
+=======
+const Signup = () => {
+    const [user, setUser] = useState(null)
+    const [messages, setMessages] = useState({})
+
+    const handleSubmit = async event => {
+        event.preventDefault()
+        const form = event.currentTarget
+        const formData = new FormData(event.target)
+        const data = Object.fromEntries(formData)
+        const response = await fetch(form.action, {
+            method: form.method,
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams(new FormData(form)),
+        })
+        const json = await response.json()
+        if(json.messages) setMessages(json.messages)
+        if(json.user) setUser(json.user)
+    }
+    return (
+>>>>>>> parent of b9c6542 (i)
         <>
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div className="w-full max-w-md space-y-8">
     <div>
       <Link to="/"><img className="mx-auto h-12 w-auto" src="imgs/default.png" alt="logo" /></Link>
+<<<<<<< HEAD
       <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+=======
+      <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Create your account</h2>
+>>>>>>> parent of b9c6542 (i)
       <p className="mt-2 text-center text-sm text-gray-600">
         Or
         <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">Sign In</a>
@@ -21,11 +53,19 @@ const Signup = ({ messages }) => {
     <div className="col-6 mt-5">
    
 
+<<<<<<< HEAD
        {/* <Messages messages={messages}/> */}
 
 
     </div>
     <form className="mt-8 space-y-6" action="/signup" method="POST">
+=======
+       <Messages messages={messages}/>
+
+
+    </div>
+    <form className="mt-8 space-y-6" action="/signup" method="POST" onSubmit={handleSubmit}>
+>>>>>>> parent of b9c6542 (i)
       <input type="hidden" name="remember" value="true"/>
       <div className="-space-y-px rounded-md shadow-sm">
 
