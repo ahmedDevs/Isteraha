@@ -80,6 +80,13 @@ app.use("/message", messageRoutes)
 
 
 //Server Running
-app.listen(process.env.PORT || 2121, () => {
-  console.log("Server is running, you better catch it!")
+// app.listen(process.env.PORT || 2121, () => {
+//   console.log("Server is running, you better catch it!")
+// })
+
+//Connect to the database before listening
+connectDB().then(() => {
+  app.listen(PORT, () => {
+      console.log("listening for requests");
+  })
 })
