@@ -86,7 +86,7 @@ app.use("/message", messageRoutes)
 
 //Connect to the database before listening
 connectDB().then(() => {
-  app.listen(process.env.PORT, () => {
+  app.listen(process.env.PORT || 2121, () => {
       console.log("listening for requests");
   })
 })

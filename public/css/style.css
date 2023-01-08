@@ -517,6 +517,8 @@ html {
 .networkContainer {
     display: flex;
     flex-flow: column nowrap;
+    position: relative;
+    left: 10%;
 }
 
 .memberCardContainer {
@@ -591,6 +593,7 @@ html {
     margin-top: 10%;
     height: 10%;
 }
+
 .suggestionBox {
     display: block;
     width: 25%;
@@ -1436,12 +1439,62 @@ body {
 }
 
 
-
-
-
+/* hamburger menu for smaller screens */
+.hamburgerMenuDropdown {
+    display: none;
+}
+.hamburgerMenuDropdownShow {
+    display: block;
+}
 /* for the network feed page */
 @media screen and (max-width: 811px) {
     .suggestionBox {
         display: none;
+    }
+    .networkLogoContainer {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+        align-items: center;
+        left: 0;
+       
+    }
+   
+    .suggestionBox {
+        overflow-x: hidden;
+    }
+    .networkDashInfoFeed h1 {
+        left: 33%;
+    }
+    .formAndPostsBox {
+        align-items: center;
+    }
+    .commentPageHeader > div > div {
+        width: 100%;
+    }
+    .commentPageIcons {
+        justify-content: space-between;
+    }
+    .commentPageHeader {
+        flex-flow: column nowrap;
+    }
+    #commentSectionContainer {
+        left: 10%;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    #feedBox {
+        position: relative;
+        left: 7%;
+    }
+    #commentSectionContainer > * {
+        width: 70%;
+    }
+    #commentSectionContainer > :nth-child(2) {
+        border: 2px solid black;
+    }
+    #commentForm {
+       width: min-content;
     }
 }
