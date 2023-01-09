@@ -1446,6 +1446,25 @@ body {
 .hamburgerMenuDropdownShow {
     display: block;
 }
+
+/* for the comments section header */
+@media screen and (max-width: 1150px) {
+    .commentPageHeader > div {
+        justify-content: center;
+    }
+    .commentPageHeader > div > div {
+        width: 100%;
+    }
+    .commentPageHeader > div + div > h1 {
+        text-align: center;
+    }
+    .commentPageIcons {
+        justify-content: space-around;
+    }
+    .commentPageHeader {
+        flex-flow: column nowrap;
+    }
+}
 /* for the network feed page */
 @media screen and (max-width: 811px) {
     .suggestionBox {
@@ -1456,10 +1475,8 @@ body {
         flex-flow: column nowrap;
         width: 100%;
         align-items: center;
-        left: 0;
-       
+        left: 0; 
     }
-   
     .suggestionBox {
         overflow-x: hidden;
     }
@@ -1469,15 +1486,21 @@ body {
     .formAndPostsBox {
         align-items: center;
     }
+    /* .commentPageHeader > div {
+        justify-content: center;
+    }
     .commentPageHeader > div > div {
         width: 100%;
     }
+    .commentPageHeader > div + div > h1 {
+        text-align: center;
+    } */
     .commentPageIcons {
         justify-content: space-between;
     }
-    .commentPageHeader {
+    /* .commentPageHeader {
         flex-flow: column nowrap;
-    }
+    } */
     #commentSectionContainer {
         left: 10%;
     }
@@ -1491,10 +1514,15 @@ body {
     #commentSectionContainer > * {
         width: 70%;
     }
-    #commentSectionContainer > :nth-child(2) {
+    /* #commentSectionContainer > :nth-child(2) {
         border: 2px solid black;
-    }
+    } */
     #commentForm {
-       width: min-content;
+        display: flex;
+        align-self: center;
+        width: 100%;
+    }
+    .commentPageHeader > div + div {
+        width: 100%;
     }
 }
