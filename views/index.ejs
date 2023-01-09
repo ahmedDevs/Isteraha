@@ -18,7 +18,7 @@
                     <span class="sr-only">Your Company</span>
                     <img alt="Your Company" class="h-8 w-auto sm:h-20" src="/imgs/cover.png">
                   </a>
-                  <div class="-mr-2 flex items-center md:hidden" id="hamburgerMenu">
+                  <div id="hamburgerMenu" class="-mr-2 flex items-center md:hidden" >
                     <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
                       <span class="sr-only">Open main menu</span>
                       <!-- Heroicon name: outline/bars-3 -->
@@ -54,13 +54,13 @@
               To: "opacity-0 scale-95"
           -->
           <div class="absolute inset-x-0 top-0 z-10 origin-top-right transform p-2 transition md:hidden">
-            <div class="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
+            <div class="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5 hamburgerMenuDropdown">
               <div class="flex items-center justify-between px-5 pt-4">
                 <div>
                   <img class="h-8 w-auto" src="/imgs/cover.png" alt="pic">
                 </div>
                 <div class="-mr-2">
-                  <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <button type="button" id="exitHamburgerMenu" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                     <span class="sr-only">Close main menu</span>
                     <!-- Heroicon name: outline/x-mark -->
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -70,11 +70,11 @@
                 </div>
               </div>
               <div class="space-y-1 px-2 pt-2 pb-3" id="mobileMenu">
-                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Product</a>
+                <a href="#about" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">About</a>
   
-                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Features</a>
+                <a href="/dashboard" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Networks</a>
   
-                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Networks</a>
+                <!-- <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Networks</a> -->
   
                 <!-- <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">Company</a> -->
               </div>
@@ -190,13 +190,6 @@
     </div>
 </main> -->
 
-<!-- <script>
-  const mobileMenu = document.getElementById('mobileMenu')
-  const hamburgerMenu = document.getElementById('hamburgerMenu')
-  hamburgerMenu.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden')
-  })
-</script> -->
     
-
+<script src="/js/hamburgerMenu.js"></script>
 <%- include('partials/footer') -%>
