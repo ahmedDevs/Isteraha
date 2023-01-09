@@ -47,9 +47,9 @@
                     <span>followers <%= members[i].followers.length %></span>
                     <span>following <%= members[i].following.length %></span>
                     
-                    <div class="px-4 mt-1">
+                    <!-- <div class="px-4 mt-1">
                         <p class="fonts"><%= members[i].bio %></p>
-                    </div>
+                    </div> -->
                     
                      <!-- <ul class="social-list">
                         <li><i class="fa fa-facebook"></i></li>
@@ -59,7 +59,7 @@
                         <li><i class="fa fa-google"></i></li>
                     </ul> -->
                     
-                    <div class="buttons">
+                    <div class="buttons buttons-container">
                         <% if(user.id != members[i]._id) { %>
                         <a href="/message/<%= members[i].userName %>">
                         <button class="btn btn-outline-primary px-4"><i class="fa fa-solid fa-envelope"></i></button>
@@ -82,7 +82,7 @@
                             
                               <% if(network.createdBy == user.id && members[i]._id != user.id) { %>
                               <form  class="buttons" action="/network/<%= network.name %>/<%= members[i].userName %>/remove" method="post">
-                                <button class="removeUserButton btn btn-primary px-4 ms-3">Remove User</button>
+                                <button class="removeUserButton btn btn-primary px-4 ms-3">Remove</button>
                                 </form>
                               <% } %>
                           
