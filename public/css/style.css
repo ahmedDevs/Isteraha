@@ -24,9 +24,6 @@
 html {
     width: 100%;
 }
-
-
-
 .card{
     /* height:430px; */
     width:320px;
@@ -45,7 +42,6 @@ html {
   right: 0;
   z-index:999;
 }
-
 .overlay .fa-close{
     position:absolute; 
     top:10px;
@@ -59,11 +55,9 @@ html {
       height: 100%;
   width: 100%;
 }
-
 .d-none{
     display:none;
 }
-
 .top-div{
     position:relative;
     padding:20px;
@@ -140,7 +134,6 @@ html {
     position:absolute;
     right:-135px;
     top:-590px;
-  
 }
 .about{
     padding:10px 20px;
@@ -159,7 +152,6 @@ html {
 .social i{
     padding:0px 4px;
     color:#626262;
-    
 }
 .social i:nth-child(1){
     position:absolute;
@@ -189,22 +181,18 @@ html {
         transition-delay:0.3s;
 }
 .card:hover .social i:nth-child(1){
-   
       left:20px;
     top:4px;
 }
 .card:hover .social i:nth-child(2){
-   
       left:45px;
       top:4px;
 }
 .card:hover .social i:nth-child(3){
- 
       left:70px;
       top:4px;
 }
-.card:hover .social i:nth-child(4){
-    
+.card:hover .social i:nth-child(4){ 
      left:96px;
       top:4px;
 }
@@ -240,7 +228,6 @@ html {
 }
 .button button:nth-child(1):hover{
       background-image: linear-gradient(to right,#B8550F,#626262);
-
 }
 .button button:nth-child(2):hover{
     background-color:#ccc;
@@ -309,7 +296,6 @@ html {
 
 .card{
     border:none;
-
     position:relative;
     overflow:hidden;
     border-radius:8px;
@@ -332,8 +318,7 @@ html {
     transform-origin: bottom
 } */
 
-.card:after{
-    
+.card:after{  
     content:"";
     position:absolute;
     left:0;
@@ -346,53 +331,37 @@ html {
     transition:all 0.5s;
     transform-origin: bottom
 }             
-
 .card:hover::after{
     transform:scaleY(1);
 }
-
-
-.fonts{
-
-
-}
-
 .social-list{
     display:flex;
     list-style:none;
     justify-content:center;
     padding:0;
 }
-
 .social-list li{
     padding:10px;
     color:#8E24AA;
     font-size:19px;
 }
-
 .buttons{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: space-evenly;
-
 }
-
-
 .buttons button:nth-child(1){
        /* border:1px solid #8E24AA !important;
        color:#8E24AA; */
-       height:40px;
-   
+       height:40px;  
 }
-
 .buttons button:nth-child(1):hover{
        /* border:1px solid #8E24AA !important; */
        color:#fff;
        height:40px;
        background-color:rgb(0, 114, 244);
 }
-
 .buttons button:nth-child(2){
        /* border:1px solid #8E24AA !important;
        background-color:#8E24AA;
@@ -486,8 +455,6 @@ html {
     justify-content: center;
     align-items: center;
 }
-
-
 .btn-primary {
     color: black;
 }
@@ -520,7 +487,6 @@ html {
     position: relative;
     left: 10%;
 }
-
 .memberCardContainer {
     width: 80%;
 }
@@ -557,7 +523,6 @@ html {
     flex-basis: 100%;
     width: 100%;
 }
-
 #posts {
     display: flex;
     flex-flow: column nowrap;
@@ -572,7 +537,6 @@ html {
     width: 70%;
     border: 2px solid lightskyblue;
 }
-
 #menu {
     /* border: 2px solid red; */
     width: 10%;
@@ -582,7 +546,6 @@ html {
     left: 0;
     top: 15%;
 }
-
 #menu * {
     text-decoration: none;
     /* color: rgb(61, 122, 187); */
@@ -593,7 +556,6 @@ html {
     margin-top: 10%;
     height: 10%;
 }
-
 .suggestionBox {
     display: block;
     width: 25%;
@@ -610,8 +572,7 @@ html {
 }
 .suggestionBox > ul{
     height: 70%;
-    list-style: none;
-   
+    list-style: none;  
 }
 .suggestion {
     /* display: flex;
@@ -623,16 +584,11 @@ html {
     margin: 2%;
     /* border-bottom: 1px solid rgb(0, 114, 244); */
     background-color: rgb(248, 249, 250);
-   
 }
 .suggestion > a {
     display: block; 
     height: 100%; 
     width: 100%;
-}
-.suggestion > a > div {
-    /* width: 100%;
-    height: 100%; */
 }
 .suggestion img {
     position: relative;
@@ -648,8 +604,6 @@ html {
 .suggestion h3 {
     text-align: center;
 }
-
-
 .dashboardList.networks {
     width: 100%;
     height: 100%;
@@ -682,7 +636,6 @@ html {
     border: 2px solid blue;
    
 }
-
 .container.box ul {
     width: 100%;
     height: 100%;
@@ -700,7 +653,6 @@ html {
     flex-basis: 100%;
     width: 100%;
 }
-
 .formAndPostsBox {
     display: flex;
     flex-flow: column nowrap;
@@ -710,15 +662,11 @@ html {
     text-align: center;
     font-weight: bolder;
 }
-/* .postContent {
-  
-} */
 .postIconContainer {
     width: 100%;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
-
 #postForm {
     width: 50%;
 }
@@ -759,7 +707,6 @@ html {
     flex-basis: 100%;
     width: 100%; 
 }
-
 .likesAndComments {
     width: 50%;
     display: flex;
@@ -788,7 +735,6 @@ html {
 #mainNetworkForm {
     width: 70vw;
 }
-
 .wrapper {
     /* width: 70vw; */
     background: none;
@@ -884,11 +830,6 @@ html {
 }
 
 
-
-
-
-
-
 #value1:checked ~ .value1,
 #value2:checked ~ .value2,
 #value3:checked ~ .value3,
@@ -937,13 +878,9 @@ html {
 .nav-link .fa{transition: all 1s;font-size:20px}
 .nav-link:hover .fa{transform: rotate(360deg)}
 
-/* .nav-item {
-    display: flex;
-    justify-content: center;
-} */
+
 #sideMenu {
     position: fixed;
-
 }
 
 h1 {
@@ -1097,7 +1034,6 @@ h1 {
 .thumbupo{
 	color: #17a2b8;
 }
-
 #commentSectionContainer {
     position: relative;
     left: 0;
@@ -1108,14 +1044,12 @@ h1 {
     align-items: center;
     /* border: 2px solid salmon; */
 }
-
 #postBoxCommentSection {
     position: relative;
     left: 0;
     border-bottom: 1px solid rgb(229,232,237);
     width: 100%;
 }
-
 .likeIconPost:hover {
     background-color: rgb(0, 114, 244);
 }
@@ -1143,13 +1077,9 @@ h1 {
 .padding {
     padding: 3rem !important
 }
-
-
 .card-header:first-child {
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
 }
-
-
 .card-header {
     display: -webkit-box;
     display: flex;
@@ -1161,32 +1091,26 @@ h1 {
     background-color: transparent;
     border-bottom: 1px solid rgba(77,82,89,0.07);
 }
-
 .card-header .card-title {
     padding: 0;
     border: none;
 }
-
 h4.card-title {
     font-size: 17px;
 }
-
 .card-header>*:last-child {
     margin-right: 0;
 }
-
 .card-header>* {
     margin-left: 8px;
     margin-right: 8px;
 }
-
 .btn-secondary {
     color: #4d5259 !important;
     background-color: #e4e7ea;
     border-color: #e4e7ea;
     color: #fff;
 }
-
 .btn-xs {
     font-size: 11px;
     padding: 2px 8px;
@@ -1207,34 +1131,27 @@ h4.card-title {
     padding: 15px 20px;
     border-bottom: 1px solid rgba(77,82,89,0.07);
 }
-
-
 .ps-container {
     position: relative;
 }
-
 .ps-container {
     -ms-touch-action: auto;
     touch-action: auto;
     overflow: hidden!important;
     -ms-overflow-style: none;
 }
-
 .media-chat {
     padding-right: 64px;
     margin-bottom: 0;
 }
-
 .media {
     padding: 16px 12px;
     -webkit-transition: background-color .2s linear;
     transition: background-color .2s linear;
 }
-
 .media .avatar {
     flex-shrink: 0;
 }
-
 .avatar {
     position: relative;
     display: inline-block;
@@ -1247,17 +1164,14 @@ h4.card-title {
     color: #8b95a5;
     text-transform: uppercase;
 }
-
 .media-chat .media-body {
     -webkit-box-flex: initial;
     flex: initial;
     display: table;
 }
-
 .media-body {
     min-width: 0;
 }
-
 .media-chat .media-body p {
     position: relative;
     padding: 6px 8px;
@@ -1267,17 +1181,14 @@ h4.card-title {
     font-weight: 100;
     color:#9b9b9b;
 }
-
 .media>* {
     margin: 0 8px;
 }
-
 .media-chat .media-body p.meta {
     background-color: transparent !important;
     padding: 0;
     opacity: .8;
 }
-
 .media-meta-day {
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -1288,35 +1199,29 @@ h4.card-title {
     opacity: .8;
     font-weight: 400;
 }
-
 .media {
     padding: 16px 12px;
     -webkit-transition: background-color .2s linear;
     transition: background-color .2s linear;
 }
-
 .media-meta-day::before {
     margin-right: 16px;
 }
-
 .media-meta-day::before, .media-meta-day::after {
     content: '';
     -webkit-box-flex: 1;
     flex: 1 1;
     border-top: 1px solid #ebebeb;
 }
-
 .media-meta-day::after {
     content: '';
     -webkit-box-flex: 1;
     flex: 1 1;
     border-top: 1px solid #ebebeb;
 }
-
 .media-meta-day::after {
     margin-left: 16px;
 }
-
 .media-chat.media-chat-reverse {
     padding-right: 12px;
     padding-left: 64px;
@@ -1324,25 +1229,21 @@ h4.card-title {
     -webkit-box-direction: reverse;
     flex-direction: row-reverse;
 }
-
 .media-chat {
     padding-right: 64px;
     margin-bottom: 0;
 }
-
 .media {
     padding: 16px 12px;
     -webkit-transition: background-color .2s linear;
     transition: background-color .2s linear;
 }
-
 .media-chat.media-chat-reverse .media-body p {
     float: right;
     clear: right;
     background-color: #48b0f7;
     color: #fff;
 }
-
 .media-chat .media-body p {
     position: relative;
     padding: 6px 8px;
@@ -1350,8 +1251,6 @@ h4.card-title {
     background-color: #f5f6f7;
     border-radius: 3px;
 }
-
-
 .border-light {
     border-color: #f1f2f3 !important;
 }
@@ -1359,7 +1258,6 @@ h4.card-title {
 .bt-1 {
     border-top: 1px solid #ebebeb !important;
 }
-
 .publisher {
     position: relative;
     display: -webkit-box;
@@ -1369,7 +1267,6 @@ h4.card-title {
     padding: 12px 20px;
     background-color: #f9fafb;
 }
-
 .publisher>*:first-child {
     margin-left: 0;
 }
@@ -1377,7 +1274,6 @@ h4.card-title {
 .publisher>* {
     margin: 0 8px;
 }
-
 .publisher-input {
     -webkit-box-flex: 1;
     flex-grow: 1;
@@ -1385,12 +1281,10 @@ h4.card-title {
     outline: none !important;
     background-color: transparent;
 }
-
 button, input, optgroup, select, textarea {
     font-family: Roboto,sans-serif;
     font-weight: 300;
 }
-
 .publisher-btn {
     background-color: transparent;
     border: none;
@@ -1401,12 +1295,10 @@ button, input, optgroup, select, textarea {
     -webkit-transition: .2s linear;
     transition: .2s linear;
 }
-
 .file-group {
     position: relative;
     overflow: hidden;
 } 
-
 .publisher-btn {
     background-color: transparent;
     border: none;
@@ -1417,14 +1309,12 @@ button, input, optgroup, select, textarea {
     -webkit-transition: .2s linear;
     transition: .2s linear;
 } 
-
 .file-group input[type="file"] {
     position: absolute;
     opacity: 0;
     z-index: -1; 
     width: 20px;
 }
-
 .text-info {
     color: #48b0f7 !important;
 }
@@ -1504,6 +1394,20 @@ body {
     #commentSectionContainer {
         left: 10%;
     }
+    .mainContainerProfile {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+    .networkDashInfoFeed h1 {
+        left: 0;
+        width: 50%;
+    }
+    .networkDashInfoFeed {
+        left: 10%;
+        flex-flow: column nowrap;
+        align-items: center;
+        position: relative;
+    }
 }
 
 @media screen and (max-width: 525px) {
@@ -1524,5 +1428,25 @@ body {
     }
     .commentPageHeader > div + div {
         width: 100%;
+    }
+    .buttons-container {
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    }
+    .card.memberPageProfiles {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        border-bottom: 1px solid black;
+    }
+    .memberCardContainer {
+        position: relative;
+        left: 10%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+    .mt-5.profile-container {
+        left: 15%;
     }
 }
