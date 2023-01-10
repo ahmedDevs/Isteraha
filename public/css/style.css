@@ -1320,6 +1320,11 @@ button, input, optgroup, select, textarea {
 }
 .createNetworkForm {
     width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.create-network-button {
+    align-self: center;
 }
 .searchbarMessages {
     text-align: center;
@@ -1486,5 +1491,13 @@ body {
     .networkContainer {
         padding-right: 10px;
         padding-left: 10px;
+    }
+    #mainNetworkForm {
+        width: 100vw;
+    }
+    .createNetworkForm {
+        width: 70%;
+        position: relative;
+        left: 15%;
     }
 }
