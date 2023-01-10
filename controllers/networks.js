@@ -136,7 +136,6 @@ module.exports = {
         let file = req.file
         let name = req.body.name
         let bio = req.body.bio
-
         if(file && !name && !bio ) {
             const result = await cloudinary.uploader.upload(req.file.path);
           
@@ -228,7 +227,6 @@ module.exports = {
    },
    getMembersPage: async (req,res) => {
     try {
-       
         const user = req.user
         const network = await Network.findOne({ name: req.params.id }).lean()
         const members = await User.find({ "networks": { $in: network._id } }).lean()
