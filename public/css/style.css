@@ -1408,6 +1408,13 @@ body {
         align-items: center;
         position: relative;
     }
+    .dashboard-header h1 {
+        padding-left: 12%;
+    }
+    #feedBox {
+        padding-right: 10%;
+        padding-left: 10%;
+    }
 }
 
 @media screen and (max-width: 525px) {
@@ -1428,6 +1435,13 @@ body {
     }
     .commentPageHeader > div + div {
         width: 100%;
+        justify-content: center;
+        flex-flow: column nowrap;
+    }
+    .commentPageHeader > div + div h1 {
+        width: 60%;
+        position: relative;
+        left: 30%;
     }
     .buttons-container {
     flex-flow: column nowrap;
@@ -1447,6 +1461,30 @@ body {
         align-items: center;
     }
     .mt-5.profile-container {
-        left: 15%;
+        left: 10%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .profile-header {
+        padding-left: 20%;
+    }
+    .postIconContainer {
+       flex-flow: column nowrap;
+       align-items: center;
+    }
+    .postIconContainer > :first-child {
+        align-self: flex-start;
+    }
+    .postIconContainer > :nth-child(3) {
+        align-self: flex-start;
+    }
+    .likesAndComments {
+        /* flex-flow: column nowrap; */
+        justify-content: space-between;
+        width: 100%;
+    }
+    .networkContainer {
+        padding-right: 10px;
+        padding-left: 10px;
     }
 }
