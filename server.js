@@ -20,6 +20,8 @@ const inviteRoutes = require("./routes/invitations")
 const messageRoutes = require("./routes/messages")
 
 
+
+
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" })
 

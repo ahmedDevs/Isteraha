@@ -231,7 +231,7 @@
 
 <div class="container mt-3 editProfileForm hidden" id="profileForm">
   <div class="card p-3 text-center">
-    <form action="/settings/user/save?_method=PUT" method="POST">
+    <form action="/settings/user/save?_method=PUT" method="POST" enctype="multipart/form-data">
       <div class="d-flex flex-row justify-content-center mb-3">
           <div class="image"> 
             <% if(!user.image) { %>
@@ -265,9 +265,9 @@
       <div class="row">
           <div class="col-md-12">
           <% if(!user.bio) { %>
-              <div class="about-inputs"> <label>Bio</label> <textarea class="form-control" type="text" placeholder="Tell us about yourself" name="bio"> </textarea> </div>
+              <div class="about-inputs"> <label>Bio</label> <textarea class="form-control" type="text" placeholder="Tell us about yourself" name="bio"></textarea> </div>
            <% } else { %>
-            <div class="about-inputs"> <label>Bio</label> <textarea class="form-control" type="text" placeholder="<%= user.bio %>" name="bio"> </textarea> </div>
+            <div class="about-inputs"> <label>Bio</label> <textarea class="form-control" type="text" placeholder="<%= user.bio %>" name="bio"></textarea> </div>
             <% } %>
           </div>
       </div>

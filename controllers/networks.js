@@ -132,14 +132,17 @@ module.exports = {
    },
    putUserSettings: async(req,res) => {
     try {
-        const user = await User.findById(req.user._id) 
-        let file = req.file
+        const user = await User.findById(req.user._id)
+        let img = req.file
         let name = req.body.name
         let bio = req.body.bio
-        if(file && !name && !bio ) {
+        if(img && !name && !bio) {
+            if(user.image) {
+              await cloudinary.uploader.destroy(user.cloudinaryId)
+            }
             const result = await cloudinary.uploader.upload(req.file.path);
-          
-            await user.updateMany(
+            console.log(result)
+            await user.update(
                 {
                     $set: { image: result.secure_url, cloudinaryId: result.public_id },
                 }, 
@@ -147,7 +150,7 @@ module.exports = {
                     new: true,
                 }
             )
-        }   else if(name && !file && !bio ) {
+        }   else if(name && !img && !bio) {
             await user.updateOne(
                 {
                     $set: { name: req.body.name },
@@ -156,7 +159,7 @@ module.exports = {
                     new: true,
                 }
             )
-        }   else if(bio && !file && !name) {
+        }   else if(bio && !img && !name) {
             await user.updateOne(
                 {
                     $set: { bio: req.body.bio },
@@ -165,9 +168,13 @@ module.exports = {
                     new: true,
                 }
             )
-        }  else if(name && file && bio) {
+        }  else if(name && img && bio) {
+            if(user.image) {
+              await cloudinary.uploader.destroy(user.cloudinaryId)
+            }
             const result = await cloudinary.uploader.upload(req.file.path);
-            await user.updateMany(
+            console.log(result)
+            await user.update(
                 {
                     $set: { image: result.secure_url, cloudinaryId: result.public_id, name: req.body.name, bio: req.body.bio },
                 }, 
@@ -175,9 +182,13 @@ module.exports = {
                     new: true,
                 },
             )
-        }  else if(file && bio && !name) {
+        }  else if(img && bio && !name) {
+            if(user.image) {
+              await cloudinary.uploader.destroy(user.cloudinaryId)
+            }
             const result = await cloudinary.uploader.upload(req.file.path);
-            await user.updateMany(
+            console.log(result)
+            await user.update(
                 {
                     $set: { image: result.secure_url, cloudinaryId: result.public_id, bio: req.body.bio },
                 }, 
@@ -185,33 +196,35 @@ module.exports = {
                     new: true,
                 }
             )
-        }  else if(file && name && !bio) {
+        }  else if(img && name && !bio) {
+            if(user.image) {
+              await cloudinary.uploader.destroy(user.cloudinaryId)
+            }
             const result = await cloudinary.uploader.upload(req.file.path);
-            await user.updateMany(
+            console.log(result)
+            await user.update(
                 {
-                    $set: { image: result.secure_url, cloudinaryId: result.public_id },
+                    $set: { name: req.body.name, image: result.secure_url, cloudinaryId: result.public_id },
+                }, 
+                {
+                    new: true,
+                }
+            )
+        }  else if(name && bio && !img) {
+            await user.update(
+                {
+                    $set: { name: req.body.name, bio: req.body.bio },
                 }, 
                 {
                     new: true,
                 }
             )
         }
-
-        // if(userInput.file !== undefined) {
-        //     const result = await cloudinary.uploader.upload(req.file.path);
-        //     await user.update(
-        //         {
-        //             $set: { image: result.secure_url, cloudinaryId: result.public_id, name: req.body.name, bio: req.body.bio },
-        //         },
-        //     )
-        // }
-      
        await user.save()
         res.redirect(`/${req.user.userName}/profile`)
         }  catch(err) {
         console.error(err)
     }
-
    },
    postLeaveNetwork: async(req,res) => {
     try {
