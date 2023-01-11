@@ -653,6 +653,9 @@ html {
     flex-basis: 100%;
     width: 100%;
 }
+.mt-5.profile-container {
+    margin-bottom: 10%;
+}
 .formAndPostsBox {
     display: flex;
     flex-flow: column nowrap;
