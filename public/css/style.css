@@ -684,6 +684,8 @@ html {
     align-items: flex-start;
     flex-basis: 30%;
     width: 30%;
+    position: relative;
+    left: 5%;
 }
 .commentPageHeader > div > div {
     display: flex;
