@@ -1461,7 +1461,9 @@ body {
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
-        border-bottom: 1px solid black;
+        border-bottom: 3px solid rgb(248, 249, 250);
+        border-radius: 0;
+        width: 100%;
     }
     .memberCardContainer {
         position: relative;
@@ -1469,6 +1471,9 @@ body {
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
+    }
+    .memberCardContainer  > a{
+        width: 100%;
     }
     .mt-5.profile-container {
         left: 10%;

@@ -1,0 +1,6 @@
+{
+  "appId": "app.cyclic.isteraha",
+  "appName": "Isteraha",
+  "webDir": "./views/index.ejs",
+  "bundledWebRuntime": false
+}
