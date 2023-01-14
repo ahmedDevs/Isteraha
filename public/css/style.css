@@ -1515,4 +1515,9 @@ body {
         position: relative;
         left: 10%;
     }
+    #profileForm {
+        width: 70%;
+        position: relative;
+        left: 10%;
+    }
 }
