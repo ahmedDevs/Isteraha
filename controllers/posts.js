@@ -54,7 +54,6 @@ module.exports = {
       const users = await User.find({ "_id": { $in: userIds } }).lean()   
       const commenters = users.reduce((a,c) => ({...a, [c._id]: c}), {})
       console.log(commenters)
-      
       res.render("post.ejs", { post: post, user: req.user, comments: comments, poster, commenters })
       // isLiked?
     } catch (err) {
@@ -121,8 +120,8 @@ module.exports = {
   likePost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id)
+      const network = await Network.findById(post.network).lean()
       const likeArr = post.likedBy
-     
       if(likeArr.includes(req.user._id) === true) {
         await post.updateOne(
           {
@@ -131,8 +130,7 @@ module.exports = {
           {
             new: true,
           },
-        ) 
-        
+        )  
         likeArr.splice(likeArr.indexOf(req.user._id),1)
         await post.save()
       }  else { 
@@ -144,12 +142,10 @@ module.exports = {
             new: true,
           },
         ) 
-        
         likeArr.push(req.user._id)
         await post.save()
       }
-    
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect(`/${network.name}/feed`)
     } catch (err) {
       console.log(err);
     }
@@ -158,6 +154,7 @@ module.exports = {
     try {
       // Find post by id
       let post = await Post.findById(req.params.id);
+      const network = await Network.findById(post.network).lean()
       // check if there is an image in the post
       if(post.image) {
       // Delete image from cloudinary
@@ -166,7 +163,7 @@ module.exports = {
       // Delete post from db
       await Post.deleteOne({ _id: req.params.id });
       console.log("Deleted Post");
-      res.redirect(`/${req.user.userName}/profile`);
+      res.redirect(`/${network.name}/feed`)
     } catch (err) {
       res.redirect(`/${req.user.userName}/profile`);
     }

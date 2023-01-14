@@ -1461,7 +1461,7 @@ body {
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
-        border-bottom: 3px solid rgb(248, 249, 250);
+        border-bottom: 5px solid rgb(248, 249, 250);
         border-radius: 0;
         width: 100%;
     }
@@ -1509,5 +1509,10 @@ body {
         width: 70%;
         position: relative;
         left: 15%;
+    }
+    #postForm {
+        width: 80%;
+        position: relative;
+        left: 10%;
     }
 }
