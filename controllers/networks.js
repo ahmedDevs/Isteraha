@@ -42,8 +42,6 @@ module.exports = {
           const param = await req.body.networkName
           console.log("Network created!");
           res.redirect(`/${param}/feed`);
- 
-    
     } catch (err) {
         console.error(err)
     }
@@ -64,7 +62,6 @@ module.exports = {
     const userNetworks = await Network.find({ _id: { $in: req.user.networks } }).lean()
     console.log(userNetworks)
     const networks = await Network.find({ type: 'Public'}).lean()
-   
     const isMember = []
     for(let i = 0; i < networks.length; i++) {
         if(networks[i].members.includes(req.user._id)) {
@@ -116,8 +113,6 @@ module.exports = {
                 { new: true }
               )
             } 
-           
-        
     }  catch(err) {
         console.error(err)
     }
@@ -228,10 +223,12 @@ module.exports = {
    },
    postLeaveNetwork: async(req,res) => {
     try {
-        const network = await Network.findOne({ name: req.params.id }).lean()
+        const network = await Network.findOne({ name: req.params.id })
         const user = await User.findById(req.user._id)
         const networksArr = user.networks
+        network.members.splice(network.members.indexOf(user._id), 1)
         networksArr.splice(networksArr.indexOf(network._id), 1)
+        await network.save()
         await user.save()
         res.redirect('/dashboard')
     }  catch(err) {
@@ -257,7 +254,6 @@ module.exports = {
             const network = await Network.findOne({ name: req.params.network })
             const user = await User.findOne({ userName: req.params.user })
             network.members.splice(network.members.indexOf(user._id), 1)
-
             // await network.update(
             //     {
             //         $inc: { numberOfMembers: -1 },
