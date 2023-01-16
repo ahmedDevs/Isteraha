@@ -1,5 +1,7 @@
 <div class="mt-5 hidden" id="postForm">
-    <h2>Add a post</h2>
+    <div class="d-flex justify-center">
+      <h2>Add a post</h2>
+    </div>
     <% if(network) { %>
         <form action="/post/createPost/<%=network.name%>" enctype="multipart/form-data" method="POST">
             <div class="mb-3">

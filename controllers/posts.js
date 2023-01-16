@@ -53,8 +53,10 @@ module.exports = {
       const userIds = comments.map(e => e.user)
       const users = await User.find({ "_id": { $in: userIds } }).lean()   
       const commenters = users.reduce((a,c) => ({...a, [c._id]: c}), {})
+      const network = await Network.findById(post.network).lean()
       console.log(commenters)
-      res.render("post.ejs", { post: post, user: req.user, comments: comments, poster, commenters })
+      console.log(comments)
+      res.render("post.ejs", { post: post, user: req.user, comments: comments, poster, commenters, networkName: network.name })
       // isLiked?
     } catch (err) {
       console.log(err);
