@@ -25,7 +25,7 @@
                     </div>
                     <h6><%= networks[i].about %></h6>
                     <div class="d-flex justify-content-between install mt-3"><span><%= networks[i].members.length %> members</span>
-                        <% if(locals.isAuth && isMember[i] === true ) { %> 
+                        <% if(locals.isAuth && isMember[i] === 1 ) { %> 
                          <a href="/invite/<%=networks[i].name%>"><span class="text-primary">Invite&nbsp;<i class="fa fa-angle-right"></i></span> </a>
                          <a href="#"><span class="text-primary">Leave&nbsp;<i class="fa fa-angle-right"></i></span> </a>
                          <%  } %>

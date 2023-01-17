@@ -62,12 +62,15 @@ module.exports = {
     const userNetworks = await Network.find({ _id: { $in: req.user.networks } }).lean()
     console.log(userNetworks)
     const networks = await Network.find({ type: 'Public'}).lean()
+    const userId = req.user._id
     const isMember = []
-    for(let i = 0; i < networks.length; i++) {
-        if(networks[i].members.includes(req.user._id)) {
-            isMember.push[true]
+    for(let network of networks) {
+        const members = network.members.map(e => e.toString())
+        console.log(members)
+        if(!members.includes(userId.toString())) {
+            isMember.push(0)
         }  else {
-            isMember.push[false]
+            isMember.push(1)
         }
     }
     console.log(isMember)
