@@ -12,11 +12,25 @@ module.exports = {
       const profile = await User.findOne({ userName: params })     
       const profileFollowers = profile.followers  
       const posts = await Post.find({ user: profile._id }).lean()
+      // get the network IDs of the profile posts
+      const networkIds = posts.map(e => e.network)
+      // get the networks data by looking for their IDs 
+      const userNetworks = await Network.find({ '_id': { $in: networkIds } }).lean()
+      // get the private networks
+      const privateUserNetworks = userNetworks.filter(e => e.type === 'Private')
+      const visitorNetworks = req.user.networks
+      // map the private networks that the visitor is not a member of
+      const hashmapPrivate = {}
+      for(let network of privateUserNetworks) {
+          if(!visitorNetworks.includes(network._id)) {
+            hashmapPrivate[network._id] = network.name
+          }
+      }
       if(params != req.user.userName && profileFollowers.includes(req.user._id)) {
         isFollower = true
       } 
       console.log(isFollower)
-      res.render("profile.ejs", { profile, user: req.user, posts: posts, isFollower});
+      res.render("profile.ejs", { profile, user: req.user, posts: posts, isFollower, hashmapPrivate });
     } catch (err) {
       console.log(err);
     }
