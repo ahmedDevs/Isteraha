@@ -143,6 +143,9 @@
 
       
                 <% for(let i = 0; i < posts.length; i++) { %>
+                  <% if(hashmapPrivate[posts[i].network]) { %>
+                    <% continue %>
+                  <% } %>
                 <div class="card cardFeed">
                     <div class="d-flex justify-content-between p-2 px-3">
                         <div class="d-flex flex-row align-items-center"> 
