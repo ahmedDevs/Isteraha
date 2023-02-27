@@ -1,0 +1,148 @@
+{
+	"folders": [
+		{
+			"name": "codewars",
+			"path": "../../codewars"
+		},
+		{
+			"name": "taskcluster",
+			"path": "../../taskcluster"
+		},
+		{
+			"name": "social-app",
+			"path": "../../social-app"
+		},
+		{
+			"name": "recipe-app",
+			"path": "../../recipe-app"
+		},
+		{
+			"name": "binary-upload-boom",
+			"path": "../../binary-upload-boom"
+		},
+		{
+			"name": "isteraha",
+			"path": ".."
+		},
+		{
+			"name": "unfilteredJiuJitsu",
+			"path": "../../unfilteredJiuJitsu"
+		},
+		{
+			"name": "class14-materials",
+			"path": "../../class14-materials"
+		},
+		{
+			"name": "taskcluster2",
+			"path": "../../taskcluster2"
+		},
+		{
+			"name": "vite-project",
+			"path": "../../vite-project"
+		},
+		{
+			"name": "string-methods",
+			"path": "../../string-methods"
+		},
+		{
+			"name": "leetcode",
+			"path": "../../leetcode"
+		},
+		{
+			"name": "coding-problems",
+			"path": "../../coding-problems"
+		},
+		{
+			"name": "react-book",
+			"path": "../../react-book"
+		},
+		{
+			"name": "obscure-animals-api",
+			"path": "../../obscure-animals-api"
+		},
+		{
+			"name": "tic-tac",
+			"path": "../../tic-tac"
+		},
+		{
+			"name": "kata-machine",
+			"path": "../../kata-machine"
+		},
+		{
+			"name": "frontend",
+			"path": "../../frontend"
+		},
+		{
+			"name": "ig-dmbot-acc",
+			"path": "../../ig-dmbot-acc"
+		},
+		{
+			"name": "IG-Bot",
+			"path": "../../IG-Bot"
+		},
+		{
+			"name": "src",
+			"path": "../../../.Trash/src"
+		},
+		{
+			"name": "public",
+			"path": "../../../.Trash/public"
+		},
+		{
+			"name": "full-stack-open",
+			"path": "../../full-stack-open"
+		},
+		{
+			"name": "onepirate",
+			"path": "../../onepirate"
+		},
+		{
+			"path": "../../MWS"
+		},
+		{
+			"path": "../../startbootstrap-agency"
+		},
+		{
+			"path": "../../startbootstrap-shop-homepage"
+		},
+		{
+			"path": "../../100-hours-project"
+		},
+		{
+			"path": "../../aviato-main"
+		},
+		{
+			"path": "../../react-social"
+		},
+		{
+			"path": "../../ahmedTechs3 copy 2"
+		},
+		{
+			"path": "../../ahmedTechs3 copy 3"
+		},
+		{
+			"path": "../../startbootstrap-business-casual-gh-pages"
+		},
+		{
+			"path": "../../ml-app"
+		},
+		{
+			"path": "../../Agency-Website"
+		},
+		{
+			"path": "../../crafti"
+		},
+		{
+			"path": "../../navigator-hugo"
+		},
+		{
+			"path": "../../Tracking System"
+		},
+		{
+			"path": "../../react-capacitor-test"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "startbootstrap-agency"
+	}
+}
