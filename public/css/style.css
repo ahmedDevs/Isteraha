@@ -1350,6 +1350,8 @@ body {
 \*-----------------------------------*/
 
 .footer {
+    position: relative;
+    bottom: 0;
     background-color: var(--white-2);
     padding-block: 20px;
   }
