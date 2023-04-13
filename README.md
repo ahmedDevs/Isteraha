@@ -96,11 +96,10 @@ Extra
 
 
 #### Additional Features for future Development <a name="features"></a>
-- [ ] Password reset #1
-- [ ] Networks' scores #2 
-- [ ] Networks' rankings #3
-- [ ] Network merges functionality #4
-- [ ] User invites through email links #5
+- [ ] Networks' scores #1
+- [ ] Networks' rankings #2
+- [ ] Network merges functionality #3
+- [ ] User invites through email links #4
 
 #### How to Contribute <a name="Contribute"></a>
 
